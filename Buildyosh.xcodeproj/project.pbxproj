@@ -7,20 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410B4A0D24DF111300922F8D /* ProjectsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B4A0C24DF111300922F8D /* ProjectsSection.swift */; };
+		410B4A0F24DF137300922F8D /* View+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B4A0E24DF137300922F8D /* View+Hidden.swift */; };
+		410B4A1124DF14A400922F8D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B4A1024DF14A400922F8D /* AboutView.swift */; };
+		410B4A1324DF172300922F8D /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B4A1224DF172300922F8D /* Fonts.swift */; };
+		410B4A1624DF1DB700922F8D /* RoundedEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B4A1524DF1DB700922F8D /* RoundedEdge.swift */; };
 		41138D8E24C9E5C100522042 /* Double+Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41138D8D24C9E5C100522042 /* Double+Output.swift */; };
 		41138D9024C9E5F300522042 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41138D8F24C9E5F300522042 /* ActivityIndicator.swift */; };
 		41138D9224C9E66500522042 /* ProjectSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41138D9124C9E66500522042 /* ProjectSection.swift */; };
 		41138D9424C9EA6500522042 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41138D9324C9EA6500522042 /* WindowManager.swift */; };
-		4116B95824C41DD8001629C6 /* DBScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116B95724C41DD8001629C6 /* DBScheme.swift */; };
+		4116992F24F244E1004293DC /* PeriodParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116992E24F244E1004293DC /* PeriodParser.swift */; };
+		4116993124F2491B004293DC /* StoragePeriodsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116993024F2491B004293DC /* StoragePeriodsTests.swift */; };
+		4116993324F2503C004293DC /* Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116993224F2503C004293DC /* Difference.swift */; };
+		4116993524F28069004293DC /* PeriodUnion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116993424F28069004293DC /* PeriodUnion.swift */; };
+		4116B95824C41DD8001629C6 /* DBPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116B95724C41DD8001629C6 /* DBPeriod.swift */; };
 		4116B95A24C42391001629C6 /* Storage+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116B95924C42391001629C6 /* Storage+Project.swift */; };
 		4116B95C24C42BA6001629C6 /* URL+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116B95B24C42BA6001629C6 /* URL+Utils.swift */; };
 		411C76BF24B99BF2004259AC /* XcodeLogParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C76BE24B99BF2004259AC /* XcodeLogParser.swift */; };
 		412C99B124CB3DAE009B34E1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412C99B024CB3DAE009B34E1 /* Logger.swift */; };
-		41527CE424ACA7EE0057A35F /* BuildyoshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41527CE324ACA7EE0057A35F /* BuildyoshTests.swift */; };
-		41527CEC24ACA9450057A35F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41527CEB24ACA9450057A35F /* Project.swift */; };
+		412FC80924EAFCB8006B6FCD /* Date+Periods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412FC80824EAFCB8006B6FCD /* Date+Periods.swift */; };
 		4159632124A8736600B42E60 /* XcodeLogAsyncParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159632024A8736600B42E60 /* XcodeLogAsyncParser.swift */; };
 		4159632324A8963600B42E60 /* ProjectsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159632224A8963600B42E60 /* ProjectsDataSource.swift */; };
 		416B2A3E24B9C53F00043110 /* EasyScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B2A3D24B9C53F00043110 /* EasyScanner.swift */; };
+		417D7F9024DFC030007A4526 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D7F8F24DFC030007A4526 /* Color+Hex.swift */; };
+		417D7F9224DFCB67007A4526 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D7F9124DFCB67007A4526 /* MainView.swift */; };
 		4189169824A518370084F7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4189169724A518370084F7AE /* AppDelegate.swift */; };
 		4189169A24A518370084F7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4189169924A518370084F7AE /* ContentView.swift */; };
 		4189169C24A5183A0084F7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4189169B24A5183A0084F7AE /* Assets.xcassets */; };
@@ -29,6 +39,22 @@
 		418916AC24A51E8C0084F7AE /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = 418916AB24A51E8C0084F7AE /* Gzip */; };
 		418E627624CDDE0E00EEFE9A /* TotalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E627524CDDE0E00EEFE9A /* TotalModifier.swift */; };
 		418E627924CDDE5500EEFE9A /* DurationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E627824CDDE5500EEFE9A /* DurationSection.swift */; };
+		41ABC80624F9710D001715D1 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80524F9710D001715D1 /* Images.swift */; };
+		41ABC80824FA5C68001715D1 /* NSApplication+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80724FA5C68001715D1 /* NSApplication+StatusBar.swift */; };
+		41ABC80A24FA5CF2001715D1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80924FA5CF2001715D1 /* Colors.swift */; };
+		41ABC80C24FAB572001715D1 /* Date+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80B24FAB572001715D1 /* Date+Int.swift */; };
+		41BD50E524FBA7AA00703A8D /* XCTAssertEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50E424FBA7AA00703A8D /* XCTAssertEqual.swift */; };
+		41BD50E624FBB53E00703A8D /* PeriodParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116992E24F244E1004293DC /* PeriodParser.swift */; };
+		41BD50E924FBB56600703A8D /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50E824FBB56600703A8D /* Period.swift */; };
+		41BD50EA24FBB56F00703A8D /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50E824FBB56600703A8D /* Period.swift */; };
+		41BD50EB24FBB57900703A8D /* ProjectLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F02C8E24E44DFD00C8D7AC /* ProjectLog.swift */; };
+		41BD50ED24FBB59000703A8D /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50EC24FBB59000703A8D /* Project.swift */; };
+		41BD50EE24FBB59900703A8D /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50EC24FBB59000703A8D /* Project.swift */; };
+		41BD50EF24FBB59C00703A8D /* Date+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80B24FAB572001715D1 /* Date+Int.swift */; };
+		41BD50F024FBB5A600703A8D /* Date+InRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC072B24BAE89100C16C94 /* Date+InRange.swift */; };
+		41BD50F124FBB5B100703A8D /* Date+Periods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412FC80824EAFCB8006B6FCD /* Date+Periods.swift */; };
+		41BD50F324FBB81200703A8D /* PeriodUnionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50F224FBB81200703A8D /* PeriodUnionTests.swift */; };
+		41BD50F424FBB9E500703A8D /* PeriodUnion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116993424F28069004293DC /* PeriodUnion.swift */; };
 		41BEAA0924C1F42400FFC41C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BEAA0824C1F42400FFC41C /* Storage.swift */; };
 		41BEAA0C24C1F50400FFC41C /* db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41BEAA0A24C1F50400FFC41C /* db.xcdatamodeld */; };
 		41BEAA0E24C2036800FFC41C /* FileManager+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BEAA0D24C2036800FFC41C /* FileManager+Utils.swift */; };
@@ -37,10 +63,11 @@
 		41C0474B24B9E4A50031DD99 /* XcodeLogReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418916AE24A51F250084F7AE /* XcodeLogReader.swift */; };
 		41C0474D24B9E67B0031DD99 /* XcodeLogFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C0474C24B9E67B0031DD99 /* XcodeLogFinder.swift */; };
 		41EC667D24C464F4005A0893 /* EntryPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC667C24C464F4005A0893 /* EntryPoint.swift */; };
+		41F02C8D24E30A4000C8D7AC /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F02C8C24E30A4000C8D7AC /* UserStorage.swift */; };
+		41F02C8F24E44DFD00C8D7AC /* ProjectLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F02C8E24E44DFD00C8D7AC /* ProjectLog.swift */; };
 		41FB1A1624A527B600F4678C /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41FB1A1524A527B600F4678C /* CryptoSwift */; };
 		41FC072A24BAE60800C16C94 /* DispatchQueue+Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC072924BAE60800C16C94 /* DispatchQueue+Main.swift */; };
 		41FC072C24BAE89100C16C94 /* Date+InRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC072B24BAE89100C16C94 /* Date+InRange.swift */; };
-		41FC072F24BAEB2C00C16C94 /* ProjectsDateFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC072E24BAEB2C00C16C94 /* ProjectsDateFilter.swift */; };
 		41FC073124BAEC2400C16C94 /* ProjectsCountFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC073024BAEC2400C16C94 /* ProjectsCountFilter.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,22 +82,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		410B4A0C24DF111300922F8D /* ProjectsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsSection.swift; sourceTree = "<group>"; };
+		410B4A0E24DF137300922F8D /* View+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Hidden.swift"; sourceTree = "<group>"; };
+		410B4A1024DF14A400922F8D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		410B4A1224DF172300922F8D /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		410B4A1524DF1DB700922F8D /* RoundedEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedEdge.swift; sourceTree = "<group>"; };
 		41138D8D24C9E5C100522042 /* Double+Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Output.swift"; sourceTree = "<group>"; };
 		41138D8F24C9E5F300522042 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		41138D9124C9E66500522042 /* ProjectSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSection.swift; sourceTree = "<group>"; };
 		41138D9324C9EA6500522042 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
-		4116B95724C41DD8001629C6 /* DBScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBScheme.swift; sourceTree = "<group>"; };
+		4116992E24F244E1004293DC /* PeriodParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodParser.swift; sourceTree = "<group>"; };
+		4116993024F2491B004293DC /* StoragePeriodsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragePeriodsTests.swift; sourceTree = "<group>"; };
+		4116993224F2503C004293DC /* Difference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Difference.swift; sourceTree = "<group>"; };
+		4116993424F28069004293DC /* PeriodUnion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodUnion.swift; sourceTree = "<group>"; };
+		4116B95724C41DD8001629C6 /* DBPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBPeriod.swift; sourceTree = "<group>"; };
 		4116B95924C42391001629C6 /* Storage+Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+Project.swift"; sourceTree = "<group>"; };
 		4116B95B24C42BA6001629C6 /* URL+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Utils.swift"; sourceTree = "<group>"; };
 		411C76BE24B99BF2004259AC /* XcodeLogParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeLogParser.swift; sourceTree = "<group>"; };
 		412C99B024CB3DAE009B34E1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		412FC80824EAFCB8006B6FCD /* Date+Periods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Periods.swift"; sourceTree = "<group>"; };
 		41527CE124ACA7EE0057A35F /* BuildyoshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuildyoshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		41527CE324ACA7EE0057A35F /* BuildyoshTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildyoshTests.swift; sourceTree = "<group>"; };
 		41527CE524ACA7EE0057A35F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41527CEB24ACA9450057A35F /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		4159632024A8736600B42E60 /* XcodeLogAsyncParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeLogAsyncParser.swift; sourceTree = "<group>"; };
 		4159632224A8963600B42E60 /* ProjectsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsDataSource.swift; sourceTree = "<group>"; };
 		416B2A3D24B9C53F00043110 /* EasyScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyScanner.swift; sourceTree = "<group>"; };
+		417D7F8F24DFC030007A4526 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		417D7F9124DFCB67007A4526 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4189169424A518370084F7AE /* Buildyosh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buildyosh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4189169724A518370084F7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4189169924A518370084F7AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,6 +119,14 @@
 		418916AE24A51F250084F7AE /* XcodeLogReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeLogReader.swift; sourceTree = "<group>"; };
 		418E627524CDDE0E00EEFE9A /* TotalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalModifier.swift; sourceTree = "<group>"; };
 		418E627824CDDE5500EEFE9A /* DurationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSection.swift; sourceTree = "<group>"; };
+		41ABC80524F9710D001715D1 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		41ABC80724FA5C68001715D1 /* NSApplication+StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+StatusBar.swift"; sourceTree = "<group>"; };
+		41ABC80924FA5CF2001715D1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		41ABC80B24FAB572001715D1 /* Date+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Int.swift"; sourceTree = "<group>"; };
+		41BD50E424FBA7AA00703A8D /* XCTAssertEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertEqual.swift; sourceTree = "<group>"; };
+		41BD50E824FBB56600703A8D /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		41BD50EC24FBB59000703A8D /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		41BD50F224FBB81200703A8D /* PeriodUnionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodUnionTests.swift; sourceTree = "<group>"; };
 		41BEAA0824C1F42400FFC41C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		41BEAA0B24C1F50400FFC41C /* CoreDataMainModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataMainModel.xcdatamodel; sourceTree = "<group>"; };
 		41BEAA0D24C2036800FFC41C /* FileManager+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Utils.swift"; sourceTree = "<group>"; };
@@ -89,9 +134,10 @@
 		41BEAA1124C2070A00FFC41C /* DBProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProject.swift; sourceTree = "<group>"; };
 		41C0474C24B9E67B0031DD99 /* XcodeLogFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeLogFinder.swift; sourceTree = "<group>"; };
 		41EC667C24C464F4005A0893 /* EntryPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPoint.swift; sourceTree = "<group>"; };
+		41F02C8C24E30A4000C8D7AC /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		41F02C8E24E44DFD00C8D7AC /* ProjectLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLog.swift; sourceTree = "<group>"; };
 		41FC072924BAE60800C16C94 /* DispatchQueue+Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Main.swift"; sourceTree = "<group>"; };
 		41FC072B24BAE89100C16C94 /* Date+InRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+InRange.swift"; sourceTree = "<group>"; };
-		41FC072E24BAEB2C00C16C94 /* ProjectsDateFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsDateFilter.swift; sourceTree = "<group>"; };
 		41FC073024BAEC2400C16C94 /* ProjectsCountFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCountFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,9 +161,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410B4A1424DF1DAE00922F8D /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				410B4A1524DF1DB700922F8D /* RoundedEdge.swift */,
+				410B4A0E24DF137300922F8D /* View+Hidden.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		411C76BD24B99B58004259AC /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
+				41F02C8E24E44DFD00C8D7AC /* ProjectLog.swift */,
 				4159632024A8736600B42E60 /* XcodeLogAsyncParser.swift */,
 				411C76BE24B99BF2004259AC /* XcodeLogParser.swift */,
 				416B2A3D24B9C53F00043110 /* EasyScanner.swift */,
@@ -131,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				412C99B024CB3DAE009B34E1 /* Logger.swift */,
+				41F02C8C24E30A4000C8D7AC /* UserStorage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -138,7 +195,10 @@
 		41527CE224ACA7EE0057A35F /* BuildyoshTests */ = {
 			isa = PBXGroup;
 			children = (
-				41527CE324ACA7EE0057A35F /* BuildyoshTests.swift */,
+				4116993224F2503C004293DC /* Difference.swift */,
+				41BD50E424FBA7AA00703A8D /* XCTAssertEqual.swift */,
+				4116993024F2491B004293DC /* StoragePeriodsTests.swift */,
+				41BD50F224FBB81200703A8D /* PeriodUnionTests.swift */,
 				41527CE524ACA7EE0057A35F /* Info.plist */,
 			);
 			path = BuildyoshTests;
@@ -191,7 +251,6 @@
 		418E627724CDDE2700EEFE9A /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				41FC072E24BAEB2C00C16C94 /* ProjectsDateFilter.swift */,
 				41FC073024BAEC2400C16C94 /* ProjectsCountFilter.swift */,
 				4159632224A8963600B42E60 /* ProjectsDataSource.swift */,
 				418E627524CDDE0E00EEFE9A /* TotalModifier.swift */,
@@ -199,14 +258,28 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		41BD50E324FBA60200703A8D /* DesignKit */ = {
+			isa = PBXGroup;
+			children = (
+				410B4A1224DF172300922F8D /* Fonts.swift */,
+				41ABC80524F9710D001715D1 /* Images.swift */,
+				41ABC80924FA5CF2001715D1 /* Colors.swift */,
+			);
+			path = DesignKit;
+			sourceTree = "<group>";
+		};
 		41BEAA0724C1F41800FFC41C /* Storage */ = {
 			isa = PBXGroup;
 			children = (
 				41BEAA0824C1F42400FFC41C /* Storage.swift */,
 				4116B95924C42391001629C6 /* Storage+Project.swift */,
+				4116992E24F244E1004293DC /* PeriodParser.swift */,
+				4116993424F28069004293DC /* PeriodUnion.swift */,
 				41BEAA0A24C1F50400FFC41C /* db.xcdatamodeld */,
 				41BEAA1124C2070A00FFC41C /* DBProject.swift */,
-				4116B95724C41DD8001629C6 /* DBScheme.swift */,
+				4116B95724C41DD8001629C6 /* DBPeriod.swift */,
+				41BD50E824FBB56600703A8D /* Period.swift */,
+				41BD50EC24FBB59000703A8D /* Project.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -214,22 +287,19 @@
 		41FA950424BF65C000F124DD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				41BD50E324FBA60200703A8D /* DesignKit */,
+				410B4A1424DF1DAE00922F8D /* Modifiers */,
 				4189169924A518370084F7AE /* ContentView.swift */,
 				41138D8D24C9E5C100522042 /* Double+Output.swift */,
 				41138D8F24C9E5F300522042 /* ActivityIndicator.swift */,
 				41138D9124C9E66500522042 /* ProjectSection.swift */,
 				41138D9324C9EA6500522042 /* WindowManager.swift */,
 				418E627824CDDE5500EEFE9A /* DurationSection.swift */,
+				410B4A0C24DF111300922F8D /* ProjectsSection.swift */,
+				417D7F9124DFCB67007A4526 /* MainView.swift */,
+				410B4A1024DF14A400922F8D /* AboutView.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		41FA950524BF65CC00F124DD /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				41527CEB24ACA9450057A35F /* Project.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		41FC072824BAE5FC00C16C94 /* Extensions */ = {
@@ -240,6 +310,10 @@
 				41BEAA0D24C2036800FFC41C /* FileManager+Utils.swift */,
 				41BEAA0F24C203C300FFC41C /* Result+Utils.swift */,
 				4116B95B24C42BA6001629C6 /* URL+Utils.swift */,
+				417D7F8F24DFC030007A4526 /* Color+Hex.swift */,
+				412FC80824EAFCB8006B6FCD /* Date+Periods.swift */,
+				41ABC80724FA5C68001715D1 /* NSApplication+StatusBar.swift */,
+				41ABC80B24FAB572001715D1 /* Date+Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -248,7 +322,6 @@
 			isa = PBXGroup;
 			children = (
 				411C76BD24B99B58004259AC /* Parsing */,
-				41FA950524BF65CC00F124DD /* Models */,
 				418E627724CDDE2700EEFE9A /* DataSource */,
 				41EC667C24C464F4005A0893 /* EntryPoint.swift */,
 			);
@@ -309,7 +382,6 @@
 				TargetAttributes = {
 					41527CE024ACA7EE0057A35F = {
 						CreatedOnToolsVersion = 11.5;
-						TestTargetID = 4189169324A518370084F7AE;
 					};
 					4189169324A518370084F7AE = {
 						CreatedOnToolsVersion = 11.5;
@@ -364,7 +436,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41527CE424ACA7EE0057A35F /* BuildyoshTests.swift in Sources */,
+				41BD50F424FBB9E500703A8D /* PeriodUnion.swift in Sources */,
+				41BD50F024FBB5A600703A8D /* Date+InRange.swift in Sources */,
+				41BD50EA24FBB56F00703A8D /* Period.swift in Sources */,
+				4116993324F2503C004293DC /* Difference.swift in Sources */,
+				41BD50E624FBB53E00703A8D /* PeriodParser.swift in Sources */,
+				41BD50F324FBB81200703A8D /* PeriodUnionTests.swift in Sources */,
+				41BD50E524FBA7AA00703A8D /* XCTAssertEqual.swift in Sources */,
+				41BD50EB24FBB57900703A8D /* ProjectLog.swift in Sources */,
+				41BD50EF24FBB59C00703A8D /* Date+Int.swift in Sources */,
+				41BD50EE24FBB59900703A8D /* Project.swift in Sources */,
+				41BD50F124FBB5B100703A8D /* Date+Periods.swift in Sources */,
+				4116993124F2491B004293DC /* StoragePeriodsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,34 +455,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				417D7F9024DFC030007A4526 /* Color+Hex.swift in Sources */,
+				417D7F9224DFCB67007A4526 /* MainView.swift in Sources */,
+				41ABC80824FA5C68001715D1 /* NSApplication+StatusBar.swift in Sources */,
+				410B4A1124DF14A400922F8D /* AboutView.swift in Sources */,
 				41138D9224C9E66500522042 /* ProjectSection.swift in Sources */,
+				410B4A1624DF1DB700922F8D /* RoundedEdge.swift in Sources */,
 				41C0474D24B9E67B0031DD99 /* XcodeLogFinder.swift in Sources */,
 				41BEAA0924C1F42400FFC41C /* Storage.swift in Sources */,
+				41BD50ED24FBB59000703A8D /* Project.swift in Sources */,
 				4159632124A8736600B42E60 /* XcodeLogAsyncParser.swift in Sources */,
 				412C99B124CB3DAE009B34E1 /* Logger.swift in Sources */,
 				4116B95A24C42391001629C6 /* Storage+Project.swift in Sources */,
 				418E627924CDDE5500EEFE9A /* DurationSection.swift in Sources */,
 				41138D9024C9E5F300522042 /* ActivityIndicator.swift in Sources */,
 				41BEAA0C24C1F50400FFC41C /* db.xcdatamodeld in Sources */,
+				41F02C8D24E30A4000C8D7AC /* UserStorage.swift in Sources */,
+				410B4A0D24DF111300922F8D /* ProjectsSection.swift in Sources */,
 				41EC667D24C464F4005A0893 /* EntryPoint.swift in Sources */,
 				41FC072A24BAE60800C16C94 /* DispatchQueue+Main.swift in Sources */,
-				4116B95824C41DD8001629C6 /* DBScheme.swift in Sources */,
+				4116B95824C41DD8001629C6 /* DBPeriod.swift in Sources */,
 				411C76BF24B99BF2004259AC /* XcodeLogParser.swift in Sources */,
 				41FC073124BAEC2400C16C94 /* ProjectsCountFilter.swift in Sources */,
 				41138D8E24C9E5C100522042 /* Double+Output.swift in Sources */,
 				4189169A24A518370084F7AE /* ContentView.swift in Sources */,
-				41FC072F24BAEB2C00C16C94 /* ProjectsDateFilter.swift in Sources */,
+				41ABC80C24FAB572001715D1 /* Date+Int.swift in Sources */,
+				412FC80924EAFCB8006B6FCD /* Date+Periods.swift in Sources */,
+				410B4A1324DF172300922F8D /* Fonts.swift in Sources */,
+				410B4A0F24DF137300922F8D /* View+Hidden.swift in Sources */,
 				4116B95C24C42BA6001629C6 /* URL+Utils.swift in Sources */,
+				41F02C8F24E44DFD00C8D7AC /* ProjectLog.swift in Sources */,
 				41BEAA1224C2070A00FFC41C /* DBProject.swift in Sources */,
 				41138D9424C9EA6500522042 /* WindowManager.swift in Sources */,
 				41BEAA0E24C2036800FFC41C /* FileManager+Utils.swift in Sources */,
-				41527CEC24ACA9450057A35F /* Project.swift in Sources */,
+				41ABC80A24FA5CF2001715D1 /* Colors.swift in Sources */,
+				4116993524F28069004293DC /* PeriodUnion.swift in Sources */,
+				41BD50E924FBB56600703A8D /* Period.swift in Sources */,
 				41FC072C24BAE89100C16C94 /* Date+InRange.swift in Sources */,
 				4159632324A8963600B42E60 /* ProjectsDataSource.swift in Sources */,
 				4189169824A518370084F7AE /* AppDelegate.swift in Sources */,
 				416B2A3E24B9C53F00043110 /* EasyScanner.swift in Sources */,
 				418E627624CDDE0E00EEFE9A /* TotalModifier.swift in Sources */,
 				41BEAA1024C203C300FFC41C /* Result+Utils.swift in Sources */,
+				41ABC80624F9710D001715D1 /* Images.swift in Sources */,
+				4116992F24F244E1004293DC /* PeriodParser.swift in Sources */,
 				41C0474B24B9E4A50031DD99 /* XcodeLogReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +528,6 @@
 		41527CE824ACA7EE0057A35F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = ZY852AB5TE;
@@ -442,14 +540,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = none.BuildyoshTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Buildyosh.app/Contents/MacOS/Buildyosh";
 			};
 			name = Debug;
 		};
 		41527CE924ACA7EE0057A35F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = ZY852AB5TE;
@@ -462,7 +558,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = none.BuildyoshTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Buildyosh.app/Contents/MacOS/Buildyosh";
 			};
 			name = Release;
 		};

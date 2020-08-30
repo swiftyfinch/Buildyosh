@@ -32,14 +32,7 @@ extension Date {
         Calendar.current.isDate(self, inSameDayAs: date)
     }
 
-    var isInThisYear:  Bool { isInSameYear(as: Date()) }
-    var isInThisMonth: Bool { isInSameMonth(as: Date()) }
-    var isInThisWeek:  Bool { isInSameWeek(as: Date()) }
-
     var isInYesterday: Bool { Calendar.current.isDateInYesterday(self) }
     var isInToday:     Bool { Calendar.current.isDateInToday(self) }
     var isInTomorrow:  Bool { Calendar.current.isDateInTomorrow(self) }
-
-    var isInTheFuture: Bool { self > Date() }
-    var isInThePast:   Bool { self < Date() }
 }

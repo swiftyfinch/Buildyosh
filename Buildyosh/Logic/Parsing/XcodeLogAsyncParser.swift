@@ -14,14 +14,14 @@ final class XcodeLogAsyncParser: ObservableObject {
     @Published var progress: Double = 0.0
 
     func asyncReadProjectsLogs(logs: [String: [URL]],
-                               completion: @escaping ([Project]) -> Void) {
+                               completion: @escaping ([ProjectLog]) -> Void) {
         DispatchQueue.global().async { [weak self] in
             self?.readProjectsLogs(logs: logs, completion: completion)
         }
     }
 
     func readProjectsLogs(logs: [String: [URL]],
-                          completion: @escaping ([Project]) -> Void) {
+                          completion: @escaping ([ProjectLog]) -> Void) {
         var current = 0
         let max = logs.values.reduce(0) { $0 + $1.count }
 

@@ -1,36 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Project" representedClassName=".DBProject" syncable="YES">
-        <attribute name="id" attributeType="String"/>
-        <attribute name="name" attributeType="String"/>
-        <relationship name="schemes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Scheme" inverseName="project" inverseEntity="Scheme"/>
-        <fetchIndex name="byId">
-            <fetchIndexElement property="id" type="Binary" order="ascending"/>
-        </fetchIndex>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="id"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
+    <entity name="Period" representedClassName=".DBPeriod" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="type" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <relationship name="projects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" inverseName="period" inverseEntity="Project"/>
     </entity>
-    <entity name="Scheme" representedClassName=".DBScheme" syncable="YES">
-        <attribute name="buildStatus" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="duration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    <entity name="Project" representedClassName=".DBProject" syncable="YES">
+        <attribute name="count" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="daysCount" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="duration" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="String"/>
+        <attribute name="modifiedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
-        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="schemes" inverseEntity="Project"/>
-        <fetchIndex name="byId">
-            <fetchIndexElement property="id" type="Binary" order="ascending"/>
-        </fetchIndex>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="id"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
+        <relationship name="period" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Period" inverseName="projects" inverseEntity="Period"/>
     </entity>
     <elements>
-        <element name="Project" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Scheme" positionX="-54" positionY="9" width="128" height="133"/>
+        <element name="Period" positionX="-63" positionY="45" width="128" height="88"/>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

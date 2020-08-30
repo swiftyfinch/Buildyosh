@@ -9,16 +9,19 @@
 import AppKit
 import SwiftUI
 
-final class WindowManager<Content> where Content: View {
+final class WindowManager<Content: View> {
 
     private let rootView: Content
+    private let model: Model
 
     private var statusBarItem: NSStatusItem?
     private var window: NSWindow?
     private var currentEventHandler: Any?
+    private var statusBarObserver: NSKeyValueObservation?
 
-    init(rootView: Content) {
+    init(rootView: Content, model: Model) {
         self.rootView = rootView
+        self.model = model
     }
 
     func buildAndPresent() {
@@ -33,8 +36,7 @@ final class WindowManager<Content> where Content: View {
         let statusBar = NSStatusBar.system
         let statusBarItem = statusBar.statusItem(withLength: NSStatusItem.variableLength)
 
-        let image = NSImage(named: "statusBarIcon")
-        image?.isTemplate = true
+        let image = NSImage(named: "gear")
         statusBarItem.button?.image = image
 
         statusBarItem.button?.target = self
@@ -63,18 +65,17 @@ final class WindowManager<Content> where Content: View {
         window.styleMask.insert(.borderless)
 
         window.contentView?.wantsLayer = true
-        window.backgroundColor = NSColor.clear
+        window.backgroundColor = .clear
         window.contentView?.layer?.masksToBounds = true
         window.contentView?.layer?.cornerRadius = 8.0
         window.contentView?.layer?.maskedCorners = [.layerMinXMaxYCorner,
                                                     .layerMaxXMaxYCorner]
-
         window.isMovable = false
-
         return window
     }
 
     @objc private func quit() {
+        statusBarObserver = nil
         NSApplication.shared.terminate(self)
     }
 
@@ -104,10 +105,19 @@ final class WindowManager<Content> where Content: View {
             let windowBounds = window?.contentView?.bounds
         else { return }
 
+        model.isWindowShown = true
+
         var point = statusBarItemFrame.origin
         point.x -= (windowBounds.width - statusBarItemFrame.width) / 2
-        point.y += 22.0
         window?.setFrameTopLeftPoint(point)
+
+        // todo: Think about animation
+        statusBarObserver = NSApplication.shared.statusBar?.observe(\.frame) { [weak self] window, changed in
+            var point = statusBarItemFrame.origin
+            point.x -= (windowBounds.width - statusBarItemFrame.width) / 2
+            point.y = window.frame.origin.y
+            self?.window?.setFrameTopLeftPoint(point)
+        }
 
         window?.makeKeyAndOrderFront(nil)
         NSApplication.shared.activate(ignoringOtherApps: true)
@@ -130,5 +140,7 @@ final class WindowManager<Content> where Content: View {
         if unhighlight {
             statusBarItem?.button?.isHighlighted = false
         }
+
+        model.isWindowShown = false
     }
 }

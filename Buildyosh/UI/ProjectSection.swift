@@ -10,36 +10,25 @@ import SwiftUI
 
 struct ProjectSection: View {
 
-    private let project: Project
-    
-    init(project: Project) {
-        self.project = project
+    struct Model: Identifiable {
+        var id: String { name }
+        
+        let name: String
+        let totalDuration: String
     }
+    let project: Model
 
     var body: some View {
-        HStack {
+        HStack(spacing: 4) {
             Text(project.name)
-                .font(.system(size: .titleFontSize,
-                              weight: .semibold,
-                              design: .rounded))
-            Text(project.schemes.count.output())
-                .foregroundColor(.gray)
-                .padding(.leading, -3)
-            Text(project.succeedRate.outputSucceedRate())
-                .foregroundColor(.green)
-                .padding(.leading, -3)
-            Text(project.totalDuration.outputDuration())
-                .foregroundColor(.yellow)
-                .padding(.leading, -3)
+                .font(.project)
+                .foregroundColor(.project)
+            Image.clock
+                .foregroundColor(.clockIcon)
+                .padding(.trailing, -2)
+            Text(project.totalDuration)
+                .font(.time)
+                .foregroundColor(.clockText)
         }
     }
-}
-
-private extension CGFloat {
-    static let titleFontSize: CGFloat = 14
-}
-
-private extension Int {
-    func output() -> String { String(self) }
-    func outputSucceedRate() -> String { output() + "%" }
 }

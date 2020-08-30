@@ -18,6 +18,9 @@ final class EntryPoint: ObservableObject {
     private var running = false
     private let timerInterval = 60.0 / 4
 
+    @UserStorage("importProjectsDate")
+    private var importProjectsDate: Date?
+
     init(xcodeLogManager: XcodeLogAsyncParser,
          dataSource: ProjectsDataSource) {
         self.xcodeLogManager = xcodeLogManager
@@ -33,16 +36,20 @@ final class EntryPoint: ObservableObject {
 
             switch result {
             case .success:
-                self.findProjects { [weak self] projects in
+                self.findProjects { [weak self] projectLogs in
                     guard let self = self else { return }
 
-                    self.storage.saveProjects(projects) { [weak self] in
+                    let today = Date()
+                    self.storage.saveProjects(projectLogs, relativeDate: today) { [weak self] in
                         guard let self = self else { return }
 
-                        let allProjects = self.storage.loadProjects()
-                        self.dataSource.save(projects: allProjects)
+                        if let periods = self.storage.loadPeriods(relativeDate: today) {
+                            self.dataSource.save(periods: periods)
+                            log(.info, "Scan new projects. Found: \(periods)")
+                        } else {
+                            log(.info, "Scan new projects.")
+                        }
                         self.running = false
-                        log(.info, "Scan new projects. Found: \(projects.output())")
                     }
                 }
 
@@ -59,24 +66,32 @@ final class EntryPoint: ObservableObject {
                              repeats: true) { [weak self] _ in self?.run() }
     }
 
-    private func findProjects(completion: @escaping ([Project]) -> Void) {
+    private func findProjects(completion: @escaping ([ProjectLog]) -> Void) {
         let logs = XcodeLogFinder().findLogs(derivedDataURL: derivedDataURL)
+        let filteredLogs = filterProjects(logs)
+        log(.debug, dump(filteredLogs).debugDescription)
+        xcodeLogManager.asyncReadProjectsLogs(logs: filteredLogs, completion: completion)
+    }
+}
+
+// MARK: - Filtering by modificationDate
+
+private extension EntryPoint {
+
+    private func filterProjects(_ logs: [String : [URL]]) -> [String: [URL]] {
+        var latestLogDate: Date?
+
         let filteredLogs: [String: [URL]] = logs.reduce(into: [:]) { dictionary, projectLogs in
             let (projectId, schemePaths) = projectLogs
-            guard !schemePaths.isEmpty else { return }
 
-            // It's a new project. Get it with all schemes
-            guard storage.hasProject(withIdentifier: projectId) else {
-                dictionary[projectId] = schemePaths
-                return
-            }
+            let filteredSchemePaths = schemePaths.filter { schemePath in
+                guard
+                    let modificationDate = fileModificationDate(atPath: schemePath.path),
+                    needImportBuild(withModificationDate: modificationDate)
+                else { return false }
 
-            // Old project. Try to find new schemes
-            let ids = schemePaths.map { $0.deletingPathExtension().lastPathComponent }
-            let foundSchemes = storage.hasSchemes(ids: ids, inProject: projectId)
-            let filteredSchemePaths = schemePaths.filter {
-                let schemeId = $0.deletingPathExtension().lastPathComponent
-                return !foundSchemes.contains(schemeId)
+                latestLogDate = max(latestLogDate, modificationDate)
+                return true
             }
 
             if !filteredSchemePaths.isEmpty {
@@ -84,7 +99,30 @@ final class EntryPoint: ObservableObject {
             }
         }
 
-        xcodeLogManager.asyncReadProjectsLogs(logs: filteredLogs, completion: completion)
+        if let latestLogDate = latestLogDate {
+            importProjectsDate = latestLogDate
+        }
+
+        return filteredLogs
+    }
+
+    private func fileModificationDate(atPath path: String) -> Date? {
+        let attributes = try? FileManager.default.attributesOfItem(atPath: path)
+        guard let modificationDate = attributes?[.modificationDate] as? Date else {
+            log(.error, "Can't get modificationDate from file: \(path)")
+            return nil
+        }
+        return modificationDate
+    }
+
+    private func needImportBuild(withModificationDate date: Date) -> Bool {
+        guard let importProjectsDate = importProjectsDate else { return true }
+        return importProjectsDate < date
+    }
+
+    private func max(_ lhs: Date?, _ rhs: Date) -> Date {
+        guard let lhs = lhs else { return rhs }
+        return Swift.max(lhs, rhs)
     }
 }
 
@@ -93,4 +131,83 @@ private extension Array where Element == Project {
     func output() -> String {
         debugDescription
     }
+}
+
+private func testProjectLogs() -> [ProjectLog] {
+    return [
+        ProjectLog(id: "0",
+                   name: "Buildyosh",
+                   schemes: [
+                    ProjectLog.Scheme(
+                        id: "1",
+                        name: "1",
+                        startDate: Date(),
+                        buildStatus: true,
+                        duration: 800
+                    )
+            ]
+        ),
+        ProjectLog(id: "0",
+                   name: "Buildyosh",
+                   schemes: [
+                    ProjectLog.Scheme(
+                        id: "1",
+                        name: "1",
+                        startDate: Date().yesterday,
+                        buildStatus: true,
+                        duration: 1000
+                    )
+            ]
+        ),
+
+        ProjectLog(id: "1",
+                   name: "Frog",
+                   schemes: [
+                    ProjectLog.Scheme(
+                        id: "1",
+                        name: "1",
+                        startDate: Date(),
+                        buildStatus: true,
+                        duration: 300
+                    )
+            ]
+        ),
+        ProjectLog(id: "2",
+                   name: "SwiftyFinch",
+                   schemes: [
+                    ProjectLog.Scheme(
+                        id: "1",
+                        name: "1",
+                        startDate: Date(),
+                        buildStatus: true,
+                        duration: 200
+                    )
+            ]
+        ),
+
+        ProjectLog(id: "3",
+                   name: "Chester",
+                   schemes: [
+                    ProjectLog.Scheme(
+                        id: "1",
+                        name: "1",
+                        startDate: Date().beginOfWeek.yesterday,
+                        buildStatus: true,
+                        duration: 2000
+                    )
+            ]
+        ),
+        ProjectLog(id: "4",
+                   name: "Plane",
+                   schemes: [
+                    ProjectLog.Scheme(
+                        id: "1",
+                        name: "1",
+                        startDate: Date().beginOfWeek.yesterday,
+                        buildStatus: true,
+                        duration: 500
+                    )
+            ]
+        )
+    ]
 }

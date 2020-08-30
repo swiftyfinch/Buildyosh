@@ -25,16 +25,12 @@ final class Storage {
     }
 
     func load(completion: @escaping (Result<Void>) -> Void) {
-        guard !isLoaded else {
-            completion(.success)
-            return
-        }
+        guard !isLoaded else { return completion(.success) }
 
         do {
             try FileManager.createDirectoryIfNeeded(at: dbDirectoryURL)
         } catch {
-            completion(.failure(error))
-            return
+            return completion(.failure(error))
         }
 
         container.loadPersistentStores { [weak self] description, error in

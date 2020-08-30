@@ -11,21 +11,24 @@ import Foundation
 struct ProjectsCountFilter {
 
     func filter(_ projects: [Project]) -> [Project] {
-        let notEmptyDuraton = projects.filter { $0.totalDuration > 0 }
-        var sorted = notEmptyDuraton.sorted { $0.totalDuration > $1.totalDuration }
+        let notEmptyDuraton = projects.filter { $0.duration > 0 }
+        var sorted = notEmptyDuraton.sorted { $0.duration > $1.duration }
 
-        var othersSchemes: [Project.Scheme] = []
+        var duration = 0.0
         while sorted.count > 5 {
             let last = sorted.removeLast()
-            othersSchemes.append(contentsOf: last.schemes)
+            duration += last.duration
         }
 
-        if !othersSchemes.isEmpty {
-            let others = Project(id: "Others",
-                                 name: "Others",
-                                 schemes: othersSchemes)
-            sorted.append(others)
-        }
+//        if duration > 0 {
+//            let others = Project(id: "Others",
+//                                 name: "Others",
+//                                 duration: duration,
+//                                 count: 0,
+//                                 daysCount: 0,
+//                                 modifiedDate: Date())
+//            sorted.append(others)
+//        }
 
         return sorted
     }

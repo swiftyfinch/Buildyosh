@@ -14,29 +14,14 @@ struct Duration {
     let days: Int
 }
 
-final class TotalModifier {
+struct TotalModifier {
 
     func duration(_ projects: [Project]) -> Duration {
-        var daysCount = 0
-        var totalDuration = 0.0
-        for project in projects {
-            daysCount += Set(project.schemes.map(\.startDate.dateInt)).count
-            totalDuration += project.totalDuration
-        }
-        let durationPerDay = totalDuration / Double(daysCount)
+        let daysCount = projects.max { $0.daysCount < $1.daysCount }?.daysCount ?? 0
+        let totalDuration = projects.reduce(0) { $0 + $1.duration }
+        let durationPerDay = daysCount > 0 ? totalDuration / Double(daysCount) : 0
         return Duration(total: totalDuration,
                         perDay: durationPerDay,
                         days: daysCount)
-    }
-}
-
-private extension Date {
-
-    var dateInt: Int {
-        let calendar = Calendar.current
-        let day = calendar.component(.day, from: self)
-        let month = calendar.component(.month, from: self)
-        let year = calendar.component(.year, from: self)
-        return day * 1_000_000 + month * 1_000 + year
     }
 }

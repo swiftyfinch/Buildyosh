@@ -15,12 +15,11 @@ extension Double {
     }
 
     func outputDuration() -> String {
-        let sec = Int(self)
-        let (h, m, s) = (sec / 3600, (sec % 3600) / 60, (sec % 3600) % 60)
-        var components: [String] = []
-        if h > 0 { components.append("\(h)h") }
-        if m > 0 { components.append("\(m)m") }
-        if s > 0 { components.append("\(s)s") }
-        return components.isEmpty ? "0s" : components.joined(separator: " ")
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.year, .month, .day, .hour, .minute, .second]
+        formatter.unitsStyle = .abbreviated
+        formatter.zeroFormattingBehavior = .dropAll
+        formatter.maximumUnitCount = 2
+        return formatter.string(from: max(1, self)) ?? ""
     }
 }

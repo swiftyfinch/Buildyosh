@@ -16,7 +16,12 @@ private extension OSLog {
 }
 
 func log(_ error: Error) {
-    log(.error, error.localizedDescription)
+    log(error: error.localizedDescription)
+}
+
+func log(error: String) {
+    assertionFailure(error)
+    log(.error, error)
 }
 
 func log(_ type: OSLogType, _ message: String) {

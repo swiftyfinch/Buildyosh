@@ -10,37 +10,55 @@ import SwiftUI
 
 final class ProjectsDataSource: ObservableObject {
 
+    @Published var projects: [Project] = []
     @Published var filterType: Int = 0 {
         didSet { filter() }
     }
-    private var sourceProjects: [Project] = []
-    @Published var projects: [Project] = []
-    private(set) var duration: Duration?
 
-    private let dateFilter: ProjectsDateFilter
+    private(set) var duration = Duration(total: 0, perDay: 0, days: 0)
+
+    private var periods: Periods?
+    private var period: Period? {
+        guard let type = Period.PeriodType(rawValue: filterType) else { return nil }
+        return periods?.period(withType: type)
+    }
+
     private let countFilter: ProjectsCountFilter
     private let totalModifier: TotalModifier
 
-    init(dateFilter: ProjectsDateFilter,
-         countFilter: ProjectsCountFilter,
+    init(countFilter: ProjectsCountFilter,
          totalModifier: TotalModifier) {
-        self.dateFilter = dateFilter
         self.countFilter = countFilter
         self.totalModifier = totalModifier
     }
 
-    func save(projects: [Project]) {
-        self.sourceProjects = projects
+    func save(periods: Periods) {
+        self.periods = periods
         filter()
     }
 
     private func filter() {
-        guard let filter = ProjectsDateFilter.DateFilter(rawValue: filterType) else {
-            fatalError()
+        guard let period = period else {
+            return log(error: "Can't select period.")
         }
-        let dateFiltered = dateFilter.filter(sourceProjects, by: filter)
-        let countFiltered = countFilter.filter(dateFiltered)
+
+        let countFiltered = countFilter.filter(period.projects)
         duration = totalModifier.duration(countFiltered)
+
+//        projects = countFiltered.map {
+//            let name: String
+//            if $0.name == "TCSSME" {
+//                name = "Business"
+//            } else if $0.name == "MobileBank" {
+//                name = "WorkProject"
+//            } else {
+//                name = $0.name
+//            }
+//            return Project(id: $0.id,
+//                           name: name,
+//                           schemes: $0.schemes)
+//        }
+
         projects = countFiltered
     }
 }

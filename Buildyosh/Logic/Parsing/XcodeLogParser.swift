@@ -65,17 +65,17 @@ private extension EasyScanner {
 
 final class XcodeLogParser {
 
-    func parse(logs: [String: [URL]], step: () -> Void = {}) -> [Project] {
+    func parse(logs: [String: [URL]], step: () -> Void = {}) -> [ProjectLog] {
         logs.compactMap { id, paths in
             guard let name = id.components(separatedBy: "-").first else { return nil }
 
-            let schemes: [Project.Scheme] = paths.compactMap {
+            let schemes: [ProjectLog.Scheme] = paths.compactMap {
                 let scheme = parse(logURL: $0)
                 step()
                 return scheme
             }
 
-            return Project(
+            return ProjectLog(
                 id: id,
                 name: name,
                 schemes: schemes
@@ -83,7 +83,7 @@ final class XcodeLogParser {
         }
     }
 
-    func parse(logURL: URL) -> Project.Scheme? {
+    func parse(logURL: URL) -> ProjectLog.Scheme? {
         let logReader = XcodeLogReader()
         let content: String
         do {
@@ -116,10 +116,10 @@ final class XcodeLogParser {
         let startDate = Date(timeIntervalSinceReferenceDate: startTimeInterval)
         let buildStatusBool = buildStatus == "succeeded"
 
-        return Project.Scheme(id: id,
-                              name: String(name),
-                              startDate: startDate,
-                              buildStatus: buildStatusBool,
-                              duration: duration)
+        return ProjectLog.Scheme(id: id,
+                                 name: String(name),
+                                 startDate: startDate,
+                                 buildStatus: buildStatusBool,
+                                 duration: duration)
     }
 }
