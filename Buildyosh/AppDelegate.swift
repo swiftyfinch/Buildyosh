@@ -38,4 +38,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
 final class Model: ObservableObject {
     @Published var isWindowShown = false
+
+    var isStatusBarHidden: Bool {
+        guard let screen = NSScreen.main else { return false }
+        return screen.frame.height == screen.visibleFrame.height
+    }
 }

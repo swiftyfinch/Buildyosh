@@ -100,23 +100,12 @@ final class WindowManager<Content: View> {
     }
 
     private func showPopover() {
-        guard
-            let statusBarItemFrame = statusBarItem?.button?.window?.frame,
-            let windowBounds = window?.contentView?.bounds
-        else { return }
-
         model.isWindowShown = true
-
-        var point = statusBarItemFrame.origin
-        point.x -= (windowBounds.width - statusBarItemFrame.width) / 2
-        window?.setFrameTopLeftPoint(point)
+        updateWindowPosition()
 
         // todo: Think about animation
-        statusBarObserver = NSApplication.shared.statusBar?.observe(\.frame) { [weak self] window, changed in
-            var point = statusBarItemFrame.origin
-            point.x -= (windowBounds.width - statusBarItemFrame.width) / 2
-            point.y = window.frame.origin.y
-            self?.window?.setFrameTopLeftPoint(point)
+        statusBarObserver = NSApplication.shared.statusBar?.observe(\.frame) { [weak self] window, _ in
+            self?.updateWindowPosition(yPosition: window.frame.origin.y, animated: true)
         }
 
         window?.makeKeyAndOrderFront(nil)
@@ -142,5 +131,29 @@ final class WindowManager<Content: View> {
         }
 
         model.isWindowShown = false
+    }
+
+    private func updateWindowPosition(yPosition: CGFloat? = nil, animated: Bool = false) {
+        guard
+            let statusBarItemFrame = statusBarItem?.button?.window?.frame,
+            let windowBounds = window?.contentView?.bounds
+        else { return }
+
+        var point = statusBarItemFrame.origin
+        point.x -= (windowBounds.width - statusBarItemFrame.width) / 2
+        yPosition.map { point.y = $0 }
+        point.y += model.isStatusBarHidden ? 44 : 0
+
+        guard animated else {
+            window?.setFrameTopLeftPoint(point)
+            return
+        }
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.2
+            var frame = window!.frame
+            frame.origin = point
+            frame.origin.y -= frame.height
+            window?.animator().setFrame(frame, display: true, animate: true)
+        }
     }
 }

@@ -13,7 +13,8 @@ struct MainView: View {
     @EnvironmentObject private var dataSource: ProjectsDataSource
 
     var body: some View {
-        VStack {
+        VStack(spacing: 5) {
+            Spacer()
             HStack {
                 Image.calendar
                     .padding(.trailing, -5)
@@ -30,10 +31,10 @@ struct MainView: View {
             }
             .frame(width: 100)
             .frame(height: 20.0)
-            .padding(.top, 10.0)
-            Spacer().frame(height: 5)
+
             ProjectsSection(projects: dataSource.projects,
                             duration: dataSource.duration)
+            .frame(width: 220)
             Spacer()
         }
     }

@@ -9,7 +9,7 @@
 import SwiftUI
 
 private extension CGFloat {
-    static let width: CGFloat = 240
+    static let width: CGFloat = 260
     static let loaderHeight: CGFloat = 60
     static let minAboutHeight: CGFloat = 140
 }
@@ -27,6 +27,10 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            if model.isStatusBarHidden {
+                Spacer().frame(height: 44)
+            }
+
             if needShowLoader {
                 Spacer()
                 ActivityIndicator(value: $manager.progress)
@@ -40,27 +44,24 @@ struct ContentView: View {
                     if isAboutShown {
                         AboutView()
                     } else {
-                        MainView().environmentObject(dataSource)
+                        MainView()
                     }
 
-                    ZStack {
+                    HStack {
                         Spacer()
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                self.isAboutShown.toggle()
-                            }) {
-                                if isAboutShown {
-                                    Image.questionFill
-                                } else {
-                                    Image.question
-                                }
+                        Button(action: {
+                            self.isAboutShown.toggle()
+                        }) {
+                            if isAboutShown {
+                                Image.questionFill
+                            } else {
+                                Image.question
                             }
-                            .foregroundColor(.aboutOpenButton)
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(.trailing, 4)
-                            .padding(.bottom, 28)
                         }
+                        .foregroundColor(.aboutOpenButton)
+                        .buttonStyle(PlainButtonStyle())
+                        .padding(.trailing, 3)
+                        .padding(.bottom, 27)
                     }.frame(height: 0)
                 }
             }
@@ -74,10 +75,11 @@ struct ContentView: View {
         if !manager.isLoaded && dataSource.projects.isEmpty {
             return .loaderHeight
         } else {
-            let contentHeight = ProjectsSection.height(
+            var contentHeight = ProjectsSection.height(
                 projects: dataSource.projects,
                 duration: dataSource.duration
             )
+            contentHeight += model.isStatusBarHidden ? 44 : 0
             if isAboutShown {
                 return max(contentHeight, .minAboutHeight)
             } else {

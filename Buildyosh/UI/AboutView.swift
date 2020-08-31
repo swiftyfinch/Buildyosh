@@ -32,7 +32,7 @@ struct AboutView: View {
                 .modifier(RoundedEdge())
 
                 VStack(spacing: 0) {
-                    HStack(spacing: 3) {
+                    HStack(spacing: 2) {
                         Text("Logs")
                             .foregroundColor(.aboutBody)
                         Image.clock
@@ -40,7 +40,7 @@ struct AboutView: View {
                         Text("of each build")
                             .foregroundColor(.aboutBody)
                     }.font(.aboutBody)
-                    HStack(spacing: 3) {
+                    HStack(spacing: 2) {
                         Text("Find out average")
                             .foregroundColor(.aboutBody)
                         Image.clock

@@ -135,6 +135,19 @@ private extension Array where Element == Project {
 
 private func testProjectLogs() -> [ProjectLog] {
     return [
+        ProjectLog(id: "-1",
+                   name: "SMEReputation",
+                   schemes: [
+                    ProjectLog.Scheme(
+                        id: "1",
+                        name: "1",
+                        startDate: Date(),
+                        buildStatus: true,
+                        duration: 800
+                    )
+            ]
+        ),
+
         ProjectLog(id: "0",
                    name: "Buildyosh",
                    schemes: [

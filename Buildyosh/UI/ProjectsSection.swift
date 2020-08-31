@@ -31,16 +31,16 @@ struct ProjectsSection: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 1) {
             VStack(spacing: 0) {
                 if projects.isEmpty {
-                    HStack(spacing: 3) {
+                    HStack(spacing: 5) {
                         Image.tray
                         Text("Empty")
                             .font(.project)
                     }
                     .foregroundColor(.project)
-                    .frame(height: 17)
+                    .frame(height: 15)
                 } else {
                     ForEach(projects) { project in
                         ProjectSection(project: project)
@@ -62,6 +62,6 @@ struct ProjectsSection: View {
     static func height(projects: [Project], duration: Duration) -> CGFloat {
         let count = CGFloat(max(1, projects.count))
         let durationSection: CGFloat = duration.days > 1 ? 17 + 16 + 4 : 0
-        return count * 17 + 16 + durationSection + 38
+        return count * 17 + 16 + durationSection + 50
     }
 }
