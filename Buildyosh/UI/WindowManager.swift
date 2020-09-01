@@ -17,7 +17,6 @@ final class WindowManager<Content: View> {
     private var statusBarItem: NSStatusItem?
     private var window: NSWindow?
     private var currentEventHandler: Any?
-    private var statusBarObserver: NSKeyValueObservation?
 
     init(rootView: Content, model: Model) {
         self.rootView = rootView
@@ -75,7 +74,6 @@ final class WindowManager<Content: View> {
     }
 
     @objc private func quit() {
-        statusBarObserver = nil
         NSApplication.shared.terminate(self)
     }
 
@@ -103,9 +101,21 @@ final class WindowManager<Content: View> {
         model.isWindowShown = true
         updateWindowPosition()
 
-        // todo: Think about animation
-        statusBarObserver = NSApplication.shared.statusBar?.observe(\.frame) { [weak self] window, _ in
-            self?.updateWindowPosition(yPosition: window.frame.origin.y, animated: true)
+        NotificationCenter.default.addObserver(
+            forName: NSWindow.didChangeOcclusionStateNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard let window = notification.object as? NSWindow, window.isStatusBar else { return }
+
+            let app = NSApplication.shared
+            let yPosition: CGFloat
+            if app.isStatusBarHidden {
+                yPosition = app.statusBarShownPosition
+            } else {
+                yPosition = app.statusBarHiddenPosition
+            }
+            self?.updateWindowPosition(yPosition: yPosition, animated: true)
         }
 
         window?.makeKeyAndOrderFront(nil)

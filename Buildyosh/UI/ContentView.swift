@@ -61,7 +61,7 @@ struct ContentView: View {
                         .foregroundColor(.aboutOpenButton)
                         .buttonStyle(PlainButtonStyle())
                         .padding(.trailing, 3)
-                        .padding(.bottom, 27)
+                        .padding(.bottom, 25)
                     }.frame(height: 0)
                 }
             }
@@ -81,7 +81,9 @@ struct ContentView: View {
             )
             contentHeight += model.isStatusBarHidden ? 44 : 0
             if isAboutShown {
-                return max(contentHeight, .minAboutHeight)
+                var minAboutHeight: CGFloat = .minAboutHeight
+                minAboutHeight += model.isStatusBarHidden ? 44 : 0
+                return max(contentHeight, minAboutHeight)
             } else {
                 return contentHeight
             }
