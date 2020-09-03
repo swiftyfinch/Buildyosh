@@ -133,6 +133,7 @@ private extension Array where Element == Project {
     }
 }
 
+/*
 private func testProjectLogs() -> [ProjectLog] {
     return [
         ProjectLog(id: "-1",
@@ -224,3 +225,4 @@ private func testProjectLogs() -> [ProjectLog] {
         )
     ]
 }
+*/

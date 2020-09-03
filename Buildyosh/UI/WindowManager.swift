@@ -70,6 +70,7 @@ final class WindowManager<Content: View> {
         window.contentView?.layer?.maskedCorners = [.layerMinXMaxYCorner,
                                                     .layerMaxXMaxYCorner]
         window.isMovable = false
+        window.collectionBehavior = .canJoinAllSpaces
         return window
     }
 
