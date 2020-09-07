@@ -71,6 +71,7 @@ final class WindowManager<Content: View> {
                                                     .layerMaxXMaxYCorner]
         window.isMovable = false
         window.collectionBehavior = .canJoinAllSpaces
+        window.level = .floating
         return window
     }
 

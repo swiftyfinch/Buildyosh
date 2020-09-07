@@ -9,7 +9,8 @@
 import SwiftUI
 
 extension Color {
-    @AdaptiveColor(light: Color(hex: 0xeeeeee), dark: Color(white: 0.2))
+    @AdaptiveColor(light: Color(hex: 0xeeeeee).opacity(0.95),
+                   dark: Color(white: 0.2).opacity(0.95))
     static var window: Color
 
     // MARK: - Period
@@ -42,7 +43,7 @@ extension Color {
 
     // MARK: - About
 
-    @AdaptiveColor(light: .init(white: 0.3), dark: .gray)
+    @AdaptiveColor(light: .init(white: 0.2), dark: .gray)
     static var aboutOpenButton: Color
 
     @AdaptiveColor(light: .project, dark: .white)

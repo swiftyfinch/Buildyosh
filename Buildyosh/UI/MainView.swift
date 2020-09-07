@@ -14,11 +14,8 @@ struct MainView: View {
 
     var body: some View {
         VStack(spacing: 5) {
-            Spacer()
+            Spacer().frame(height: 10)
             HStack {
-                Image.calendar
-                    .padding(.trailing, -5)
-                    .foregroundColor(.periodIcon)
                 Picker(selection: $dataSource.filterType, label: EmptyView()) {
                     Text("Today").tag(0)
                     Text("Yday").tag(1)
@@ -26,8 +23,7 @@ struct MainView: View {
                     Text("All").tag(3)
                 }
                 .font(.time)
-                .foregroundColor(.periodPicker)
-                .pickerStyle(PopUpButtonPickerStyle())
+                .pickerStyle(SegmentedPickerStyle())
             }
             .frame(width: 100)
             .frame(height: 20.0)

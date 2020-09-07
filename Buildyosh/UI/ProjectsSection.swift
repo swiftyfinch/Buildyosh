@@ -62,6 +62,6 @@ struct ProjectsSection: View {
     static func height(projects: [Project], duration: Duration) -> CGFloat {
         let count = CGFloat(max(1, projects.count))
         let durationSection: CGFloat = duration.days > 1 ? 17 + 16 + 4 : 0
-        return count * 17 + 16 + durationSection + 50
+        return count * 17 + 16 + durationSection + 54
     }
 }
