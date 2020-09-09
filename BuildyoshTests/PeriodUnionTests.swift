@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Buildyosh
+import Buildyosh
 
 final class PeriodUnionTests: XCTestCase {
 
@@ -57,7 +57,7 @@ final class PeriodUnionTests: XCTestCase {
         let result = PeriodUnion().combine(periods: old, withNew: new, relativeDate: today)
 
         XCTAssertEqual(result.today, Period(date: today, type: .today, projects: [todayProject]))
-        XCTAssertEqual(result.yday, Period(date: today.yesterday, type: .yday))
+        XCTAssertEqual(result.yday, Period(date: today.yesterday, type: .yday, projects: [ydayProject]))
         XCTAssertEqual(result.week, Period(date: today.beginOfWeek, type: .week, projects: [todayProject]))
         XCTAssertEqual(result.all, Period(date: today, type: .all, projects: [todayProject]))
     }
@@ -95,16 +95,6 @@ final class PeriodUnionTests: XCTestCase {
     }
 
     func testUpdateOldPeriodsWithNew() {
-//        print(Calendar.current.component(.weekday, from: sourceDate))
-//        print(sourceDate.yesterday.isInSameWeek(as: sourceDate))
-//        print(sourceDate.isInSameWeek(as: sourceDate.yesterday))
-//        print(sourceDate.isInSameWeek(as: sourceDate))
-//        print(sourceDate.tomorrow.isInSameWeek(as: sourceDate))
-//        print(sourceDate.isInSameWeek(as: sourceDate.tomorrow))
-//
-//        print(sourceDate.isInSameWeek(as: sourceDate.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow))
-//        print(sourceDate.isInSameWeek(as: sourceDate.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow))
-
         let today = sourceDate.tomorrow.tomorrow.beginOfDay // ср
         let yesterday = today.yesterday
         let todayProject = Project(id: "0",
