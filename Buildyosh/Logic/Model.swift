@@ -10,12 +10,18 @@ import Combine
 import SwiftUI
 
 private extension CGFloat {
-    static let width: CGFloat = 260
+    static let width: CGFloat = 280
     static let loaderHeight: CGFloat = 60
-    static let minAboutHeight: CGFloat = 180
+    static let minAboutHeight: CGFloat = 200
 }
 
 final class Model: ObservableObject {
+
+    enum Mode: Int, CaseIterable {
+        case time
+        case count
+        case success
+    }
 
     @Published private var manager: XcodeLogAsyncParser
     @Published private var dataSource: ProjectsDataSource
@@ -25,9 +31,9 @@ final class Model: ObservableObject {
     var needShowLoader: Bool { !manager.isLoaded && dataSource.projects.isEmpty }
 
     @Published private(set) var projects: [Project] = []
-    @Published private(set) var duration = Duration(total: 0, perDay: 0, days: 0)
+    @Published private(set) var duration: Duration = .zero
     @Published var filterType = 0
-    @Published var successMode = false
+    @Published private(set) var mode: Mode = .time
 
     var isAboutShown = false {
         didSet {
@@ -83,5 +89,13 @@ final class Model: ObservableObject {
     func quit() {
         isWaitForQuit = true
         objectWillChange.send()
+    }
+
+    func changeMode() {
+        if let newMode = Mode(rawValue: mode.rawValue + 1) {
+            mode = newMode
+        } else {
+            mode = Mode.allCases[0]
+        }
     }
 }

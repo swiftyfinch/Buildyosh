@@ -35,8 +35,11 @@ extension Color {
     @AdaptiveColor(light: .clockIcon)
     static var clockText: Color
 
-    @AdaptiveColor(light: .green)
-    static var successModeText: Color
+    @AdaptiveColor(light: .init(white: 0.7))
+    static var buildCount: Color
+
+    @AdaptiveColor(light: Color(hex: 0x58a32a))
+    static var successRate: Color
 
     @AdaptiveColor(light: Color(hex: 0xef7b5a))
     static var averageClockIcon: Color

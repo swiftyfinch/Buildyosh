@@ -17,6 +17,8 @@ struct ProjectSection: View {
         
         let name: String
         let totalDuration: String
+        let buildCount: String
+        let successRate: String
     }
     let project: Model
 
@@ -26,21 +28,31 @@ struct ProjectSection: View {
                 .font(.project)
                 .foregroundColor(.project)
             Button(action: {
-                model.successMode.toggle()
+                model.changeMode()
             }) {
-                // todo: Different modes
-//                if model.successMode {
-//                    Text("85%")
-//                        .font(.time)
-//                        .foregroundColor(.successModeText)
-//                } else {
+                switch model.mode {
+                case .time:
                     Image.clock
                         .foregroundColor(.clockIcon)
                         .padding(.trailing, -2)
                     Text(project.totalDuration)
                         .font(.time)
                         .foregroundColor(.clockText)
-//                }
+                case .count:
+                    Image.buildCount
+                        .foregroundColor(.buildCount)
+                        .padding(.trailing, -2)
+                    Text(project.buildCount)
+                        .font(.time)
+                        .foregroundColor(.buildCount)
+                case .success:
+                    Image.success
+                        .foregroundColor(.successRate)
+                        .padding(.trailing, -2)
+                    Text(project.successRate)
+                        .font(.time)
+                        .foregroundColor(.successRate)
+                }
             }
             .buttonStyle(PlainButtonStyle())
         }

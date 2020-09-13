@@ -52,6 +52,8 @@ final class StoragePeriodsTests: XCTestCase {
                                    count: 1,
                                    daysCount: 1,
                                    modifiedDate: sourceDate,
+                                   successCount: 1,
+                                   failCount: 0,
                                    dates: [sourceDate.int])
         let projects = [todayProject]
         XCTAssertEqual(periods.today,
@@ -87,6 +89,8 @@ final class StoragePeriodsTests: XCTestCase {
                                   count: 1,
                                   daysCount: 1,
                                   modifiedDate: sourceDate.yesterday,
+                                  successCount: 1,
+                                  failCount: 0,
                                   dates: [sourceDate.yesterday.int])
         let projects = [ydayProject]
         XCTAssertEqual(periods.today, Period(date: today, type: .today))
@@ -106,7 +110,7 @@ final class StoragePeriodsTests: XCTestCase {
         let scheme = ProjectLog.Scheme(id: "1",
                                        name: "Crack",
                                        startDate: sourceDate.tomorrow.tomorrow,
-                                       buildStatus: true,
+                                       buildStatus: false,
                                        duration: 10)
         let emptyProject = ProjectLog(id: "0",
                                       name: "Frog",
@@ -121,6 +125,8 @@ final class StoragePeriodsTests: XCTestCase {
                               count: 1,
                               daysCount: 1,
                               modifiedDate: sourceDate.tomorrow.tomorrow,
+                              successCount: 0,
+                              failCount: 1,
                               dates: [sourceDate.tomorrow.tomorrow.int])
         let projects = [project]
         XCTAssertEqual(periods.today, Period(date: today, type: .today))
@@ -140,7 +146,7 @@ final class StoragePeriodsTests: XCTestCase {
         let scheme = ProjectLog.Scheme(id: "1",
                                        name: "Crack",
                                        startDate: sourceDate.yesterday.yesterday,
-                                       buildStatus: true,
+                                       buildStatus: false,
                                        duration: 10)
         let emptyProject = ProjectLog(id: "0",
                                       name: "Frog",
@@ -155,6 +161,8 @@ final class StoragePeriodsTests: XCTestCase {
                               count: 1,
                               daysCount: 1,
                               modifiedDate: sourceDate.yesterday.yesterday,
+                              successCount: 0,
+                              failCount: 1,
                               dates: [sourceDate.yesterday.yesterday.int])
         let projects = [project]
         XCTAssertEqual(periods.today, Period(date: today, type: .today))
@@ -200,6 +208,8 @@ final class StoragePeriodsTests: XCTestCase {
                               count: 3,
                               daysCount: 1,
                               modifiedDate: sourceDate,
+                              successCount: 1,
+                              failCount: 2,
                               dates: [sourceDate.int])
         let projects = [project]
         XCTAssertEqual(periods.today, Period(date: today, type: .today, projects: projects))
@@ -222,12 +232,12 @@ final class StoragePeriodsTests: XCTestCase {
                        schemes: [ProjectLog.Scheme(id: "s1",
                                                    name: "Crack",
                                                    startDate: sourceDate,
-                                                   buildStatus: true,
+                                                   buildStatus: false,
                                                    duration: 10),
                                  ProjectLog.Scheme(id: "s2",
                                                    name: "Crack",
                                                    startDate: sourceDate,
-                                                   buildStatus: true,
+                                                   buildStatus: false,
                                                    duration: 10)]),
             ProjectLog(id: "p1",
                        name: "Plane",
@@ -253,6 +263,8 @@ final class StoragePeriodsTests: XCTestCase {
                     count: 2,
                     daysCount: 1,
                     modifiedDate: sourceDate,
+                    successCount: 0,
+                    failCount: 2,
                     dates: [sourceDate.int]),
             Project(id: "p1",
                     name: "Plane",
@@ -260,6 +272,8 @@ final class StoragePeriodsTests: XCTestCase {
                     count: 2,
                     daysCount: 1,
                     modifiedDate: sourceDate,
+                    successCount: 2,
+                    failCount: 0,
                     dates: [sourceDate.int])
         ]
         XCTAssertEqual(periods.today, Period(date: today, type: .today, projects: projects))
@@ -292,7 +306,7 @@ final class StoragePeriodsTests: XCTestCase {
             ProjectLog.Scheme(id: "3",
                               name: "Crack",
                               startDate: sourceDate.tomorrow.tomorrow,
-                              buildStatus: false,
+                              buildStatus: true,
                               duration: 10)
         ]
         let logProject = ProjectLog(id: "0",
@@ -308,6 +322,8 @@ final class StoragePeriodsTests: XCTestCase {
                                    count: 1,
                                    daysCount: 1,
                                    modifiedDate: sourceDate,
+                                   successCount: 1,
+                                   failCount: 0,
                                    dates: [sourceDate.int])
         XCTAssertEqual(periods.today, Period(date: today, type: .today, projects: [todayProject]))
 
@@ -321,6 +337,8 @@ final class StoragePeriodsTests: XCTestCase {
                                   count: 3,
                                   daysCount: 3,
                                   modifiedDate: sourceDate.tomorrow.tomorrow,
+                                  successCount: 2,
+                                  failCount: 1,
                                   dates: [sourceDate.int,
                                           sourceDate.tomorrow.int,
                                           sourceDate.tomorrow.tomorrow.int])

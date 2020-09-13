@@ -50,6 +50,15 @@ struct AboutView: View {
                         Text("per day")
                             .foregroundColor(.aboutBody)
                     }.font(.aboutBody)
+                    HStack(spacing: 2) {
+                        Text("Click for change mode")
+                            .foregroundColor(.aboutBody)
+                        Image.buildCount
+                            .foregroundColor(.buildCount)
+                        Text("or")
+                        Image.success
+                            .foregroundColor(.successRate)
+                    }.font(.aboutBody)
                 }
                 .modifier(RoundedEdge())
 

@@ -15,6 +15,8 @@ private extension Int {
 
 struct ProjectsSection: View {
 
+    @EnvironmentObject private var model: Model
+
     private let projects: [ProjectSection.Model]
     private let needShowDuration: Bool
     private let duration: DurationSection.Model
@@ -22,12 +24,16 @@ struct ProjectsSection: View {
     init(projects: [Project], duration: Duration) {
         self.projects = projects.map {
             return ProjectSection.Model(name: $0.name,
-                                        totalDuration: $0.duration.outputDuration())
+                                        totalDuration: $0.duration.outputDuration(),
+                                        buildCount: $0.count.output(),
+                                        successRate: $0.successRate.outputSucceedRate())
         }
 
         self.needShowDuration = duration.days > 1
         self.duration = DurationSection.Model(totalDuration: duration.total.outputDuration(),
-                                              perDayDuration: duration.perDay.outputDuration())
+                                              perDayDuration: duration.perDay.outputDuration(),
+                                              totalBuildCount: duration.buildCount.output(),
+                                              totalSuccessRate: duration.successRate.outputSucceedRate())
     }
 
     var body: some View {
@@ -49,9 +55,11 @@ struct ProjectsSection: View {
                 }
             }
             .modifier(RoundedEdge())
+            .frame(width: model.size.width - 40.0)
 
             DurationSection(duration: duration)
                 .padding(.top, 4.0)
+                .frame(width: model.size.width - 60.0)
                 .frame(height: needShowDuration ? nil : 0)
                 .changeVisibility(toHidden: !needShowDuration)
         }

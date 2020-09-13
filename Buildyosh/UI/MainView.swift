@@ -31,7 +31,6 @@ struct MainView: View {
 
             ProjectsSection(projects: model.projects,
                             duration: model.duration)
-            .frame(width: 220)
             Spacer()
         }
     }

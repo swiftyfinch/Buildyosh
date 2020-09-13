@@ -15,6 +15,14 @@ struct Project: Equatable {
     let count: Int
     let daysCount: Int
     let modifiedDate: Date
+    let successCount: Int
+    let failCount: Int
 
     var dates: Set<Int> = []
+}
+
+extension Project {
+    var successRate: Int {
+        Int(Double(successCount) / Double(count) * 100)
+    }
 }

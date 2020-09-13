@@ -30,6 +30,20 @@ extension Image {
             .frame(width: 22, height: 20)
     }
 
+    static var buildCount: some View {
+        Image("hammer.fill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 15, height: 17)
+    }
+
+    static var success: some View {
+        Image("checkmark.circle.fill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 17, height: 18)
+    }
+
     static var question: some View {
         Image("questionmark.circle")
             .resizable()

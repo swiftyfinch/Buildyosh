@@ -39,13 +39,17 @@ final class PeriodUnionTests: XCTestCase {
                                    duration: 10,
                                    count: 1,
                                    daysCount: 1,
-                                   modifiedDate: today)
+                                   modifiedDate: today,
+                                   successCount: 0,
+                                   failCount: 0)
         let ydayProject = Project(id: "0",
                                   name: "Frog",
                                   duration: 20,
                                   count: 1,
                                   daysCount: 1,
-                                  modifiedDate: today.yesterday)
+                                  modifiedDate: today.yesterday,
+                                  successCount: 0,
+                                  failCount: 0)
         let old = Periods(today: Period(date: today, type: .today, projects: [todayProject]),
                           yday: Period(date: today.yesterday, type: .yday, projects: [ydayProject]),
                           week: Period(date: today.beginOfWeek, type: .week, projects: [todayProject]),
@@ -70,13 +74,17 @@ final class PeriodUnionTests: XCTestCase {
                                    duration: 10,
                                    count: 1,
                                    daysCount: 1,
-                                   modifiedDate: yesterday) // вт
+                                   modifiedDate: yesterday,
+                                   successCount: 0,
+                                   failCount: 0) // вт
         let ydayProject = Project(id: "1",
                                   name: "Numb",
                                   duration: 20,
                                   count: 1,
                                   daysCount: 1,
-                                  modifiedDate: yesterday.yesterday) // пн
+                                  modifiedDate: yesterday.yesterday,
+                                  successCount: 0,
+                                  failCount: 0) // пн
         let old = Periods(today: Period(date: yesterday, type: .today, projects: [todayProject]),
                           yday: Period(date: yesterday.yesterday, type: .yday, projects: [ydayProject]),
                           week: Period(date: today.beginOfWeek, type: .week, projects: [todayProject, ydayProject]),
@@ -102,13 +110,17 @@ final class PeriodUnionTests: XCTestCase {
                                    duration: 10,
                                    count: 1,
                                    daysCount: 1,
-                                   modifiedDate: yesterday) // вт
+                                   modifiedDate: yesterday,
+                                   successCount: 0,
+                                   failCount: 0) // вт
         let ydayProject = Project(id: "1",
                                   name: "Numb",
                                   duration: 20,
                                   count: 1,
                                   daysCount: 1,
-                                  modifiedDate: yesterday.yesterday) // пн
+                                  modifiedDate: yesterday.yesterday,
+                                  successCount: 0,
+                                  failCount: 0) // пн
         let old = Periods(today: Period(date: yesterday, type: .today, projects: [todayProject]),
                           yday: Period(date: yesterday.yesterday, type: .yday, projects: [ydayProject]),
                           week: Period(date: today.beginOfWeek, type: .week, projects: [todayProject, ydayProject]),
@@ -120,6 +132,8 @@ final class PeriodUnionTests: XCTestCase {
                                       count: 1,
                                       daysCount: 1,
                                       modifiedDate: today,
+                                      successCount: 0,
+                                      failCount: 0,
                                       dates: [today.int])
         let newYdayProject = Project(id: "0",
                                      name: "Frog",
@@ -127,6 +141,8 @@ final class PeriodUnionTests: XCTestCase {
                                      count: 1,
                                      daysCount: 1,
                                      modifiedDate: yesterday,
+                                     successCount: 0,
+                                     failCount: 0,
                                      dates: [yesterday.int])
         let newWeekProject = Project(id: "0",
                                      name: "Frog",
@@ -134,6 +150,8 @@ final class PeriodUnionTests: XCTestCase {
                                      count: 2,
                                      daysCount: 2,
                                      modifiedDate: today,
+                                     successCount: 0,
+                                     failCount: 0,
                                      dates: [today.int, yesterday.int])
         let new = Periods(today: Period(date: today, type: .today, projects: [newTodayProject]),
                           yday: Period(date: today.yesterday, type: .yday, projects: [newYdayProject]),
@@ -147,20 +165,26 @@ final class PeriodUnionTests: XCTestCase {
                                         duration: 22,
                                         count: 2,
                                         daysCount: 1,
-                                        modifiedDate: yesterday)
+                                        modifiedDate: yesterday,
+                                        successCount: 0,
+                                        failCount: 0)
         let resultWeekProjects = [
             Project(id: "0",
                     name: "Frog",
                     duration: 33,
                     count: 3,
                     daysCount: 2,
-                    modifiedDate: today),
+                    modifiedDate: today,
+                    successCount: 0,
+                    failCount: 0),
             Project(id: "1",
                     name: "Numb",
                     duration: 20,
                     count: 1,
                     daysCount: 1,
-                    modifiedDate: yesterday.yesterday)
+                    modifiedDate: yesterday.yesterday,
+                    successCount: 0,
+                    failCount: 0)
         ]
         XCTAssertEqual(result.today, Period(date: today, type: .today, projects: [newTodayProject]))
         XCTAssertEqual(result.yday, Period(date: today.yesterday, type: .yday, projects: [resultYdayProject]))

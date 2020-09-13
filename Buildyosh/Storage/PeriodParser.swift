@@ -41,22 +41,30 @@ private struct Projects {
         var duration: Double
         var count: Int
         var modifiedDate: Date
+        var successCount: Int
+        var failCount: Int
         var dates: Set<Int> = []
     }
     private var content: [String: Content] = [:]
 
-    mutating func addProject(id: String, name: String, duration: Double, date: Date) {
+    mutating func addProject(log: ProjectLog, scheme: ProjectLog.Scheme) {
+        let (id, name, duration, date) = (log.id, log.name, scheme.duration, scheme.startDate)
+        let (successCount, failCount) = (scheme.buildStatus ? 1 : 0, scheme.buildStatus ? 0 : 1)
         var project: Content!
         if content[id] == nil {
             project = Content(name: name,
                               duration: duration,
                               count: 1,
-                              modifiedDate: date)
+                              modifiedDate: date,
+                              successCount: successCount,
+                              failCount: failCount)
         } else {
             project = content[id]
             project.duration += duration
             project.count += 1
             project.modifiedDate = max(date, project.modifiedDate)
+            project.successCount += successCount
+            project.failCount += failCount
         }
         project.dates.insert(date.int)
         content[id] = project
@@ -70,6 +78,8 @@ private struct Projects {
                     count: project.count,
                     daysCount: project.dates.count,
                     modifiedDate: project.modifiedDate,
+                    successCount: project.successCount,
+                    failCount: project.failCount,
                     dates: project.dates)
         }.sorted {
             $0.name < $1.name
@@ -87,15 +97,15 @@ struct PeriodParser {
         for log in logs {
             for scheme in log.schemes.sorted(by: { $0.startDate < $1.startDate }) {
                 if scheme.startDate.isInSameDay(as: relativeDate) {
-                    todayProjects.addProject(id: log.id, name: log.name, duration: scheme.duration, date: scheme.startDate)
+                    todayProjects.addProject(log: log, scheme: scheme)
                 } else if scheme.startDate.isInSameDay(as: relativeDate.yesterday) {
-                    ydayProjects.addProject(id: log.id, name: log.name, duration: scheme.duration, date: scheme.startDate)
+                    ydayProjects.addProject(log: log, scheme: scheme)
                 }
 
                 if scheme.startDate.isInSameWeek(as: relativeDate) {
-                    weekProjects.addProject(id: log.id, name: log.name, duration: scheme.duration, date: scheme.startDate)
+                    weekProjects.addProject(log: log, scheme: scheme)
                 }
-                allProjects.addProject(id: log.id, name: log.name, duration: scheme.duration, date: scheme.startDate)
+                allProjects.addProject(log: log, scheme: scheme)
             }
         }
 

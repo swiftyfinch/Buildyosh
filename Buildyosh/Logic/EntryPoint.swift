@@ -144,7 +144,35 @@ private func testProjectLogs() -> [ProjectLog] {
                         name: "1",
                         startDate: Date(),
                         buildStatus: true,
-                        duration: 800
+                        duration: 100
+                    ),
+                    ProjectLog.Scheme(
+                        id: "2",
+                        name: "1",
+                        startDate: Date(),
+                        buildStatus: false,
+                        duration: 200
+                    ),
+                    ProjectLog.Scheme(
+                        id: "3",
+                        name: "1",
+                        startDate: Date(),
+                        buildStatus: false,
+                        duration: 300
+                    ),
+                    ProjectLog.Scheme(
+                        id: "4",
+                        name: "1",
+                        startDate: Date(),
+                        buildStatus: true,
+                        duration: 100
+                    ),
+                    ProjectLog.Scheme(
+                        id: "5",
+                        name: "1",
+                        startDate: Date(),
+                        buildStatus: false,
+                        duration: 100
                     )
             ]
         ),
@@ -156,8 +184,15 @@ private func testProjectLogs() -> [ProjectLog] {
                         id: "1",
                         name: "1",
                         startDate: Date(),
+                        buildStatus: false,
+                        duration: 400
+                    ),
+                    ProjectLog.Scheme(
+                        id: "1",
+                        name: "1",
+                        startDate: Date(),
                         buildStatus: true,
-                        duration: 800
+                        duration: 400
                     )
             ]
         ),
@@ -168,7 +203,7 @@ private func testProjectLogs() -> [ProjectLog] {
                         id: "1",
                         name: "1",
                         startDate: Date().yesterday,
-                        buildStatus: true,
+                        buildStatus: false,
                         duration: 1000
                     )
             ]
@@ -181,8 +216,15 @@ private func testProjectLogs() -> [ProjectLog] {
                         id: "1",
                         name: "1",
                         startDate: Date(),
-                        buildStatus: true,
+                        buildStatus: false,
                         duration: 300
+                    ),
+                    ProjectLog.Scheme(
+                        id: "1",
+                        name: "1",
+                        startDate: Date(),
+                        buildStatus: false,
+                        duration: 100
                     )
             ]
         ),

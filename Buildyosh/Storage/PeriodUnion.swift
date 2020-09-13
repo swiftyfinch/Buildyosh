@@ -28,7 +28,9 @@ private extension Period {
                                                    duration: existProject.duration + project.duration,
                                                    count: existProject.count + project.count,
                                                    daysCount: daysCount,
-                                                   modifiedDate: max(existProject.modifiedDate, project.modifiedDate))
+                                                   modifiedDate: max(existProject.modifiedDate, project.modifiedDate),
+                                                   successCount: existProject.successCount + project.successCount,
+                                                   failCount: existProject.failCount + project.failCount)
             } else {
                 projectByIds[project.id] = project
             }

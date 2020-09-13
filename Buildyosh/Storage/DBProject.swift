@@ -15,6 +15,8 @@ final class DBProject: NSManagedObject {
     @NSManaged var count: Int
     @NSManaged var daysCount: Int
     @NSManaged var modifiedDate: Date
+    @NSManaged var successCount: Int
+    @NSManaged var failCount: Int
 }
 
 extension DBProject {
@@ -24,7 +26,9 @@ extension DBProject {
                 duration: duration,
                 count: count,
                 daysCount: daysCount,
-                modifiedDate: modifiedDate)
+                modifiedDate: modifiedDate,
+                successCount: successCount,
+                failCount: failCount)
     }
 }
 
@@ -43,6 +47,8 @@ extension Project: Persistance {
         db.count = count
         db.daysCount = daysCount
         db.modifiedDate = modifiedDate
+        db.successCount = successCount
+        db.failCount = failCount
         return db
     }
 }
