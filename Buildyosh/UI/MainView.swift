@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MainView: View {
 
+    @EnvironmentObject private var model: Model
     @EnvironmentObject private var dataSource: ProjectsDataSource
 
     var body: some View {
@@ -28,8 +29,8 @@ struct MainView: View {
             .frame(width: 100)
             .frame(height: 20.0)
 
-            ProjectsSection(projects: dataSource.projects,
-                            duration: dataSource.duration)
+            ProjectsSection(projects: model.projects,
+                            duration: model.duration)
             .frame(width: 220)
             Spacer()
         }

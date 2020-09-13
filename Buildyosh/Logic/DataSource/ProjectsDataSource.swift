@@ -15,7 +15,7 @@ final class ProjectsDataSource: ObservableObject {
         didSet { filter() }
     }
 
-    private(set) var duration = Duration(total: 0, perDay: 0, days: 0)
+    @Published var duration = Duration(total: 0, perDay: 0, days: 0)
 
     private var periods: Periods?
     private var period: Period? {

@@ -40,7 +40,6 @@
 		418E627624CDDE0E00EEFE9A /* TotalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E627524CDDE0E00EEFE9A /* TotalModifier.swift */; };
 		418E627924CDDE5500EEFE9A /* DurationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E627824CDDE5500EEFE9A /* DurationSection.swift */; };
 		41ABC80624F9710D001715D1 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80524F9710D001715D1 /* Images.swift */; };
-		41ABC80824FA5C68001715D1 /* NSApplication+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80724FA5C68001715D1 /* NSApplication+StatusBar.swift */; };
 		41ABC80A24FA5CF2001715D1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80924FA5CF2001715D1 /* Colors.swift */; };
 		41ABC80C24FAB572001715D1 /* Date+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80B24FAB572001715D1 /* Date+Int.swift */; };
 		41BD50E524FBA7AA00703A8D /* XCTAssertEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50E424FBA7AA00703A8D /* XCTAssertEqual.swift */; };
@@ -65,6 +64,7 @@
 		41EC667D24C464F4005A0893 /* EntryPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC667C24C464F4005A0893 /* EntryPoint.swift */; };
 		41F02C8D24E30A4000C8D7AC /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F02C8C24E30A4000C8D7AC /* UserStorage.swift */; };
 		41F02C8F24E44DFD00C8D7AC /* ProjectLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F02C8E24E44DFD00C8D7AC /* ProjectLog.swift */; };
+		41F1FE23250CEBC30032B418 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1FE22250CEBC30032B418 /* Model.swift */; };
 		41FB1A1624A527B600F4678C /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41FB1A1524A527B600F4678C /* CryptoSwift */; };
 		41FC072A24BAE60800C16C94 /* DispatchQueue+Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC072924BAE60800C16C94 /* DispatchQueue+Main.swift */; };
 		41FC072C24BAE89100C16C94 /* Date+InRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC072B24BAE89100C16C94 /* Date+InRange.swift */; };
@@ -120,7 +120,6 @@
 		418E627524CDDE0E00EEFE9A /* TotalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalModifier.swift; sourceTree = "<group>"; };
 		418E627824CDDE5500EEFE9A /* DurationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSection.swift; sourceTree = "<group>"; };
 		41ABC80524F9710D001715D1 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		41ABC80724FA5C68001715D1 /* NSApplication+StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+StatusBar.swift"; sourceTree = "<group>"; };
 		41ABC80924FA5CF2001715D1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		41ABC80B24FAB572001715D1 /* Date+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Int.swift"; sourceTree = "<group>"; };
 		41BD50E424FBA7AA00703A8D /* XCTAssertEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertEqual.swift; sourceTree = "<group>"; };
@@ -136,6 +135,7 @@
 		41EC667C24C464F4005A0893 /* EntryPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPoint.swift; sourceTree = "<group>"; };
 		41F02C8C24E30A4000C8D7AC /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		41F02C8E24E44DFD00C8D7AC /* ProjectLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLog.swift; sourceTree = "<group>"; };
+		41F1FE22250CEBC30032B418 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		41FC072924BAE60800C16C94 /* DispatchQueue+Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Main.swift"; sourceTree = "<group>"; };
 		41FC072B24BAE89100C16C94 /* Date+InRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+InRange.swift"; sourceTree = "<group>"; };
 		41FC073024BAEC2400C16C94 /* ProjectsCountFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCountFilter.swift; sourceTree = "<group>"; };
@@ -312,7 +312,6 @@
 				4116B95B24C42BA6001629C6 /* URL+Utils.swift */,
 				417D7F8F24DFC030007A4526 /* Color+Hex.swift */,
 				412FC80824EAFCB8006B6FCD /* Date+Periods.swift */,
-				41ABC80724FA5C68001715D1 /* NSApplication+StatusBar.swift */,
 				41ABC80B24FAB572001715D1 /* Date+Int.swift */,
 			);
 			path = Extensions;
@@ -324,6 +323,7 @@
 				411C76BD24B99B58004259AC /* Parsing */,
 				418E627724CDDE2700EEFE9A /* DataSource */,
 				41EC667C24C464F4005A0893 /* EntryPoint.swift */,
+				41F1FE22250CEBC30032B418 /* Model.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -457,7 +457,6 @@
 			files = (
 				417D7F9024DFC030007A4526 /* Color+Hex.swift in Sources */,
 				417D7F9224DFCB67007A4526 /* MainView.swift in Sources */,
-				41ABC80824FA5C68001715D1 /* NSApplication+StatusBar.swift in Sources */,
 				410B4A1124DF14A400922F8D /* AboutView.swift in Sources */,
 				41138D9224C9E66500522042 /* ProjectSection.swift in Sources */,
 				410B4A1624DF1DB700922F8D /* RoundedEdge.swift in Sources */,
@@ -492,6 +491,7 @@
 				4116993524F28069004293DC /* PeriodUnion.swift in Sources */,
 				41BD50E924FBB56600703A8D /* Period.swift in Sources */,
 				41FC072C24BAE89100C16C94 /* Date+InRange.swift in Sources */,
+				41F1FE23250CEBC30032B418 /* Model.swift in Sources */,
 				4159632324A8963600B42E60 /* ProjectsDataSource.swift in Sources */,
 				4189169824A518370084F7AE /* AppDelegate.swift in Sources */,
 				416B2A3E24B9C53F00043110 /* EasyScanner.swift in Sources */,
@@ -692,7 +692,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.2b;
+				MARKETING_VERSION = 0.3b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -719,7 +719,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.2b;
+				MARKETING_VERSION = 0.3b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -9,38 +9,29 @@
 import Cocoa
 import SwiftUI
 
+// sfsymbols --symbol-name multiply.circle --font-size 18 --format pdf --font-weight black
+
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private var windowManager: AnyObject?
+    private var entryPoint: EntryPoint?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let model = Model()
         let xcodeLogManager = XcodeLogAsyncParser()
         let dataSource = ProjectsDataSource(countFilter: ProjectsCountFilter(),
                                             totalModifier: TotalModifier())
-        let entryPoint = EntryPoint(xcodeLogManager: xcodeLogManager,
-                                    dataSource: dataSource)
+        entryPoint = EntryPoint(xcodeLogManager: xcodeLogManager, dataSource: dataSource)
 
+        let model = Model(manager: xcodeLogManager, dataSource: dataSource)
         let contentView = ContentView()
             .environmentObject(model)
-            .environmentObject(xcodeLogManager)
             .environmentObject(dataSource)
-            .environmentObject(entryPoint)
 
         let windowManager = WindowManager(rootView: contentView, model: model)
         windowManager.buildAndPresent()
         self.windowManager = windowManager
         
-        entryPoint.runRepeatedly()
-    }
-}
-
-final class Model: ObservableObject {
-    @Published var isWindowShown = false
-
-    var isStatusBarHidden: Bool {
-        guard let screen = NSScreen.main else { return false }
-        return screen.frame.height == screen.visibleFrame.height
+        entryPoint?.runRepeatedly()
     }
 }

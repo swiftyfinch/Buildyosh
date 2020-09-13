@@ -35,6 +35,9 @@ extension Color {
     @AdaptiveColor(light: .clockIcon)
     static var clockText: Color
 
+    @AdaptiveColor(light: .green)
+    static var successModeText: Color
+
     @AdaptiveColor(light: Color(hex: 0xef7b5a))
     static var averageClockIcon: Color
 
@@ -43,7 +46,7 @@ extension Color {
 
     // MARK: - About
 
-    @AdaptiveColor(light: .init(white: 0.2), dark: .gray)
+    @AdaptiveColor(light: .init(white: 0.2), dark: .init(white: 0.7))
     static var aboutOpenButton: Color
 
     @AdaptiveColor(light: .project, dark: .white)

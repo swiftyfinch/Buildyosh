@@ -10,8 +10,8 @@ import SwiftUI
 
 final class XcodeLogAsyncParser: ObservableObject {
 
-    private(set) var isLoaded = false
-    @Published var progress: Double = 0.0
+    @Published private(set) var isLoaded = false
+    @Published private(set) var progress: Double = 0.0
 
     func asyncReadProjectsLogs(logs: [String: [URL]],
                                completion: @escaping ([ProjectLog]) -> Void) {
@@ -25,7 +25,9 @@ final class XcodeLogAsyncParser: ObservableObject {
         var current = 0
         let max = logs.values.reduce(0) { $0 + $1.count }
 
-        isLoaded = false
+        DispatchQueue.asyncOnMain { [weak self] in
+            self?.isLoaded = false
+        }
         let projects = XcodeLogParser().parse(logs: logs) {
             current += 1
             DispatchQueue.asyncOnMain { [weak self] in

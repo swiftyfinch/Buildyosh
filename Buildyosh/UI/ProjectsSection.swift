@@ -37,7 +37,7 @@ struct ProjectsSection: View {
                     HStack(spacing: 5) {
                         Image.tray
                         Text("Empty")
-                            .font(.project)
+                            .font(.emptyProject)
                     }
                     .foregroundColor(.project)
                     .frame(height: 15)

@@ -23,5 +23,6 @@ extension Font {
     static let aboutBlog: Font = .font(size: 16)
 
     static let project: Font = .font(size: 15)
+    static let emptyProject: Font = .font(size: 14)
     static let time: Font = .font(size: 13)
 }

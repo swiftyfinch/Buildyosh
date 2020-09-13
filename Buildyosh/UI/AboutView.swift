@@ -10,6 +10,8 @@ import SwiftUI
 
 struct AboutView: View {
 
+    @EnvironmentObject private var model: Model
+
     private let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 
     var body: some View {
@@ -87,6 +89,17 @@ struct AboutView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
+
+                Button(action: {
+                    model.quit()
+                }) {
+                    HStack {
+                        Text("🚪 Escape").font(.aboutBody)
+                    }
+                    .foregroundColor(.aboutBody)
+                    .modifier(RoundedEdge())
+                }
+                .buttonStyle(PlainButtonStyle())
             }
             Spacer()
         }

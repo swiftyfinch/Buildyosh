@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ProjectSection: View {
 
+    @EnvironmentObject private var model: Buildyosh.Model
+
     struct Model: Identifiable {
         var id: String { name }
         
@@ -23,12 +25,24 @@ struct ProjectSection: View {
             Text(project.name)
                 .font(.project)
                 .foregroundColor(.project)
-            Image.clock
-                .foregroundColor(.clockIcon)
-                .padding(.trailing, -2)
-            Text(project.totalDuration)
-                .font(.time)
-                .foregroundColor(.clockText)
+            Button(action: {
+                model.successMode.toggle()
+            }) {
+                // todo: Different modes
+//                if model.successMode {
+//                    Text("85%")
+//                        .font(.time)
+//                        .foregroundColor(.successModeText)
+//                } else {
+                    Image.clock
+                        .foregroundColor(.clockIcon)
+                        .padding(.trailing, -2)
+                    Text(project.totalDuration)
+                        .font(.time)
+                        .foregroundColor(.clockText)
+//                }
+            }
+            .buttonStyle(PlainButtonStyle())
         }
     }
 }

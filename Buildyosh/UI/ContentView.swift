@@ -8,36 +8,19 @@
 
 import SwiftUI
 
-private extension CGFloat {
-    static let width: CGFloat = 260
-    static let loaderHeight: CGFloat = 60
-    static let minAboutHeight: CGFloat = 140
-}
-
 struct ContentView: View {
     @EnvironmentObject private var model: Model
-    @EnvironmentObject private var manager: XcodeLogAsyncParser
-    @EnvironmentObject private var dataSource: ProjectsDataSource
-    @EnvironmentObject private var entryPoint: EntryPoint
-
     @State private var isAboutShown = false
-    private var needShowLoader: Bool {
-        !manager.isLoaded && dataSource.projects.isEmpty
-    }
 
     var body: some View {
         VStack {
-            if model.isStatusBarHidden {
-                Spacer().frame(height: 44)
-            }
-
-            if needShowLoader {
+            if model.needShowLoader {
                 Spacer()
-                ActivityIndicator(value: $manager.progress)
+                ActivityIndicator(value: $model.progress)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
                     .padding(.bottom, -5)
-                Text(manager.progress.outputPercent())
+                Text(model.progress.outputPercent())
                 Spacer()
             } else {
                 VStack {
@@ -51,6 +34,8 @@ struct ContentView: View {
                         Spacer()
                         Button(action: {
                             self.isAboutShown.toggle()
+                            model.isAboutShown = self.isAboutShown
+                            print("!!!", "about")
                         }) {
                             if isAboutShown {
                                 Image.questionFill
@@ -58,35 +43,19 @@ struct ContentView: View {
                                 Image.question
                             }
                         }
-                        .foregroundColor(.aboutOpenButton)
                         .buttonStyle(PlainButtonStyle())
                         .padding(.trailing, 3)
-                        .padding(.bottom, 25)
-                    }.frame(height: 0)
+                        .padding(.bottom, 16)
+                        .foregroundColor(.aboutOpenButton)
+                        .onHover { (hover) in
+                            print("hover", hover)
+                            self.isAboutShown = self.isAboutShown == true
+                        }
+                    }
+                    .frame(height: 0)
                 }
             }
         }
-        .frame(width: .width, height: height())
-        .background(Color.window)
-        .changeVisibility(toHidden: !model.isWindowShown)
-    }
-
-    private func height() -> CGFloat {
-        if !manager.isLoaded && dataSource.projects.isEmpty {
-            return .loaderHeight
-        } else {
-            var contentHeight = ProjectsSection.height(
-                projects: dataSource.projects,
-                duration: dataSource.duration
-            )
-            contentHeight += model.isStatusBarHidden ? 44 : 0
-            if isAboutShown {
-                var minAboutHeight: CGFloat = .minAboutHeight
-                minAboutHeight += model.isStatusBarHidden ? 44 : 0
-                return max(contentHeight, minAboutHeight)
-            } else {
-                return contentHeight
-            }
-        }
+        .frame(width: model.size.width, height: model.size.height)
     }
 }
