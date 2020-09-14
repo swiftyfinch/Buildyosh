@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var model: Model
-    @State private var isAboutShown = false
 
     var body: some View {
         VStack {
@@ -24,7 +23,7 @@ struct ContentView: View {
                 Spacer()
             } else {
                 VStack {
-                    if isAboutShown {
+                    if model.isAboutShown {
                         AboutView()
                     } else {
                         MainView()
@@ -33,11 +32,9 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            self.isAboutShown.toggle()
-                            model.isAboutShown = self.isAboutShown
-                            print("!!!", "about")
+                            model.isAboutShown.toggle()
                         }) {
-                            if isAboutShown {
+                            if model.isAboutShown {
                                 Image.questionFill
                             } else {
                                 Image.question
@@ -47,10 +44,6 @@ struct ContentView: View {
                         .padding(.trailing, 3)
                         .padding(.bottom, 16)
                         .foregroundColor(.aboutOpenButton)
-                        .onHover { (hover) in
-                            print("hover", hover)
-                            self.isAboutShown = self.isAboutShown == true
-                        }
                     }
                     .frame(height: 0)
                 }
