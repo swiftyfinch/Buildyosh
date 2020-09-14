@@ -24,7 +24,7 @@ struct TotalModifier {
         let daysCount = projects.max { $0.daysCount < $1.daysCount }?.daysCount ?? 0
         let totalDuration = projects.reduce(0) { $0 + $1.duration }
         let durationPerDay = daysCount > 0 ? totalDuration / Double(daysCount) : 0
-        let buildCount = projects.reduce(0) { $0 + $1.count }
+        let buildCount = max(1, projects.reduce(0) { $0 + $1.count })
         let successBuilds = projects.reduce(0) { $0 + $1.successCount }
         let successRate = Int(Double(successBuilds) / Double(buildCount) * 100)
         return Duration(total: totalDuration,
