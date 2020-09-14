@@ -12,7 +12,7 @@ import SwiftUI
 private extension CGFloat {
     static let width: CGFloat = 280
     static let loaderHeight: CGFloat = 60
-    static let minAboutHeight: CGFloat = 200
+    static let minAboutHeight: CGFloat = 250
 }
 
 final class Model: ObservableObject {

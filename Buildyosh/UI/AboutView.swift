@@ -35,7 +35,7 @@ struct AboutView: View {
 
                 VStack(spacing: 0) {
                     HStack(spacing: 2) {
-                        Text("Logs")
+                        Text("Log")
                             .foregroundColor(.aboutBody)
                         Image.clock
                             .foregroundColor(.clockIcon)
@@ -50,14 +50,31 @@ struct AboutView: View {
                         Text("per day")
                             .foregroundColor(.aboutBody)
                     }.font(.aboutBody)
+                }
+                .modifier(RoundedEdge())
+
+                VStack(spacing: 0) {
                     HStack(spacing: 2) {
-                        Text("Click for change mode")
+                        Text("Tap")
+                            .foregroundColor(.aboutBody)
+                        Text("to change mode:")
+                            .foregroundColor(.aboutBody)
+                    }.font(.aboutBody)
+                    HStack(spacing: 2) {
+                        Text("Builds")
                             .foregroundColor(.aboutBody)
                         Image.buildCount
                             .foregroundColor(.buildCount)
-                        Text("or")
+                        Text("count")
+                            .foregroundColor(.aboutBody)
+                    }.font(.aboutBody)
+                    HStack(spacing: 2) {
+                        Text("Success")
+                            .foregroundColor(.aboutBody)
                         Image.success
                             .foregroundColor(.successRate)
+                        Text("rate")
+                            .foregroundColor(.aboutBody)
                     }.font(.aboutBody)
                 }
                 .modifier(RoundedEdge())
