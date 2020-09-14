@@ -62,8 +62,9 @@ final class EntryPoint: ObservableObject {
 
     func runRepeatedly() {
         run()
-        Timer.scheduledTimer(withTimeInterval: timerInterval,
-                             repeats: true) { [weak self] _ in self?.run() }
+        let timer = Timer.scheduledTimer(withTimeInterval: timerInterval,
+                                         repeats: true) { [weak self] _ in self?.run() }
+        RunLoop.main.add(timer, forMode: .common)
     }
 
     private func findProjects(completion: @escaping ([ProjectLog]) -> Void) {
