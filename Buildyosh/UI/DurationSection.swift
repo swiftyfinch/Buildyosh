@@ -23,37 +23,32 @@ struct DurationSection: View {
 
     var body: some View {
         HStack(spacing: 2) {
-            Button(action: {
-                model.changeMode()
-            }) {
-                switch model.mode {
-                case .time:
-                    Image.clock
-                        .foregroundColor(.averageClockIcon)
-                    Text(duration.perDayDuration)
-                        .font(.time)
-                        .foregroundColor(.averageClockText)
-                    Spacer().frame(width: 2)
-                    Image.clock
-                        .foregroundColor(.clockIcon)
-                    Text(duration.totalDuration)
-                        .font(.time)
-                        .foregroundColor(.clockText)
-                case .count, .success:
-                    Image.buildCount
-                        .foregroundColor(.buildCount)
-                    Text(duration.totalBuildCount)
-                        .font(.time)
-                        .foregroundColor(.buildCount)
-                    Spacer().frame(width: 2)
-                    Image.success
-                        .foregroundColor(.successRate)
-                    Text(duration.totalSuccessRate)
-                        .font(.time)
-                        .foregroundColor(.successRate)
-                }
+            switch model.mode {
+            case .time:
+                Image.clock
+                    .foregroundColor(.averageClockIcon)
+                Text(duration.perDayDuration)
+                    .font(.time)
+                    .foregroundColor(.averageClockText)
+                Spacer().frame(width: 2)
+                Image.clock
+                    .foregroundColor(.clockIcon)
+                Text(duration.totalDuration)
+                    .font(.time)
+                    .foregroundColor(.clockText)
+            case .count, .success:
+                Image.buildCount
+                    .foregroundColor(.buildCount)
+                Text(duration.totalBuildCount)
+                    .font(.time)
+                    .foregroundColor(.buildCount)
+                Spacer().frame(width: 2)
+                Image.success
+                    .foregroundColor(.successRate)
+                Text(duration.totalSuccessRate)
+                    .font(.time)
+                    .foregroundColor(.successRate)
             }
-            .buttonStyle(PlainButtonStyle())
         }
         .modifier(RoundedEdge())
     }

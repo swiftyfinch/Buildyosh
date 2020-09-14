@@ -27,34 +27,30 @@ struct ProjectSection: View {
             Text(project.name)
                 .font(.project)
                 .foregroundColor(.project)
-            Button(action: {
-                model.changeMode()
-            }) {
-                switch model.mode {
-                case .time:
-                    Image.clock
-                        .foregroundColor(.clockIcon)
-                        .padding(.trailing, -2)
-                    Text(project.totalDuration)
-                        .font(.time)
-                        .foregroundColor(.clockText)
-                case .count:
-                    Image.buildCount
-                        .foregroundColor(.buildCount)
-                        .padding(.trailing, -2)
-                    Text(project.buildCount)
-                        .font(.time)
-                        .foregroundColor(.buildCount)
-                case .success:
-                    Image.success
-                        .foregroundColor(.successRate)
-                        .padding(.trailing, -2)
-                    Text(project.successRate)
-                        .font(.time)
-                        .foregroundColor(.successRate)
-                }
+
+            switch model.mode {
+            case .time:
+                Image.clock
+                    .foregroundColor(.clockIcon)
+                    .padding(.trailing, -2)
+                Text(project.totalDuration)
+                    .font(.time)
+                    .foregroundColor(.clockText)
+            case .count:
+                Image.buildCount
+                    .foregroundColor(.buildCount)
+                    .padding(.trailing, -2)
+                Text(project.buildCount)
+                    .font(.time)
+                    .foregroundColor(.buildCount)
+            case .success:
+                Image.success
+                    .foregroundColor(.successRate)
+                    .padding(.trailing, -2)
+                Text(project.successRate)
+                    .font(.time)
+                    .foregroundColor(.successRate)
             }
-            .buttonStyle(PlainButtonStyle())
         }
     }
 }

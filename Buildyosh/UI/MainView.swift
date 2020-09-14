@@ -29,8 +29,14 @@ struct MainView: View {
             .frame(width: 100)
             .frame(height: 20.0)
 
-            ProjectsSection(projects: model.projects,
-                            duration: model.duration)
+            Button(action: {
+                model.changeMode()
+            }) {
+                ProjectsSection(projects: model.projects,
+                                duration: model.duration)
+            }
+            .buttonStyle(PlainButtonStyle())
+
             Spacer()
         }
     }
