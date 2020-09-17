@@ -79,7 +79,6 @@ final class Model: ObservableObject {
             self.objectWillChange.send()
         }.store(in: &cancellables)
 
-        dataSource.$projects.assign(to: \.projects, on: self).store(in: &cancellables)
         dataSource.$duration.assign(to: \.duration, on: self).store(in: &cancellables)
         dataSource.$filterType.assign(to: \.filterType, on: self).store(in: &cancellables)
 
