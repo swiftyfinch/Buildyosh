@@ -18,6 +18,15 @@
           "revision": "ba0b6cb51cc6202f896e469b87d2889a46b10d1b",
           "version": "5.1.1"
         }
+      },
+      {
+        "package": "Watchdog",
+        "repositoryURL": "https://github.com/wojteklu/Watchdog",
+        "state": {
+          "branch": "master",
+          "revision": "2df9acf8472a1f1146fc0f41e37d3f424dba72d6",
+          "version": null
+        }
       }
     ]
   },

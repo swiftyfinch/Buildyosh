@@ -8,12 +8,14 @@
 
 import Cocoa
 import SwiftUI
+import Watchdog
 
 // sfsymbols --symbol-name multiply.circle --font-size 18 --format pdf --font-weight black
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
+    private let watchdog = Watchdog(threshold: 0.4, strictMode: true)
     private var windowManager: AnyObject?
     private var entryPoint: EntryPoint?
 
