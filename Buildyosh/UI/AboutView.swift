@@ -53,79 +53,53 @@ struct AboutView: View {
                 }
                 .modifier(RoundedEdge())
 
-                VStack(spacing: 0) {
-                    HStack(spacing: 2) {
-                        Text("Tap")
-                            .foregroundColor(.aboutBody)
-                        Text("to change mode:")
-                            .foregroundColor(.aboutBody)
-                    }.font(.aboutBody)
-                    HStack(spacing: 2) {
-                        Text("Builds")
-                            .foregroundColor(.aboutBody)
-                        Image.buildCount
-                            .foregroundColor(.buildCount)
-                        Text("count")
-                            .foregroundColor(.aboutBody)
-                    }.font(.aboutBody)
-                    HStack(spacing: 2) {
-                        Text("Success")
-                            .foregroundColor(.aboutBody)
-                        Image.success
-                            .foregroundColor(.successRate)
-                        Text("rate")
-                            .foregroundColor(.aboutBody)
-                    }.font(.aboutBody)
-                }
-                .modifier(RoundedEdge())
-
                 HStack(spacing: 3) {
-                    Button(action: {
-                        let url = URL(string: "https://swiftyfinch.github.io/en#buildyosh")!
-                        NSWorkspace.shared.open(url)
-                    }) {
+                    VStack(spacing: 0) {
                         HStack(spacing: 2) {
-                            Text("📚")
-                                .font(.aboutBlog)
-                            Text("Blog")
-                                .font(.aboutBody)
-                        }
-                        .frame(height: 16)
-                        .foregroundColor(.aboutBody)
-                        .modifier(RoundedEdge())
+                            Text("Tap")
+                                .foregroundColor(.aboutBody)
+                            Text("to change mode:")
+                                .foregroundColor(.aboutBody)
+                        }.font(.aboutBody)
+                        HStack(spacing: 2) {
+                            Text("Builds")
+                                .foregroundColor(.aboutBody)
+                            Text("count")
+                                .foregroundColor(.aboutBody)
+                            Image.buildCount
+                                .foregroundColor(.buildCount)
+                        }.font(.aboutBody)
+                        HStack(spacing: 2) {
+                            Text("Success")
+                                .foregroundColor(.aboutBody)
+                            Text("rate")
+                                .foregroundColor(.aboutBody)
+                            Image.success
+                                .foregroundColor(.successRate)
+                        }.font(.aboutBody)
                     }
-                    .buttonStyle(PlainButtonStyle())
-
-                    Button(action: {
-                        let url = URL(string: "https://twitter.com/swiftyfinch")!
-                        NSWorkspace.shared.open(url)
-                    }) {
-                        HStack {
-                            Image("twitter")
-                                .resizable()
-                                .frame(width: 16, height: 16)
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundColor(.aboutTwitter)
-                                .padding(.trailing, -4)
-                            Text("Feedback")
-                                .font(.aboutBody)
-                        }
-                        .foregroundColor(.aboutBody)
-                        .modifier(RoundedEdge())
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-
-                Button(action: {
-                    model.quit()
-                }) {
-                    HStack {
-                        Text("🚪 Escape").font(.aboutBody)
-                    }
-                    .foregroundColor(.aboutBody)
                     .modifier(RoundedEdge())
-                }
-                .buttonStyle(PlainButtonStyle())
+
+                    VStack(alignment: .leading, spacing: 3) {
+                        Button(action: {
+                            let url = URL(string: "https://twitter.com/swiftyfinch")!
+                            NSWorkspace.shared.open(url)
+                        }) {
+                            Image.twitter
+                        }
+                        .frame(width: 17, height: 17)
+                        .modifier(RoundedEdge())
+
+                        Button(action: {
+                            let url = URL(string: "https://swiftyfinch.github.io/en#buildyosh")!
+                            NSWorkspace.shared.open(url)
+                        }) {
+                            Image.blog
+                        }
+                        .frame(width: 17, height: 17)
+                        .modifier(RoundedEdge())
+                    }
+                }.buttonStyle(PlainButtonStyle())
             }
             Spacer()
         }

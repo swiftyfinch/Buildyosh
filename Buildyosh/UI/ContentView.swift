@@ -30,21 +30,31 @@ struct ContentView: View {
                     }
 
                     HStack {
-                        Spacer()
                         Button(action: {
                             model.isAboutShown.toggle()
                         }) {
                             if model.isAboutShown {
-                                Image.questionFill
+                                Image.questionFill.shadow(radius: 1)
                             } else {
-                                Image.question
+                                Image.question.shadow(radius: 1)
                             }
                         }
                         .buttonStyle(PlainButtonStyle())
-                        .padding(.trailing, 3)
-                        .padding(.bottom, 16)
+                        .padding(.leading, 3)
                         .foregroundColor(.aboutOpenButton)
+                        Spacer()
+                        Button(action: {
+                            model.quit()
+                        }) {
+                            Image.close.shadow(radius: 1)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .padding(.trailing, 3)
+                        .foregroundColor(.aboutOpenButton)
+                        .changeVisibility(toHidden: !model.isAboutShown)
                     }
+                    .opacity(0.9)
+                    .padding(.bottom, 16)
                     .frame(height: 0)
                 }
             }

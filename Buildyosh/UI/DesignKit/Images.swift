@@ -57,4 +57,26 @@ extension Image {
             .aspectRatio(contentMode: .fit)
             .frame(width: 19, height: 19)
     }
+
+    static var close: some View {
+        Image("multiply.circle.fill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 19, height: 19)
+    }
+
+    static var twitter: some View {
+        Image("twitter")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 18, height: 18)
+            .foregroundColor(.aboutTwitter)
+    }
+
+    static var blog: some View {
+        Image("book")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 18, height: 18)
+    }
 }
