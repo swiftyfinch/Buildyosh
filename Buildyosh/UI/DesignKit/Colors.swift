@@ -49,7 +49,7 @@ extension Color {
 
     // MARK: - About
 
-    @AdaptiveColor(light: .init(white: 0.2), dark: .init(white: 0.7))
+    @AdaptiveColor(light: .init(white: 0.2), dark: .init(white: 0.8))
     static var aboutOpenButton: Color
 
     @AdaptiveColor(light: .project, dark: .white)

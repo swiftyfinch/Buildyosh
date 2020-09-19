@@ -53,7 +53,7 @@ struct AboutView: View {
                 }
                 .modifier(RoundedEdge())
 
-                HStack(spacing: 3) {
+                HStack(spacing: 4) {
                     VStack(spacing: 0) {
                         HStack(spacing: 2) {
                             Text("Tap")
@@ -80,14 +80,14 @@ struct AboutView: View {
                     }
                     .modifier(RoundedEdge())
 
-                    VStack(alignment: .leading, spacing: 3) {
+                    VStack(alignment: .leading, spacing: 4) {
                         Button(action: {
                             let url = URL(string: "https://twitter.com/swiftyfinch")!
                             NSWorkspace.shared.open(url)
                         }) {
                             Image.twitter
                         }
-                        .frame(width: 17, height: 17)
+                        .frame(width: 16, height: 16)
                         .modifier(RoundedEdge())
 
                         Button(action: {
@@ -96,7 +96,7 @@ struct AboutView: View {
                         }) {
                             Image.blog
                         }
-                        .frame(width: 17, height: 17)
+                        .frame(width: 16, height: 16)
                         .modifier(RoundedEdge())
                     }
                 }.buttonStyle(PlainButtonStyle())

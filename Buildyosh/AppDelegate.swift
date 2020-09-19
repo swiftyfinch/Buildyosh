@@ -12,6 +12,11 @@ import Watchdog
 
 // sfsymbols --symbol-name multiply.circle --font-size 18 --format pdf --font-weight black
 
+// TODO:
+// 1. Прыгает высота при переключении режимов
+// 2. Залипают кнопки
+// 3. Светлая тема так себе
+
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 

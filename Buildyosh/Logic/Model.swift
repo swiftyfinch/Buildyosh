@@ -43,7 +43,6 @@ final class Model: ObservableObject {
     }
 
     @Published private(set) var size: CGSize = .zero
-    @Published private(set) var isWaitForQuit: Bool = false
 
     private var width: CGFloat = .width
     private var height: CGFloat {
@@ -83,11 +82,6 @@ final class Model: ObservableObject {
         dataSource.$filterType.assign(to: \.filterType, on: self).store(in: &cancellables)
 
         size = .zero
-    }
-
-    func quit() {
-        isWaitForQuit = true
-        objectWillChange.send()
     }
 
     func changeMode() {

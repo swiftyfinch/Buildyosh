@@ -30,6 +30,7 @@ struct ContentView: View {
                     }
 
                     HStack {
+                        Spacer()
                         Button(action: {
                             model.isAboutShown.toggle()
                         }) {
@@ -40,20 +41,9 @@ struct ContentView: View {
                             }
                         }
                         .buttonStyle(PlainButtonStyle())
-                        .padding(.leading, 3)
-                        .foregroundColor(.aboutOpenButton)
-                        Spacer()
-                        Button(action: {
-                            model.quit()
-                        }) {
-                            Image.close.shadow(radius: 1)
-                        }
-                        .buttonStyle(PlainButtonStyle())
                         .padding(.trailing, 3)
                         .foregroundColor(.aboutOpenButton)
-                        .changeVisibility(toHidden: !model.isAboutShown)
                     }
-                    .opacity(0.9)
                     .padding(.bottom, 16)
                     .frame(height: 0)
                 }
