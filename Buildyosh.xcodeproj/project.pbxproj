@@ -294,10 +294,10 @@
 				4189169924A518370084F7AE /* ContentView.swift */,
 				41138D8D24C9E5C100522042 /* Double+Output.swift */,
 				41138D8F24C9E5F300522042 /* ActivityIndicator.swift */,
+				410B4A0C24DF111300922F8D /* ProjectsSection.swift */,
 				41138D9124C9E66500522042 /* ProjectSection.swift */,
 				41138D9324C9EA6500522042 /* WindowManager.swift */,
 				418E627824CDDE5500EEFE9A /* DurationSection.swift */,
-				410B4A0C24DF111300922F8D /* ProjectsSection.swift */,
 				417D7F9124DFCB67007A4526 /* MainView.swift */,
 				410B4A1024DF14A400922F8D /* AboutView.swift */,
 			);
@@ -696,7 +696,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.5.0b;
+				MARKETING_VERSION = 0.5.1b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -723,7 +723,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.5.0b;
+				MARKETING_VERSION = 0.5.1b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";

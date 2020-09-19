@@ -25,6 +25,7 @@ struct MainView: View {
                 }
                 .font(.time)
                 .pickerStyle(SegmentedPickerStyle())
+                .opacity(0.8)
             }
             .frame(width: 100)
             .frame(height: 20.0)

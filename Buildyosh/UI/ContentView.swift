@@ -35,9 +35,9 @@ struct ContentView: View {
                             model.isAboutShown.toggle()
                         }) {
                             if model.isAboutShown {
-                                Image.questionFill.shadow(radius: 1)
+                                Image.questionFill
                             } else {
-                                Image.question.shadow(radius: 1)
+                                Image.question
                             }
                         }
                         .buttonStyle(PlainButtonStyle())

@@ -61,7 +61,7 @@ struct AboutView: View {
                             Text("to change mode:")
                                 .foregroundColor(.aboutBody)
                         }.font(.aboutBody)
-                        HStack(spacing: 2) {
+                        HStack(spacing: 3) {
                             Text("Builds")
                                 .foregroundColor(.aboutBody)
                             Text("count")

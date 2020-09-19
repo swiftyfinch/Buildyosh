@@ -23,25 +23,18 @@ extension Image {
             .frame(width: 18, height: 18)
     }
 
-    static var calendar: some View {
-        Image("calendar")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 22, height: 20)
-    }
-
     static var buildCount: some View {
-        Image("hammer.fill")
+        Image("hammer")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 15, height: 17)
+            .frame(width: 16, height: 16)
     }
 
     static var success: some View {
-        Image("checkmark.circle.fill")
+        Image("checkmark")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 17, height: 18)
+            .frame(width: 17, height: 17)
     }
 
     static var question: some View {

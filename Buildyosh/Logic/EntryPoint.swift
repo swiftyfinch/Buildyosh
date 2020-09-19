@@ -255,12 +255,12 @@ private func testProjectLogs() -> [ProjectLog] {
             ]
         ),
         ProjectLog(id: "4",
-                   name: "Plane",
+                   name: "ThisIsAVeryLongNameOfProject",
                    schemes: [
                     ProjectLog.Scheme(
                         id: "1",
                         name: "1",
-                        startDate: Date().beginOfWeek.yesterday,
+                        startDate: Date(),
                         buildStatus: true,
                         duration: 500
                     )

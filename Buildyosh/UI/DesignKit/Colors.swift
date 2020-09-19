@@ -9,24 +9,13 @@
 import SwiftUI
 
 extension Color {
-    @AdaptiveColor(light: Color(hex: 0xeeeeee).opacity(0.95),
-                   dark: Color(white: 0.2).opacity(0.95))
-    static var window: Color
-
-    // MARK: - Period
-
-    @AdaptiveColor(light: .init(white: 0.3), dark: .white)
-    static var periodPicker: Color
-
-    @AdaptiveColor(light: .init(white: 0.3), dark: .white)
-    static var periodIcon: Color
 
     // MARK: - Sections
 
-    @AdaptiveColor(light: .init(white: 1), dark: .init(white: 0.16))
+    @AdaptiveColor(light: .init(white: 0.16))
     static var roundBackground: Color
 
-    @AdaptiveColor(light: .init(white: 0.3), dark: .white)
+    @AdaptiveColor(light: .white)
     static var project: Color
 
     @AdaptiveColor(light: Color(hex: 0xf39f18))
@@ -35,7 +24,7 @@ extension Color {
     @AdaptiveColor(light: .clockIcon)
     static var clockText: Color
 
-    @AdaptiveColor(light: .init(white: 0.7))
+    @AdaptiveColor(light: .init(white: 0.6))
     static var buildCount: Color
 
     @AdaptiveColor(light: Color(hex: 0x58a32a))

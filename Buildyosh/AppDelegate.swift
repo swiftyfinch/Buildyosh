@@ -13,14 +13,12 @@ import Watchdog
 // sfsymbols --symbol-name multiply.circle --font-size 18 --format pdf --font-weight black
 
 // TODO:
-// 1. Прыгает высота при переключении режимов
-// 2. Залипают кнопки
-// 3. Светлая тема так себе
+// 1. Залипают кнопки
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
-    private let watchdog = Watchdog(threshold: 0.4, strictMode: true)
+    private let watchdog = Watchdog(threshold: 0.4)
     private var windowManager: AnyObject?
     private var entryPoint: EntryPoint?
 

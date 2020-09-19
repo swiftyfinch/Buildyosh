@@ -55,7 +55,7 @@ final class Model: ObservableObject {
                 duration: duration
             )
             if isAboutShown {
-                newHeight = max(contentHeight, .minAboutHeight)
+                newHeight = .minAboutHeight
             } else {
                 newHeight = contentHeight
             }
