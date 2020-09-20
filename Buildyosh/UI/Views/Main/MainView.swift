@@ -9,21 +9,22 @@
 import SwiftUI
 
 struct MainView: View {
-
-    @EnvironmentObject private var model: Model
-    @EnvironmentObject private var dataSource: ProjectsDataSource
+    @EnvironmentObject private var store: Store<State, Action>
 
     var body: some View {
         VStack(spacing: 5) {
             Spacer().frame(height: 10)
             HStack {
-                Picker(selection: $dataSource.filterType, label: EmptyView()) {
+                Picker(selection: .init(get: {
+                    store.state.periodType
+                }, set: { periodType in
+                    store.send(.changePeriodType(periodType))
+                }), label: EmptyView()) {
                     Text("Today").tag(0)
                     Text("Yday").tag(1)
                     Text("Week").tag(2)
                     Text("All").tag(3)
                 }
-                .font(.time)
                 .pickerStyle(SegmentedPickerStyle())
                 .opacity(0.8)
             }
@@ -31,10 +32,10 @@ struct MainView: View {
             .frame(height: 20.0)
 
             Button(action: {
-                model.changeMode()
+                store.send(.changeMode)
             }) {
-                ProjectsSection(projects: model.projects,
-                                duration: model.duration)
+                ProjectsSection(projects: store.state.projects,
+                                duration: store.state.duration)
             }
             .buttonStyle(PlainButtonStyle())
 

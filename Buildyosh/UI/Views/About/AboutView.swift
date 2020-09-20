@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct AboutView: View {
-
-    @EnvironmentObject private var model: Model
+    @EnvironmentObject private var store: Store<State, Action>
 
     private let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 
@@ -89,6 +88,7 @@ struct AboutView: View {
                         }
                         .frame(width: 16, height: 16)
                         .modifier(RoundedEdge())
+                        .buttonStyle(PlainButtonStyle())
 
                         Button(action: {
                             let url = URL(string: "https://swiftyfinch.github.io/en#buildyosh")!
@@ -98,8 +98,9 @@ struct AboutView: View {
                         }
                         .frame(width: 16, height: 16)
                         .modifier(RoundedEdge())
+                        .buttonStyle(PlainButtonStyle())
                     }
-                }.buttonStyle(PlainButtonStyle())
+                }
             }
             Spacer()
         }

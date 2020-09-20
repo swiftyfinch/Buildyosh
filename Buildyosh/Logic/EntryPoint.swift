@@ -12,8 +12,9 @@ final class EntryPoint: ObservableObject {
 
     private let derivedDataURL = URL.derivedData
     private let storage = Storage()
+
+    private let store: Store<State, Action>
     private let xcodeLogManager: XcodeLogAsyncParser
-    private let dataSource: ProjectsDataSource
 
     private var running = false
     private let timerInterval = 60.0 / 4
@@ -21,10 +22,10 @@ final class EntryPoint: ObservableObject {
     @UserStorage("importProjectsDate")
     private var importProjectsDate: Date?
 
-    init(xcodeLogManager: XcodeLogAsyncParser,
-         dataSource: ProjectsDataSource) {
+    init(store: Store<State, Action>,
+         xcodeLogManager: XcodeLogAsyncParser) {
+        self.store = store
         self.xcodeLogManager = xcodeLogManager
-        self.dataSource = dataSource
     }
 
     func run() {
@@ -44,7 +45,7 @@ final class EntryPoint: ObservableObject {
                         guard let self = self else { return }
 
                         if let periods = self.storage.loadPeriods(relativeDate: today) {
-                            self.dataSource.save(periods: periods)
+                            self.store.send(.updatePeriods(periods: periods))
                             log(.info, "Scan new projects. Found: \(periods)")
                         } else {
                             log(.info, "Scan new projects.")

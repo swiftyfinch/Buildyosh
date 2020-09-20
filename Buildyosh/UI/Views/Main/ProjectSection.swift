@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct ProjectSection: View {
-
-    @EnvironmentObject private var model: Buildyosh.Model
+    @EnvironmentObject private var store: Store<State, Action>
 
     struct Model: Identifiable {
         var id: String { name }
@@ -28,7 +27,7 @@ struct ProjectSection: View {
                 .font(.project)
                 .foregroundColor(.project)
 
-            switch model.mode {
+            switch store.state.mode {
             case .time:
                 Image.clock
                     .foregroundColor(.clockIcon)

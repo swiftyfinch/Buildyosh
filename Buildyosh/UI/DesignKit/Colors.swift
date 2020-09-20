@@ -38,7 +38,7 @@ extension Color {
 
     // MARK: - About
 
-    @AdaptiveColor(light: .init(white: 0.2), dark: .init(white: 0.8))
+    @AdaptiveColor(light: .init(white: 0.16), dark: .init(white: 0.8))
     static var aboutOpenButton: Color
 
     @AdaptiveColor(light: .project, dark: .white)

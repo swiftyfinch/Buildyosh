@@ -14,8 +14,7 @@ private extension Int {
 }
 
 struct ProjectsSection: View {
-
-    @EnvironmentObject private var model: Model
+    @EnvironmentObject private var store: Store<State, Action>
 
     private let projects: [ProjectSection.Model]
     private let needShowDuration: Bool
@@ -55,11 +54,11 @@ struct ProjectsSection: View {
                 }
             }
             .modifier(RoundedEdge())
-            .frame(width: model.size.width - 40.0)
+            .frame(width: store.state.size.width - 40.0)
 
             DurationSection(duration: duration)
                 .padding(.top, 4.0)
-                .frame(width: model.size.width - 60.0)
+                .frame(width: store.state.size.width - 60.0)
                 .frame(height: needShowDuration ? nil : 0)
                 .changeVisibility(toHidden: !needShowDuration)
         }

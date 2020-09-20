@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ActivityIndicator: NSViewRepresentable {
 
-    @Binding private(set) var value: Double
+    private(set) var value: Double
 
     func makeNSView(context: Context) -> NSProgressIndicator {
         let progressIndicator = NSProgressIndicator()

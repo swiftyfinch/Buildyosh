@@ -18,25 +18,24 @@ import Watchdog
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
+    #if DEBUG
     private let watchdog = Watchdog(threshold: 0.4, strictMode: false)
-    private var windowManager: AnyObject?
+    #endif
+
     private var entryPoint: EntryPoint?
+    private var windowManager: AnyObject?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let xcodeLogManager = XcodeLogAsyncParser()
-        let dataSource = ProjectsDataSource(countFilter: ProjectsCountFilter(),
-                                            totalModifier: TotalModifier())
-        entryPoint = EntryPoint(xcodeLogManager: xcodeLogManager, dataSource: dataSource)
+        let store = Store(initialState: State(), reducer: Reducer().reduce)
+        let xcodeLogManager = XcodeLogAsyncParser(store: store)
+        entryPoint = EntryPoint(store: store, xcodeLogManager: xcodeLogManager)
 
-        let model = Model(manager: xcodeLogManager, dataSource: dataSource)
-        let contentView = ContentView()
-            .environmentObject(model)
-            .environmentObject(dataSource)
-
-        let windowManager = WindowManager(rootView: contentView, model: model)
-        windowManager.buildAndPresent()
+        let contentView = ContentView().environmentObject(store)
+        let windowManager = WindowManager(store: store, rootView: contentView)
         self.windowManager = windowManager
-        
-        entryPoint?.runRepeatedly()
+
+        windowManager.buildAndPresent { [weak self] in
+            self?.entryPoint?.runRepeatedly()
+        }
     }
 }

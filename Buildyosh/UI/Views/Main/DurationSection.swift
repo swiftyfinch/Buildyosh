@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct DurationSection: View {
-
-    @EnvironmentObject private var model: Buildyosh.Model
+    @EnvironmentObject private var store: Store<State, Action>
 
     struct Model {
         let totalDuration: String
@@ -23,7 +22,7 @@ struct DurationSection: View {
 
     var body: some View {
         HStack(spacing: 2) {
-            switch model.mode {
+            switch store.state.mode {
             case .time:
                 Image.clock
                     .foregroundColor(.averageClockIcon)

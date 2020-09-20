@@ -21,7 +21,7 @@ struct Period: Equatable {
     let type: PeriodType
     let projects: [Project]
 
-    init(date: Date,
+    init(date: Date = Date(),
          type: PeriodType,
          projects: [Project] = []) {
         self.date = date

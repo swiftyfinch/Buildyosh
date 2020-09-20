@@ -9,21 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject private var model: Model
+    @EnvironmentObject private var store: Store<State, Action>
 
     var body: some View {
-        VStack {
-            if model.needShowLoader {
+        return VStack {
+            if !store.state.isLoaded {
                 Spacer()
-                ActivityIndicator(value: $model.progress)
+                ActivityIndicator(value: store.state.progress)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
                     .padding(.bottom, -5)
-                Text(model.progress.outputPercent())
+                Text(store.state.progress.outputPercent())
                 Spacer()
             } else {
                 VStack {
-                    if model.isAboutShown {
+                    if store.state.isAboutShown {
                         AboutView()
                     } else {
                         MainView()
@@ -32,9 +32,9 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            model.isAboutShown.toggle()
+                            store.send(.toggleAbout)
                         }) {
-                            if model.isAboutShown {
+                            if store.state.isAboutShown {
                                 Image.questionFill
                             } else {
                                 Image.question
@@ -49,6 +49,7 @@ struct ContentView: View {
                 }
             }
         }
-        .frame(width: model.size.width, height: model.size.height)
+        .frame(width: store.state.size.width,
+               height: store.state.size.height)
     }
 }
