@@ -18,7 +18,7 @@ import Watchdog
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
-    private let watchdog = Watchdog(threshold: 0.4)
+    private let watchdog = Watchdog(threshold: 0.4, strictMode: false)
     private var windowManager: AnyObject?
     private var entryPoint: EntryPoint?
 

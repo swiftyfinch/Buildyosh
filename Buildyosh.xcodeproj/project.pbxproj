@@ -260,6 +260,58 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		41ADF0F525165F0800D2AF1F /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				41138D8D24C9E5C100522042 /* Double+Output.swift */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
+		41ADF0F625165F1400D2AF1F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				41138D8F24C9E5F300522042 /* ActivityIndicator.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		41ADF0F725165F2B00D2AF1F /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				41138D9324C9EA6500522042 /* WindowManager.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		41ADF0F825165F3900D2AF1F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				41ADF0FA25165F4800D2AF1F /* About */,
+				41ADF0F925165F3E00D2AF1F /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		41ADF0F925165F3E00D2AF1F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				410B4A0C24DF111300922F8D /* ProjectsSection.swift */,
+				41138D9124C9E66500522042 /* ProjectSection.swift */,
+				418E627824CDDE5500EEFE9A /* DurationSection.swift */,
+				417D7F9124DFCB67007A4526 /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		41ADF0FA25165F4800D2AF1F /* About */ = {
+			isa = PBXGroup;
+			children = (
+				410B4A1024DF14A400922F8D /* AboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		41BD50E324FBA60200703A8D /* DesignKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,17 +341,13 @@
 		41FA950424BF65C000F124DD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4189169924A518370084F7AE /* ContentView.swift */,
+				41ADF0F825165F3900D2AF1F /* Views */,
+				41ADF0F725165F2B00D2AF1F /* Window */,
+				41ADF0F625165F1400D2AF1F /* Components */,
+				41ADF0F525165F0800D2AF1F /* Output */,
 				41BD50E324FBA60200703A8D /* DesignKit */,
 				410B4A1424DF1DAE00922F8D /* Modifiers */,
-				4189169924A518370084F7AE /* ContentView.swift */,
-				41138D8D24C9E5C100522042 /* Double+Output.swift */,
-				41138D8F24C9E5F300522042 /* ActivityIndicator.swift */,
-				410B4A0C24DF111300922F8D /* ProjectsSection.swift */,
-				41138D9124C9E66500522042 /* ProjectSection.swift */,
-				41138D9324C9EA6500522042 /* WindowManager.swift */,
-				418E627824CDDE5500EEFE9A /* DurationSection.swift */,
-				417D7F9124DFCB67007A4526 /* MainView.swift */,
-				410B4A1024DF14A400922F8D /* AboutView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";

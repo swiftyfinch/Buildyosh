@@ -25,6 +25,10 @@ final class WindowManager<Content: View> {
 
     func buildAndPresent() {
         statusBarItem = buildStatusBarItem()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            self?.showMain()
+        }
     }
 
     private func buildStatusBarItem() -> NSStatusItem {
@@ -51,18 +55,22 @@ final class WindowManager<Content: View> {
             menu.items = [item]
             statusBarItem?.showMenu(menu)
         } else {
-            let menu = NSMenu()
-            let item = NSMenuItem()
-            item.view = NSHostingView(rootView: rootView)
-            item.view?.frame = CGRect(origin: .zero, size: model.size)
-            menu.items = [item]
-
-            model.$size.sink { size in
-                item.view?.frame.size = size
-            }.store(in: &cancellables)
-
-            statusBarItem?.showMenu(menu)
+            showMain()
         }
+    }
+
+    private func showMain() {
+        let menu = NSMenu()
+        let item = NSMenuItem()
+        item.view = NSHostingView(rootView: rootView)
+        item.view?.frame = CGRect(origin: .zero, size: model.size)
+        menu.items = [item]
+
+        model.$size.sink { size in
+            item.view?.frame.size = size
+        }.store(in: &cancellables)
+
+        statusBarItem?.showMenu(menu)
     }
 
     @objc private func quit() {
