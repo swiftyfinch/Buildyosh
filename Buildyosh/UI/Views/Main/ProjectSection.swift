@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ProjectSection: View {
-    @EnvironmentObject private var store: Store<State, Action>
+    @EnvironmentObject private var store: Store<MainState, Action>
 
     struct Model: Identifiable {
         var id: String { name }

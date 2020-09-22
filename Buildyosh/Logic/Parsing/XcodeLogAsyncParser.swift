@@ -10,9 +10,9 @@ import SwiftUI
 
 final class XcodeLogAsyncParser: ObservableObject {
 
-    private let store: Store<State, Action>
+    private let store: Store<MainState, Action>
 
-    init(store: Store<State, Action>) {
+    init(store: Store<MainState, Action>) {
         self.store = store
     }
 

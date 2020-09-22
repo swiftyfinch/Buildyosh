@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AboutView: View {
-    @EnvironmentObject private var store: Store<State, Action>
+    @EnvironmentObject private var store: Store<MainState, Action>
 
     private let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 

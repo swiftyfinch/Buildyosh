@@ -12,13 +12,13 @@ import Combine
 
 final class WindowManager<Content: View>: NSObject, NSMenuDelegate {
 
-    private let store: Store<State, Action>
+    private let store: Store<MainState, Action>
     private let rootView: Content
 
     private var statusBarItem: NSStatusItem?
     private var cancellables: Set<AnyCancellable> = []
 
-    init(store: Store<State, Action>, rootView: Content) {
+    init(store: Store<MainState, Action>, rootView: Content) {
         self.store = store
         self.rootView = rootView
     }

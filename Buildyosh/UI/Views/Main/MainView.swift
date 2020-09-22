@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject private var store: Store<State, Action>
+    @EnvironmentObject private var store: Store<MainState, Action>
 
     var body: some View {
         VStack(spacing: 5) {

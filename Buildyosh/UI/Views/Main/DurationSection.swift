@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct DurationSection: View {
-    @EnvironmentObject private var store: Store<State, Action>
+    @EnvironmentObject private var store: Store<MainState, Action>
 
     struct Model {
         let totalDuration: String

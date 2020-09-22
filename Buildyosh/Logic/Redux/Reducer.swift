@@ -15,7 +15,7 @@ private extension CGFloat {
 }
 
 final class Reducer {
-    func reduce(state: State, action: Action) -> State {
+    func reduce(state: MainState, action: Action) -> MainState {
         var state = state
         switch action {
         case .beginLoading:
@@ -36,10 +36,10 @@ final class Reducer {
             state = updateContent(state: state)
             state = updateSize(state: state)
         case .changeMode:
-            if let newMode = State.Mode(rawValue: state.mode.rawValue + 1) {
+            if let newMode = MainState.Mode(rawValue: state.mode.rawValue + 1) {
                 state.mode = newMode
             } else {
-                state.mode = State.Mode.allCases[0]
+                state.mode = MainState.Mode.allCases[0]
             }
         case .toggleAbout:
             state.isAboutShown.toggle()
@@ -48,7 +48,7 @@ final class Reducer {
         return state
     }
 
-    private func updateContent(state: State) -> State {
+    private func updateContent(state: MainState) -> MainState {
         var state = state
         let builder = ProjectsBuilder()
         let info = builder.build(fromPeriods: state.periods,
@@ -58,7 +58,7 @@ final class Reducer {
         return state
     }
 
-    private func updateSize(state: State) -> State {
+    private func updateSize(state: MainState) -> MainState {
         var state = state
         var newHeight: CGFloat
         if !state.isLoaded && state.projects.isEmpty {

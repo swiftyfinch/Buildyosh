@@ -14,7 +14,7 @@ private extension Int {
 }
 
 struct ProjectsSection: View {
-    @EnvironmentObject private var store: Store<State, Action>
+    @EnvironmentObject private var store: Store<MainState, Action>
 
     private let projects: [ProjectSection.Model]
     private let needShowDuration: Bool

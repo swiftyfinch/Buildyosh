@@ -1,5 +1,5 @@
 //
-//  State.swift
+//  MainState.swift
 //  Buildyosh
 //
 //  Created by Vyacheslav Khorkov on 20.09.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct State {
+struct MainState {
     enum Mode: Int, CaseIterable {
         case time
         case count

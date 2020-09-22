@@ -26,7 +26,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var windowManager: AnyObject?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let store = Store(initialState: State(), reducer: Reducer().reduce)
+        let store = Store(initialState: MainState(), reducer: Reducer().reduce)
         let xcodeLogManager = XcodeLogAsyncParser(store: store)
         entryPoint = EntryPoint(store: store, xcodeLogManager: xcodeLogManager)
 

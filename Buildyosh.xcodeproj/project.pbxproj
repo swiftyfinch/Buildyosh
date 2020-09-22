@@ -32,7 +32,7 @@
 		417D7F9024DFC030007A4526 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D7F8F24DFC030007A4526 /* Color+Hex.swift */; };
 		417D7F9224DFCB67007A4526 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D7F9124DFCB67007A4526 /* MainView.swift */; };
 		4183D37925177D0300E9B32F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4183D37825177D0300E9B32F /* Store.swift */; };
-		4183D37B2517816900E9B32F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4183D37A2517816900E9B32F /* State.swift */; };
+		4183D37B2517816900E9B32F /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4183D37A2517816900E9B32F /* MainState.swift */; };
 		4183D37D251781AC00E9B32F /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4183D37C251781AC00E9B32F /* Action.swift */; };
 		4183D3802517BF1E00E9B32F /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4183D37F2517BF1E00E9B32F /* Reducer.swift */; };
 		4189169824A518370084F7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4189169724A518370084F7AE /* AppDelegate.swift */; };
@@ -113,7 +113,7 @@
 		417D7F8F24DFC030007A4526 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		417D7F9124DFCB67007A4526 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4183D37825177D0300E9B32F /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		4183D37A2517816900E9B32F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		4183D37A2517816900E9B32F /* MainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
 		4183D37C251781AC00E9B32F /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		4183D37F2517BF1E00E9B32F /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		4189169424A518370084F7AE /* Buildyosh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buildyosh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				4183D37825177D0300E9B32F /* Store.swift */,
-				4183D37A2517816900E9B32F /* State.swift */,
+				4183D37A2517816900E9B32F /* MainState.swift */,
 				4183D37C251781AC00E9B32F /* Action.swift */,
 				4183D37F2517BF1E00E9B32F /* Reducer.swift */,
 			);
@@ -538,7 +538,7 @@
 				412C99B124CB3DAE009B34E1 /* Logger.swift in Sources */,
 				4116B95A24C42391001629C6 /* Storage+Project.swift in Sources */,
 				418E627924CDDE5500EEFE9A /* DurationSection.swift in Sources */,
-				4183D37B2517816900E9B32F /* State.swift in Sources */,
+				4183D37B2517816900E9B32F /* MainState.swift in Sources */,
 				41138D9024C9E5F300522042 /* ActivityIndicator.swift in Sources */,
 				41BEAA0C24C1F50400FFC41C /* db.xcdatamodeld in Sources */,
 				41F02C8D24E30A4000C8D7AC /* UserStorage.swift in Sources */,

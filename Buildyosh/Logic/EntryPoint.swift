@@ -13,7 +13,7 @@ final class EntryPoint: ObservableObject {
     private let derivedDataURL = URL.derivedData
     private let storage = Storage()
 
-    private let store: Store<State, Action>
+    private let store: Store<MainState, Action>
     private let xcodeLogManager: XcodeLogAsyncParser
 
     private var running = false
@@ -22,7 +22,7 @@ final class EntryPoint: ObservableObject {
     @UserStorage("importProjectsDate")
     private var importProjectsDate: Date?
 
-    init(store: Store<State, Action>,
+    init(store: Store<MainState, Action>,
          xcodeLogManager: XcodeLogAsyncParser) {
         self.store = store
         self.xcodeLogManager = xcodeLogManager
