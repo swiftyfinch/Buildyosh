@@ -12,9 +12,6 @@ import Watchdog
 
 // sfsymbols --symbol-name multiply.circle --font-size 18 --format pdf --font-weight black
 
-// TODO:
-// 1. Залипают кнопки
-
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 

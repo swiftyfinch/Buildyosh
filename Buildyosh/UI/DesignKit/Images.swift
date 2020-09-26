@@ -13,7 +13,7 @@ extension Image {
         Image("clock.fill")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 16, height: 16)
+            .frame(width: 17, height: 17)
     }
 
     static var tray: some View {
@@ -27,7 +27,7 @@ extension Image {
         Image("hammer")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 16, height: 16)
+            .frame(width: 17, height: 17)
     }
 
     static var success: some View {

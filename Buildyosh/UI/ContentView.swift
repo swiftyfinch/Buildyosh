@@ -16,40 +16,39 @@ struct ContentView: View {
             GeometryReader { _ in
                 Color.black.opacity(0.01)
             }
-            VStack {
+
+            VStack(spacing: 0) {
+                Spacer()
                 if !store.state.isLoaded {
-                    Spacer()
                     ActivityIndicator(value: store.state.progress)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         .padding(.bottom, -5)
                     Text(store.state.progress.outputPercent())
-                    Spacer()
                 } else {
-                    VStack {
-                        if store.state.isAboutShown {
-                            AboutView()
-                        } else {
-                            MainView()
-                        }
-
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                store.send(.toggleAbout)
-                            }) {
-                                if store.state.isAboutShown {
-                                    Image.questionFill
-                                } else {
-                                    Image.question
-                                }
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(.trailing, 3)
-                        }
-                        .padding(.bottom, 19)
-                        .frame(height: 0)
+                    if store.state.isAboutShown {
+                        AboutView()
+                    } else {
+                        MainView()
                     }
+                }
+                Spacer()
+            }
+
+            if store.state.isLoaded {
+                GeometryReader { proxy in
+                    Button(action: {
+                        store.send(.toggleAbout)
+                    }) {
+                        if store.state.isAboutShown {
+                            Image.questionFill
+                        } else {
+                            Image.question
+                        }
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .position(x: proxy.size.width - 12,
+                              y: proxy.size.height - 8)
                 }
             }
         }

@@ -11,7 +11,7 @@ import Foundation
 private extension CGFloat {
     static let width: CGFloat = 280
     static let loaderHeight: CGFloat = 60
-    static let minAboutHeight: CGFloat = 180
+    static let minAboutHeight: CGFloat = 179
 }
 
 final class Reducer {

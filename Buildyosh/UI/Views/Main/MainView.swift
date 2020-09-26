@@ -13,7 +13,6 @@ struct MainView: View {
 
     var body: some View {
         VStack(spacing: 5) {
-            Spacer().frame(height: 5)
             Picker(selection: .init(get: {
                 store.state.periodType
             }, set: { periodType in
@@ -26,13 +25,10 @@ struct MainView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .opacity(0.8)
-            .frame(width: 100)
-            .frame(height: 20.0)
+            .frame(width: 100, height: 20)
 
             ProjectsSection(projects: store.state.projects,
                             duration: store.state.duration)
-
-            Spacer()
         }
     }
 }
