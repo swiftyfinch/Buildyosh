@@ -85,9 +85,9 @@ struct AboutView: View {
                             NSWorkspace.shared.open(url)
                         }) {
                             Image.twitter
+                                .frame(width: 16, height: 16)
+                                .modifier(RoundedEdge())
                         }
-                        .frame(width: 16, height: 16)
-                        .modifier(RoundedEdge())
                         .buttonStyle(PlainButtonStyle())
 
                         Button(action: {
@@ -95,9 +95,9 @@ struct AboutView: View {
                             NSWorkspace.shared.open(url)
                         }) {
                             Image.blog
+                                .frame(width: 16, height: 16)
+                                .modifier(RoundedEdge())
                         }
-                        .frame(width: 16, height: 16)
-                        .modifier(RoundedEdge())
                         .buttonStyle(PlainButtonStyle())
                     }
                 }

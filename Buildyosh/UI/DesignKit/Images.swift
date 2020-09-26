@@ -42,6 +42,7 @@ extension Image {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 19, height: 19)
+            .foregroundColor(.aboutOpenButton)
     }
 
     static var questionFill: some View {
@@ -49,6 +50,7 @@ extension Image {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 19, height: 19)
+            .foregroundColor(.aboutOpenButton)
     }
 
     static var close: some View {
@@ -63,7 +65,6 @@ extension Image {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 18, height: 18)
-            .foregroundColor(.aboutTwitter)
     }
 
     static var blog: some View {

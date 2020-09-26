@@ -13,31 +13,24 @@ struct MainView: View {
 
     var body: some View {
         VStack(spacing: 5) {
-            Spacer().frame(height: 10)
-            HStack {
-                Picker(selection: .init(get: {
-                    store.state.periodType
-                }, set: { periodType in
-                    store.send(.changePeriodType(periodType))
-                }), label: EmptyView()) {
-                    Text("Today").tag(0)
-                    Text("Yday").tag(1)
-                    Text("Week").tag(2)
-                    Text("All").tag(3)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .opacity(0.8)
+            Spacer().frame(height: 5)
+            Picker(selection: .init(get: {
+                store.state.periodType
+            }, set: { periodType in
+                store.send(.changePeriodType(periodType))
+            }), label: EmptyView()) {
+                Text("Today").tag(0)
+                Text("Yday").tag(1)
+                Text("Week").tag(2)
+                Text("All").tag(3)
             }
+            .pickerStyle(SegmentedPickerStyle())
+            .opacity(0.8)
             .frame(width: 100)
             .frame(height: 20.0)
 
-            Button(action: {
-                store.send(.changeMode)
-            }) {
-                ProjectsSection(projects: store.state.projects,
-                                duration: store.state.duration)
-            }
-            .buttonStyle(PlainButtonStyle())
+            ProjectsSection(projects: store.state.projects,
+                            duration: store.state.duration)
 
             Spacer()
         }

@@ -26,6 +26,7 @@
 		411C76BF24B99BF2004259AC /* XcodeLogParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C76BE24B99BF2004259AC /* XcodeLogParser.swift */; };
 		412C99B124CB3DAE009B34E1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412C99B024CB3DAE009B34E1 /* Logger.swift */; };
 		412FC80924EAFCB8006B6FCD /* Date+Periods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412FC80824EAFCB8006B6FCD /* Date+Periods.swift */; };
+		4152904A251F09BB006ED5D1 /* MenuHostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41529049251F09BB006ED5D1 /* MenuHostingView.swift */; };
 		4159632124A8736600B42E60 /* XcodeLogAsyncParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159632024A8736600B42E60 /* XcodeLogAsyncParser.swift */; };
 		4159632324A8963600B42E60 /* ProjectsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159632224A8963600B42E60 /* ProjectsBuilder.swift */; };
 		416B2A3E24B9C53F00043110 /* EasyScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416B2A3D24B9C53F00043110 /* EasyScanner.swift */; };
@@ -107,6 +108,7 @@
 		412FC80824EAFCB8006B6FCD /* Date+Periods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Periods.swift"; sourceTree = "<group>"; };
 		41527CE124ACA7EE0057A35F /* BuildyoshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuildyoshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41527CE524ACA7EE0057A35F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41529049251F09BB006ED5D1 /* MenuHostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHostingView.swift; sourceTree = "<group>"; };
 		4159632024A8736600B42E60 /* XcodeLogAsyncParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeLogAsyncParser.swift; sourceTree = "<group>"; };
 		4159632224A8963600B42E60 /* ProjectsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsBuilder.swift; sourceTree = "<group>"; };
 		416B2A3D24B9C53F00043110 /* EasyScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyScanner.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				41138D9324C9EA6500522042 /* WindowManager.swift */,
+				41529049251F09BB006ED5D1 /* MenuHostingView.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				41BD50ED24FBB59000703A8D /* Project.swift in Sources */,
 				4159632124A8736600B42E60 /* XcodeLogAsyncParser.swift in Sources */,
 				412C99B124CB3DAE009B34E1 /* Logger.swift in Sources */,
+				4152904A251F09BB006ED5D1 /* MenuHostingView.swift in Sources */,
 				4116B95A24C42391001629C6 /* Storage+Project.swift in Sources */,
 				418E627924CDDE5500EEFE9A /* DurationSection.swift in Sources */,
 				4183D37B2517816900E9B32F /* MainState.swift in Sources */,
@@ -764,7 +768,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.6.0b;
+				MARKETING_VERSION = 0.7.0b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -791,7 +795,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.6.0b;
+				MARKETING_VERSION = 0.7.0b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";

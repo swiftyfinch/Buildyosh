@@ -49,6 +49,5 @@ struct DurationSection: View {
                     .foregroundColor(.successRate)
             }
         }
-        .modifier(RoundedEdge())
     }
 }

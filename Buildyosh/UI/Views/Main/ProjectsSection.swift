@@ -37,30 +37,35 @@ struct ProjectsSection: View {
 
     var body: some View {
         VStack(spacing: 1) {
-            VStack(spacing: 0) {
-                if projects.isEmpty {
-                    HStack(spacing: 5) {
-                        Image.tray
-                        Text("Empty")
-                            .font(.emptyProject)
-                    }
-                    .foregroundColor(.project)
-                    .frame(height: 15)
-                } else {
-                    ForEach(projects) { project in
-                        ProjectSection(project: project)
-                            .frame(height: 17.0)
+            Button {
+                store.send(.changeMode)
+            } label: {
+                VStack(spacing: 0) {
+                    if projects.isEmpty {
+                        HStack(spacing: 5) {
+                            Image.tray
+                            Text("Empty")
+                                .font(.emptyProject)
+                        }
+                        .foregroundColor(.project)
+                        .frame(height: 15)
+                    } else {
+                        ForEach(projects) { project in
+                            ProjectSection(project: project)
+                                .frame(height: 17.0)
+                        }
                     }
                 }
-            }
-            .modifier(RoundedEdge())
-            .frame(width: store.state.size.width - 40.0)
+                .modifier(RoundedEdge())
 
-            DurationSection(duration: duration)
-                .padding(.top, 4.0)
-                .frame(width: store.state.size.width - 60.0)
-                .frame(height: needShowDuration ? nil : 0)
-                .changeVisibility(toHidden: !needShowDuration)
+                if needShowDuration {
+                    DurationSection(duration: duration)
+                        .padding(.top, 4.0)
+                        .modifier(RoundedEdge())
+                }
+            }
+            .buttonStyle(PlainButtonStyle())
+            .frame(width: store.state.size.width - 40.0)
         }
         .padding(.leading, 8)
         .padding(.trailing, 8)
@@ -69,6 +74,6 @@ struct ProjectsSection: View {
     static func height(projects: [Project], duration: Duration) -> CGFloat {
         let count = CGFloat(max(1, projects.count))
         let durationSection: CGFloat = duration.days > 1 ? 17 + 16 + 4 : 0
-        return count * 17 + 16 + durationSection + 54
+        return count * 17 + 16 + durationSection + 44
     }
 }

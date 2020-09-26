@@ -15,12 +15,15 @@ final class WindowManager<Content: View>: NSObject, NSMenuDelegate {
     private let store: Store<MainState, Action>
     private let rootView: Content
 
+    private var hostingView: MenuHostingView<Content>
     private var statusBarItem: NSStatusItem?
     private var cancellables: Set<AnyCancellable> = []
 
     init(store: Store<MainState, Action>, rootView: Content) {
         self.store = store
         self.rootView = rootView
+
+        self.hostingView = MenuHostingView(rootView: rootView)
     }
 
     func buildAndPresent(completion: @escaping () -> Void) {
@@ -61,7 +64,7 @@ final class WindowManager<Content: View>: NSObject, NSMenuDelegate {
 
     private func showMain() {
         let item = NSMenuItem()
-        item.view = NSHostingView(rootView: rootView)
+        item.view = hostingView
         item.view?.frame = CGRect(origin: .zero, size: store.state.size)
 
         store.$state.sink { state in
