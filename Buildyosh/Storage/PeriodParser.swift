@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Periods {
+struct Periods: Equatable {
     let today: Period
     let yday: Period
     let week: Period

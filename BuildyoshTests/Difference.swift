@@ -27,7 +27,7 @@ private struct Differ {
         return buildLineContents(lines: lines)
     }
 
-    fileprivate func diffLines<T>(_ expected: T, _ received: T, level: Int = 0) -> [Line] {
+    private func diffLines<T>(_ expected: T, _ received: T, level: Int = 0) -> [Line] {
         let expectedMirror = Mirror(reflecting: expected)
         let receivedMirror = Mirror(reflecting: received)
 
@@ -112,7 +112,7 @@ private struct Differ {
     }
 
 
-    fileprivate func handleChildless<T>(
+    private func handleChildless<T>(
         _ expected: T,
         _ expectedMirror: Mirror,
         _ received: T,
@@ -251,7 +251,7 @@ private struct Line {
     }
 }
 
-fileprivate extension String {
+private extension String {
     init<T>(dumping object: T) {
         self.init()
         dump(object, to: &self)
@@ -274,7 +274,7 @@ private func enumLabelFromFirstChild(_ mirror: Mirror) -> String? {
     }
 }
 
-fileprivate extension Mirror {
+private extension Mirror {
     func displayStyleDescriptor(index: Int) -> String {
         switch self.displayStyle {
         case .enum: return "Enum "

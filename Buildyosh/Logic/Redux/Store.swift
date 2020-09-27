@@ -11,7 +11,7 @@ import Combine
 final class Store<State, Action>: ObservableObject {
     @Published private(set) var state: State
 
-    typealias Reducer<State, Action> = (State, Action) -> State
+    typealias Reducer<State, Action> = (inout State, Action) -> Void
     private let reducer: Reducer<State, Action>
 
     init(initialState: State, reducer: @escaping Reducer<State, Action>) {
@@ -20,6 +20,6 @@ final class Store<State, Action>: ObservableObject {
     }
 
     func send(_ action: Action) {
-        state = reducer(state, action)
+        reducer(&state, action)
     }
 }

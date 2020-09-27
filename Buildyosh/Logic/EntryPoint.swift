@@ -41,15 +41,14 @@ final class EntryPoint: ObservableObject {
                     guard let self = self else { return }
 
                     let today = Date()
-                    self.storage.saveProjects(projectLogs, relativeDate: today) { [weak self] in
-                        guard let self = self else { return }
-
-                        if let periods = self.storage.loadPeriods(relativeDate: today) {
-                            self.store.send(.updatePeriods(periods: periods))
-                            log(.info, "Scan new projects. Found: \(periods)")
-                        } else {
-                            log(.info, "Scan new projects.")
+                    if projectLogs.isEmpty {
+                        self.storage.saveProjects(projectLogs, relativeDate: today) { [weak self] in
+                            guard let self = self else { return }
+                            self.loadProjects(relativeDate: today)
+                            self.running = false
                         }
+                    } else {
+                        self.loadProjects(relativeDate: today)
                         self.running = false
                     }
                 }
@@ -73,6 +72,15 @@ final class EntryPoint: ObservableObject {
         let filteredLogs = filterProjects(logs)
         log(.debug, dump(filteredLogs).debugDescription)
         xcodeLogManager.asyncReadProjectsLogs(logs: filteredLogs, completion: completion)
+    }
+
+    private func loadProjects(relativeDate: Date) {
+        if let periods = storage.loadPeriods(relativeDate: relativeDate) {
+            self.store.send(.updatePeriods(periods: periods))
+            log(.info, "Scan new projects. Found: \(periods)")
+        } else {
+            log(.info, "Scan new projects.")
+        }
     }
 }
 

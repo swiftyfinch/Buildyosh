@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct AboutView: View {
     @EnvironmentObject private var store: Store<MainState, Action>
@@ -15,20 +16,30 @@ struct AboutView: View {
 
     var body: some View {
         VStack(spacing: 4) {
-            HStack(spacing: 5) {
-                Image("gear")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 17, height: 17)
-                    .foregroundColor(.aboutAppIcon)
-                Text("Buildyosh")
-                    .font(.aboutTitle)
-                    .foregroundColor(.aboutTitle)
-                Text("v\(appVersion)")
-                    .font(.aboutVersion)
-                    .foregroundColor(.aboutVersion)
+            Button(action: {
+                let utterance = AVSpeechUtterance(string: "Buildyosh")
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                utterance.rate = 0.4
+
+                let synthesizer = AVSpeechSynthesizer()
+                synthesizer.speak(utterance)
+            }) {
+                HStack(spacing: 5) {
+                    Image("gear")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 17, height: 17)
+                        .foregroundColor(.aboutAppIcon)
+                    Text("Buildyosh")
+                        .font(.aboutTitle)
+                        .foregroundColor(.aboutTitle)
+                    Text("v\(appVersion)")
+                        .font(.aboutVersion)
+                        .foregroundColor(.aboutVersion)
+                }
+                .modifier(RoundedEdge())
             }
-            .modifier(RoundedEdge())
+            .buttonStyle(PlainButtonStyle())
 
             VStack(spacing: 0) {
                 HStack(spacing: 2) {

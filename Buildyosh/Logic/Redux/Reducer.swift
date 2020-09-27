@@ -15,8 +15,7 @@ private extension CGFloat {
 }
 
 final class Reducer {
-    func reduce(state: MainState, action: Action) -> MainState {
-        var state = state
+    func reduce(state: inout MainState, action: Action) {
         switch action {
         case .beginLoading:
             state.progress = 0
@@ -45,7 +44,6 @@ final class Reducer {
             state.isAboutShown.toggle()
             state = updateSize(state: state)
         }
-        return state
     }
 
     private func updateContent(state: MainState) -> MainState {

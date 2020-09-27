@@ -18,7 +18,6 @@
 		41138D9424C9EA6500522042 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41138D9324C9EA6500522042 /* WindowManager.swift */; };
 		4116992F24F244E1004293DC /* PeriodParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116992E24F244E1004293DC /* PeriodParser.swift */; };
 		4116993124F2491B004293DC /* StoragePeriodsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116993024F2491B004293DC /* StoragePeriodsTests.swift */; };
-		4116993324F2503C004293DC /* Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116993224F2503C004293DC /* Difference.swift */; };
 		4116993524F28069004293DC /* PeriodUnion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116993424F28069004293DC /* PeriodUnion.swift */; };
 		4116B95824C41DD8001629C6 /* DBPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116B95724C41DD8001629C6 /* DBPeriod.swift */; };
 		4116B95A24C42391001629C6 /* Storage+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116B95924C42391001629C6 /* Storage+Project.swift */; };
@@ -74,6 +73,7 @@
 		41FC072A24BAE60800C16C94 /* DispatchQueue+Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC072924BAE60800C16C94 /* DispatchQueue+Main.swift */; };
 		41FC072C24BAE89100C16C94 /* Date+InRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC072B24BAE89100C16C94 /* Date+InRange.swift */; };
 		41FC073124BAEC2400C16C94 /* ProjectsCountFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC073024BAEC2400C16C94 /* ProjectsCountFilter.swift */; };
+		41FD45902520861D005302B1 /* Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116993224F2503C004293DC /* Difference.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -511,7 +511,6 @@
 				41BD50F424FBB9E500703A8D /* PeriodUnion.swift in Sources */,
 				41BD50F024FBB5A600703A8D /* Date+InRange.swift in Sources */,
 				41BD50EA24FBB56F00703A8D /* Period.swift in Sources */,
-				4116993324F2503C004293DC /* Difference.swift in Sources */,
 				41BD50E624FBB53E00703A8D /* PeriodParser.swift in Sources */,
 				41BD50F324FBB81200703A8D /* PeriodUnionTests.swift in Sources */,
 				41BD50E524FBA7AA00703A8D /* XCTAssertEqual.swift in Sources */,
@@ -519,6 +518,7 @@
 				41BD50EF24FBB59C00703A8D /* Date+Int.swift in Sources */,
 				41BD50EE24FBB59900703A8D /* Project.swift in Sources */,
 				41BD50F124FBB5B100703A8D /* Date+Periods.swift in Sources */,
+				41FD45902520861D005302B1 /* Difference.swift in Sources */,
 				4116993124F2491B004293DC /* StoragePeriodsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -768,7 +768,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.7.1b;
+				MARKETING_VERSION = 0.7.2b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -795,7 +795,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.7.1b;
+				MARKETING_VERSION = 0.7.2b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
