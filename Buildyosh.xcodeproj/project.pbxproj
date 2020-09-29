@@ -25,6 +25,11 @@
 		411C76BF24B99BF2004259AC /* XcodeLogParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C76BE24B99BF2004259AC /* XcodeLogParser.swift */; };
 		412C99B124CB3DAE009B34E1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412C99B024CB3DAE009B34E1 /* Logger.swift */; };
 		412FC80924EAFCB8006B6FCD /* Date+Periods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412FC80824EAFCB8006B6FCD /* Date+Periods.swift */; };
+		414F53EA2520CA7F00DB600E /* GumroadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F53E92520CA7F00DB600E /* GumroadService.swift */; };
+		414F53ED2520E2D200DB600E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F53EC2520E2D200DB600E /* OnboardingView.swift */; };
+		414F53F02523886D00DB600E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 414F53EF2523886D00DB600E /* KeychainAccess */; };
+		414F53F225238E9600DB600E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F53F125238E9600DB600E /* KeychainService.swift */; };
+		414F53F425238FD400DB600E /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F53F325238FD400DB600E /* ButtonModifier.swift */; };
 		4152904A251F09BB006ED5D1 /* MenuHostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41529049251F09BB006ED5D1 /* MenuHostingView.swift */; };
 		4159632124A8736600B42E60 /* XcodeLogAsyncParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159632024A8736600B42E60 /* XcodeLogAsyncParser.swift */; };
 		4159632324A8963600B42E60 /* ProjectsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159632224A8963600B42E60 /* ProjectsBuilder.swift */; };
@@ -106,6 +111,10 @@
 		411C76BE24B99BF2004259AC /* XcodeLogParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeLogParser.swift; sourceTree = "<group>"; };
 		412C99B024CB3DAE009B34E1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		412FC80824EAFCB8006B6FCD /* Date+Periods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Periods.swift"; sourceTree = "<group>"; };
+		414F53E92520CA7F00DB600E /* GumroadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GumroadService.swift; sourceTree = "<group>"; };
+		414F53EC2520E2D200DB600E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		414F53F125238E9600DB600E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		414F53F325238FD400DB600E /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
 		41527CE124ACA7EE0057A35F /* BuildyoshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuildyoshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41527CE524ACA7EE0057A35F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41529049251F09BB006ED5D1 /* MenuHostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHostingView.swift; sourceTree = "<group>"; };
@@ -162,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				414F53F02523886D00DB600E /* KeychainAccess in Frameworks */,
 				418916AC24A51E8C0084F7AE /* Gzip in Frameworks */,
 				41FB1A1624A527B600F4678C /* CryptoSwift in Frameworks */,
 				41ADF0F22513A65000D2AF1F /* Watchdog in Frameworks */,
@@ -176,6 +186,7 @@
 			children = (
 				410B4A1524DF1DB700922F8D /* RoundedEdge.swift */,
 				410B4A0E24DF137300922F8D /* View+Hidden.swift */,
+				414F53F325238FD400DB600E /* ButtonModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -200,6 +211,22 @@
 				41F02C8C24E30A4000C8D7AC /* UserStorage.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		414F53E82520CA6F00DB600E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				414F53E92520CA7F00DB600E /* GumroadService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		414F53EB2520E2BF00DB600E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				414F53EC2520E2D200DB600E /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		41527CE224ACA7EE0057A35F /* BuildyoshTests */ = {
@@ -272,6 +299,7 @@
 		418E627724CDDE2700EEFE9A /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				414F53F125238E9600DB600E /* KeychainService.swift */,
 				4159632224A8963600B42E60 /* ProjectsBuilder.swift */,
 				41FC073024BAEC2400C16C94 /* ProjectsCountFilter.swift */,
 				418E627524CDDE0E00EEFE9A /* TotalModifier.swift */,
@@ -307,6 +335,7 @@
 		41ADF0F825165F3900D2AF1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				414F53EB2520E2BF00DB600E /* Onboarding */,
 				41ADF0FA25165F4800D2AF1F /* About */,
 				41ADF0F925165F3E00D2AF1F /* Main */,
 			);
@@ -390,6 +419,7 @@
 		41FC072D24BAEB2400C16C94 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				414F53E82520CA6F00DB600E /* Network */,
 				4183D37725177CF400E9B32F /* Redux */,
 				411C76BD24B99B58004259AC /* Parsing */,
 				418E627724CDDE2700EEFE9A /* DataSource */,
@@ -436,6 +466,7 @@
 				418916AB24A51E8C0084F7AE /* Gzip */,
 				41FB1A1524A527B600F4678C /* CryptoSwift */,
 				41ADF0F12513A65000D2AF1F /* Watchdog */,
+				414F53EF2523886D00DB600E /* KeychainAccess */,
 			);
 			productName = Buildyosh;
 			productReference = 4189169424A518370084F7AE /* Buildyosh.app */;
@@ -472,6 +503,7 @@
 				418916AA24A51E8C0084F7AE /* XCRemoteSwiftPackageReference "GzipSwift" */,
 				41FB1A1424A527B600F4678C /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				41ADF0F02513A65000D2AF1F /* XCRemoteSwiftPackageReference "Watchdog" */,
+				414F53EE2523886D00DB600E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 4189169524A518370084F7AE /* Products */;
 			projectDirPath = "";
@@ -542,6 +574,7 @@
 				4152904A251F09BB006ED5D1 /* MenuHostingView.swift in Sources */,
 				4116B95A24C42391001629C6 /* Storage+Project.swift in Sources */,
 				418E627924CDDE5500EEFE9A /* DurationSection.swift in Sources */,
+				414F53ED2520E2D200DB600E /* OnboardingView.swift in Sources */,
 				4183D37B2517816900E9B32F /* MainState.swift in Sources */,
 				41138D9024C9E5F300522042 /* ActivityIndicator.swift in Sources */,
 				41BEAA0C24C1F50400FFC41C /* db.xcdatamodeld in Sources */,
@@ -559,6 +592,7 @@
 				410B4A1324DF172300922F8D /* Fonts.swift in Sources */,
 				410B4A0F24DF137300922F8D /* View+Hidden.swift in Sources */,
 				4116B95C24C42BA6001629C6 /* URL+Utils.swift in Sources */,
+				414F53F225238E9600DB600E /* KeychainService.swift in Sources */,
 				41F02C8F24E44DFD00C8D7AC /* ProjectLog.swift in Sources */,
 				41BEAA1224C2070A00FFC41C /* DBProject.swift in Sources */,
 				41138D9424C9EA6500522042 /* WindowManager.swift in Sources */,
@@ -572,6 +606,8 @@
 				4189169824A518370084F7AE /* AppDelegate.swift in Sources */,
 				416B2A3E24B9C53F00043110 /* EasyScanner.swift in Sources */,
 				418E627624CDDE0E00EEFE9A /* TotalModifier.swift in Sources */,
+				414F53EA2520CA7F00DB600E /* GumroadService.swift in Sources */,
+				414F53F425238FD400DB600E /* ButtonModifier.swift in Sources */,
 				41BEAA1024C203C300FFC41C /* Result+Utils.swift in Sources */,
 				41ABC80624F9710D001715D1 /* Images.swift in Sources */,
 				4116992F24F244E1004293DC /* PeriodParser.swift in Sources */,
@@ -768,9 +804,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.7.2b;
+				MARKETING_VERSION = 0.8b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
-				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftyfinch.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -795,9 +831,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.7.2b;
+				MARKETING_VERSION = 0.8b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
-				PRODUCT_BUNDLE_IDENTIFIER = none.Buildyosh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftyfinch.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -837,6 +873,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		414F53EE2523886D00DB600E /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.1;
+			};
+		};
 		418916AA24A51E8C0084F7AE /* XCRemoteSwiftPackageReference "GzipSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/1024jp/GzipSwift";
@@ -864,6 +908,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		414F53EF2523886D00DB600E /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 414F53EE2523886D00DB600E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		418916AB24A51E8C0084F7AE /* Gzip */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 418916AA24A51E8C0084F7AE /* XCRemoteSwiftPackageReference "GzipSwift" */;

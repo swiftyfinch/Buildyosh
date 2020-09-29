@@ -27,7 +27,7 @@ extension Color {
     @AdaptiveColor(light: .init(white: 0.6))
     static var buildCount: Color
 
-    @AdaptiveColor(light: Color(hex: 0x58a32a))
+    @AdaptiveColor(light: Color(hex: 0x63b830))
     static var successRate: Color
 
     @AdaptiveColor(light: Color(hex: 0xef7b5a))

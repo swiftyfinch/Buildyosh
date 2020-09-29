@@ -49,7 +49,7 @@ struct ProjectsSection: View {
                                     .font(.emptyProject)
                             }
                             .foregroundColor(.project)
-                            .frame(height: 15)
+                            .frame(height: 17)
                         } else {
                             ForEach(projects) { project in
                                 ProjectSection(project: project)
@@ -57,11 +57,11 @@ struct ProjectsSection: View {
                             }
                         }
                     }
-                    .modifier(RoundedEdge())
+                    .modifier(ButtonModifier())
 
                     if needShowDuration {
                         DurationSection(duration: duration)
-                            .modifier(RoundedEdge())
+                            .modifier(ButtonModifier())
                     }
                 }
                 .background(Color.black.opacity(0.01))

@@ -14,9 +14,7 @@ struct MainState {
         case count
         case success
     }
-
-    var isLoaded = false
-    var progress = 0.0
+    var mode: Mode = .time
 
     var periods: Periods = Periods(
         today: Period(type: .today),
@@ -28,9 +26,21 @@ struct MainState {
     var projects: [Project] = []
     var duration: Duration = .zero
 
-    var mode: Mode = .time
+    enum Screen: Equatable {
+        enum Onboarding: Equatable {
+            case begin
+            case loading
+            case error(String)
+            case finish
+        }
 
-    var isAboutShown = false
+        case loading
+        case main
+        case about
+        case onboarding(Onboarding)
+    }
+    var screen: Screen = .main
+    var progress = 0.0
 
     var size: CGSize = .zero
 }

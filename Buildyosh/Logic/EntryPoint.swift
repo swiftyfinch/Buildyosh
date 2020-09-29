@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 final class EntryPoint: ObservableObject {
 
@@ -14,6 +15,7 @@ final class EntryPoint: ObservableObject {
     private let storage = Storage()
 
     private let store: Store<MainState, Action>
+    private var cancellables: Set<AnyCancellable> = []
     private let xcodeLogManager: XcodeLogAsyncParser
 
     private var running = false
@@ -26,6 +28,13 @@ final class EntryPoint: ObservableObject {
          xcodeLogManager: XcodeLogAsyncParser) {
         self.store = store
         self.xcodeLogManager = xcodeLogManager
+
+        store.$state.sink { state in
+            if case .onboarding(let onboardingState) = state.screen, onboardingState == .finish {
+                self.cancellables.removeAll()
+                self.runRepeatedly()
+            }
+        }.store(in: &cancellables)
     }
 
     func run() {
@@ -41,7 +50,7 @@ final class EntryPoint: ObservableObject {
                     guard let self = self else { return }
 
                     let today = Date()
-                    if projectLogs.isEmpty {
+                    if !projectLogs.isEmpty {
                         self.storage.saveProjects(projectLogs, relativeDate: today) { [weak self] in
                             guard let self = self else { return }
                             self.loadProjects(relativeDate: today)

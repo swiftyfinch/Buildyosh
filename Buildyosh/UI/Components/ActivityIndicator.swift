@@ -11,10 +11,22 @@ import SwiftUI
 struct ActivityIndicator: NSViewRepresentable {
 
     private(set) var value: Double
+    private let style: NSProgressIndicator.Style
+
+    init(value: Double = 0, style: NSProgressIndicator.Style = .bar) {
+        self.value = value
+        self.style = style
+    }
 
     func makeNSView(context: Context) -> NSProgressIndicator {
         let progressIndicator = NSProgressIndicator()
-        progressIndicator.isIndeterminate = false
+        progressIndicator.style = style
+        if style == .bar {
+            progressIndicator.isIndeterminate = false
+        } else {
+            progressIndicator.controlSize = .small
+            progressIndicator.startAnimation(nil)
+        }
         return progressIndicator
     }
 

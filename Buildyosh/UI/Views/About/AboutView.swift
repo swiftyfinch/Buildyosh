@@ -12,8 +12,6 @@ import AVFoundation
 struct AboutView: View {
     @EnvironmentObject private var store: Store<MainState, Action>
 
-    private let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-
     var body: some View {
         VStack(spacing: 4) {
             Button(action: {
@@ -33,7 +31,7 @@ struct AboutView: View {
                     Text("Buildyosh")
                         .font(.aboutTitle)
                         .foregroundColor(.aboutTitle)
-                    Text("v\(appVersion)")
+                    Text("v\(store.appVersion)")
                         .font(.aboutVersion)
                         .foregroundColor(.aboutVersion)
                 }
@@ -95,7 +93,7 @@ struct AboutView: View {
                     }) {
                         Image.twitter
                             .frame(width: 16, height: 16)
-                            .modifier(RoundedEdge())
+                            .modifier(ButtonModifier())
                     }
                     .buttonStyle(PlainButtonStyle())
 
@@ -105,7 +103,7 @@ struct AboutView: View {
                     }) {
                         Image.blog
                             .frame(width: 16, height: 16)
-                            .modifier(RoundedEdge())
+                            .modifier(ButtonModifier())
                     }
                     .buttonStyle(PlainButtonStyle())
                 }

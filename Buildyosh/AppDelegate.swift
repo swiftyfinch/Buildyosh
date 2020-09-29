@@ -31,8 +31,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let windowManager = WindowManager(store: store, rootView: contentView)
         self.windowManager = windowManager
 
-        windowManager.buildAndPresent { [weak self] in
-            self?.entryPoint?.runRepeatedly()
+        windowManager.buildAndPresent {
+            if let key = KeychainService().getKey() {
+                store.send(.verifyKey(key))
+            } else {
+                store.send(.beginOnboarding)
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ extension Image {
         Image("tray.fill")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 18, height: 18)
+            .frame(width: 17, height: 17)
     }
 
     static var buildCount: some View {
@@ -64,7 +64,7 @@ extension Image {
         Image("twitter")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 18, height: 18)
+            .frame(width: 20, height: 20)
     }
 
     static var blog: some View {

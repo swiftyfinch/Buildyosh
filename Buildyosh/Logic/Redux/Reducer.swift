@@ -7,25 +7,66 @@
 //
 
 import Foundation
+import Combine
 
 private extension CGFloat {
     static let width: CGFloat = 280
-    static let loaderHeight: CGFloat = 60
+    static let loaderHeight: CGFloat = 70
     static let minAboutHeight: CGFloat = 179
 }
 
+struct GumroadResponse: Decodable {
+    let success: Bool
+    let message: String
+}
+
 final class Reducer {
-    func reduce(state: inout MainState, action: Action) {
+    private let verifyService = GumroadService()
+
+    func reduce(state: inout MainState, action: Action) -> AnyPublisher<Action, Never>? {
         switch action {
+        case .beginOnboarding:
+            state.screen = .onboarding(.begin)
+            state = updateSize(state: state)
+        case .verifyKey(let key):
+            state.screen = .onboarding(.loading)
+            state = updateSize(state: state)
+            return verifyService.verify(key: key)
+                .map { Action.updateOnboarding(key: key, data: $0.data, response: $0.response) }
+                .replaceError(with: .errorOnboarding)
+                .eraseToAnyPublisher()
+        case .errorOnboarding:
+            state.screen = .onboarding(.error("Connection issue. Check your internet or try again later."))
+            state = updateSize(state: state)
+        case .updateOnboarding(let key, let data, _):
+            do {
+                let gumroad = try JSONDecoder().decode(GumroadResponse.self, from: data)
+                if gumroad.success {
+                    KeychainService().saveKey(key)
+                    state.screen = .onboarding(.finish)
+                } else {
+                    state.screen = .onboarding(.error(gumroad.message))
+                }
+            } catch {
+                state.screen = .onboarding(.error("Gumroad service error. Try to update the app or contact me."))
+            }
+            state = updateSize(state: state)
+        case .finishOnboarding:
+            state.screen = .main
+            state = updateSize(state: state)
+        case .beginLoading where !state.projects.isEmpty:
+            break // don't change screen
         case .beginLoading:
             state.progress = 0
-            state.isLoaded = false
+            state.screen = .loading
             state = updateSize(state: state)
         case .changeProgress(let progress):
             state.progress = progress
-        case .endLoading:
-            state.isLoaded = true
+        case .endLoading where state.screen == .loading:
+            state.screen = .main
             state = updateSize(state: state)
+        case .endLoading:
+            break // don't change screen
         case .changePeriodType(let periodType):
             state.periodType = periodType
             state = updateContent(state: state)
@@ -41,9 +82,14 @@ final class Reducer {
                 state.mode = MainState.Mode.allCases[0]
             }
         case .toggleAbout:
-            state.isAboutShown.toggle()
+            if state.screen == .main {
+                state.screen = .about
+            } else {
+                state.screen = .main
+            }
             state = updateSize(state: state)
         }
+        return nil
     }
 
     private func updateContent(state: MainState) -> MainState {
@@ -59,18 +105,19 @@ final class Reducer {
     private func updateSize(state: MainState) -> MainState {
         var state = state
         var newHeight: CGFloat
-        if !state.isLoaded && state.projects.isEmpty {
+        switch state.screen {
+        case .loading:
             newHeight = .loaderHeight
-        } else {
+        case .about:
+            newHeight = .minAboutHeight
+        case .onboarding:
+            newHeight = 150
+        case .main:
             let contentHeight = ProjectsSection.height(
                 projects: state.projects,
                 duration: state.duration
             )
-            if state.isAboutShown {
-                newHeight = .minAboutHeight
-            } else {
-                newHeight = contentHeight
-            }
+            newHeight = contentHeight
         }
         state.size = CGSize(width: .width, height: newHeight)
         return state

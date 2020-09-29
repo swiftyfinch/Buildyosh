@@ -6,13 +6,17 @@
 //  Copyright © 2020 Vyacheslav Khorkov. All rights reserved.
 //
 
+import Foundation
 import Combine
 
 final class Store<State, Action>: ObservableObject {
     @Published private(set) var state: State
 
-    typealias Reducer<State, Action> = (inout State, Action) -> Void
+    typealias Reducer<State, Action> = (inout State, Action) -> AnyPublisher<Action, Never>?
     private let reducer: Reducer<State, Action>
+    private var cancellables: Set<AnyCancellable> = []
+
+    let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 
     init(initialState: State, reducer: @escaping Reducer<State, Action>) {
         self.state = initialState
@@ -20,6 +24,11 @@ final class Store<State, Action>: ObservableObject {
     }
 
     func send(_ action: Action) {
-        reducer(&state, action)
+        guard let object = reducer(&state, action) else { return }
+
+        object
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: send)
+            .store(in: &cancellables)
     }
 }

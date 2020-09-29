@@ -9,6 +9,12 @@
 import Foundation
 
 enum Action {
+    case beginOnboarding
+    case verifyKey(_ key: String)
+    case errorOnboarding
+    case updateOnboarding(key: String, data: Data, response: URLResponse)
+    case finishOnboarding
+
     case beginLoading
     case changeProgress(_ value: Double)
     case endLoading
