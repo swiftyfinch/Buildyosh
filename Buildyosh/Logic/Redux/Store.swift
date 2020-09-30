@@ -24,9 +24,7 @@ final class Store<State, Action>: ObservableObject {
     }
 
     func send(_ action: Action) {
-        guard let object = reducer(&state, action) else { return }
-
-        object
+        reducer(&state, action)?
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: send)
             .store(in: &cancellables)

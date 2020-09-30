@@ -15,11 +15,6 @@ private extension CGFloat {
     static let minAboutHeight: CGFloat = 179
 }
 
-struct GumroadResponse: Decodable {
-    let success: Bool
-    let message: String
-}
-
 final class Reducer {
     private let verifyService = GumroadService()
 
@@ -32,27 +27,11 @@ final class Reducer {
             state.screen = .onboarding(.loading)
             state = updateSize(state: state)
             return verifyService.verify(key: key)
-                .map { Action.updateOnboarding(key: key, data: $0.data, response: $0.response) }
-                .replaceError(with: .errorOnboarding)
-                .eraseToAnyPublisher()
-        case .errorOnboarding:
-            state.screen = .onboarding(.error("Connection issue. Check your internet or try again later."))
-            state = updateSize(state: state)
-        case .updateOnboarding(let key, let data, _):
-            do {
-                let gumroad = try JSONDecoder().decode(GumroadResponse.self, from: data)
-                if gumroad.success {
-                    KeychainService().saveKey(key)
-                    state.screen = .onboarding(.finish)
-                } else {
-                    state.screen = .onboarding(.error(gumroad.message))
-                }
-            } catch {
-                state.screen = .onboarding(.error("Gumroad service error. Try to update the app or contact me."))
-            }
+        case .errorOnboarding(let message):
+            state.screen = .onboarding(.error(message))
             state = updateSize(state: state)
         case .finishOnboarding:
-            state.screen = .main
+            state.screen = .onboarding(.finish)
             state = updateSize(state: state)
         case .beginLoading where !state.projects.isEmpty:
             break // don't change screen
