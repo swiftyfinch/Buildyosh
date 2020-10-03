@@ -9,12 +9,9 @@
 import SwiftUI
 
 struct ButtonModifier: ViewModifier {
-    let color: Color
     let cornerRadius: CGFloat
 
-    init(color: Color = Color(white: 0.14),
-         cornerRadius: CGFloat = 8) {
-        self.color = color
+    init(cornerRadius: CGFloat = 8) {
         self.cornerRadius = cornerRadius
     }
 
@@ -22,11 +19,11 @@ struct ButtonModifier: ViewModifier {
         content
             .padding(.horizontal, 6.5)
             .padding(.vertical, 6.5)
-            .background(color)
+            .background(Color.roundBackground)
             .cornerRadius(cornerRadius)
             .padding(.horizontal, 1.5)
             .padding(.vertical, 1.5)
-            .background(Color(white: 0.12))
+            .background(Color.roundBackgroundBorder)
             .cornerRadius(cornerRadius)
             .shadow(radius: 0.5)
     }

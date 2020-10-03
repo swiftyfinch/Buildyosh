@@ -25,6 +25,7 @@ struct ActivityIndicator: NSViewRepresentable {
             progressIndicator.isIndeterminate = false
         } else {
             progressIndicator.controlSize = .small
+            progressIndicator.appearance = NSAppearance(named: .darkAqua)
             progressIndicator.startAnimation(nil)
         }
         return progressIndicator

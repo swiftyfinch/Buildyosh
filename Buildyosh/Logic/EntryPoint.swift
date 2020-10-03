@@ -31,8 +31,10 @@ final class EntryPoint: ObservableObject {
 
         store.$state.sink { state in
             if case .onboarding(let onboardingState) = state.screen, onboardingState == .finish {
-                self.cancellables.removeAll()
-                self.runRepeatedly()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    self.cancellables.removeAll()
+                    self.runRepeatedly()
+                }
             }
         }.store(in: &cancellables)
     }

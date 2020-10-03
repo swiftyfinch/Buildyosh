@@ -11,8 +11,9 @@ import Combine
 
 private extension CGFloat {
     static let width: CGFloat = 280
-    static let loaderHeight: CGFloat = 70
-    static let minAboutHeight: CGFloat = 179
+    static let loaderHeight: CGFloat = 150
+    static let aboutHeight: CGFloat = 179
+    static let onboardingHeight:CGFloat = 150
 }
 
 final class Reducer {
@@ -88,9 +89,9 @@ final class Reducer {
         case .loading:
             newHeight = .loaderHeight
         case .about:
-            newHeight = .minAboutHeight
+            newHeight = .aboutHeight
         case .onboarding:
-            newHeight = 150
+            newHeight = .onboardingHeight
         case .main:
             let contentHeight = ProjectsSection.height(
                 projects: state.projects,

@@ -12,8 +12,11 @@ extension Color {
 
     // MARK: - Sections
 
-    @AdaptiveColor(light: .init(white: 0.16))
+    @AdaptiveColor(light: .init(white: 0.17))
     static var roundBackground: Color
+
+    @AdaptiveColor(light: .init(white: 0.14))
+    static var roundBackgroundBorder: Color
 
     @AdaptiveColor(light: .white)
     static var project: Color
