@@ -24,10 +24,17 @@ final class EntryPoint: ObservableObject {
     @UserStorage("importProjectsDate")
     private var importProjectsDate: Date?
 
+    @UserStorage("derivedDataPaths")
+    private var derivedDataPaths: [String]?
+
     init(store: Store<MainState, Action>,
          xcodeLogManager: XcodeLogAsyncParser) {
         self.store = store
         self.xcodeLogManager = xcodeLogManager
+
+        if derivedDataPaths == nil {
+            derivedDataPaths = [derivedDataURL.path]
+        }
 
         store.$state.sink { state in
             if case .onboarding(let onboardingState) = state.screen, onboardingState == .finish {
@@ -79,8 +86,14 @@ final class EntryPoint: ObservableObject {
     }
 
     private func findProjects(completion: @escaping ([ProjectLog]) -> Void) {
-        let logs = XcodeLogFinder().findLogs(derivedDataURL: derivedDataURL)
-        let filteredLogs = filterProjects(logs)
+        let finder = XcodeLogFinder()
+        let derivedDataURLs = derivedDataPaths?.compactMap(URL.init(fileURLWithPath:)) ?? [derivedDataURL]
+        var allLogs: [String: [URL]] = [:]
+        for url in derivedDataURLs {
+            let logs = finder.findLogs(derivedDataURL: url)
+            allLogs.combining(logs)
+        }
+        let filteredLogs = filterProjects(allLogs)
         log(.debug, dump(filteredLogs).debugDescription)
         xcodeLogManager.asyncReadProjectsLogs(logs: filteredLogs, completion: completion)
     }
@@ -148,9 +161,22 @@ private extension EntryPoint {
 }
 
 private extension Array where Element == Project {
-
     func output() -> String {
         debugDescription
+    }
+}
+
+private extension Dictionary where Value == [URL] {
+    mutating func combining(_ another: Self) {
+        self = combined(another)
+    }
+
+    func combined(_ another: Self) -> Self {
+        var combined = self
+        for (key, value) in another {
+            combined[key] = combined[key, default: []] + value
+        }
+        return combined
     }
 }
 
