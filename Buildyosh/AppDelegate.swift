@@ -8,16 +8,12 @@
 
 import Cocoa
 import SwiftUI
-import Watchdog
 
 // sfsymbols --symbol-name multiply.circle --font-size 18 --format pdf --font-weight black
+// rm -r ~/Library/Application\ Support/Buildyosh/Cache && rm ~/Library/Preferences/com.swiftyfinch.Buildyosh.plist
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
-
-    #if DEBUG
-    private let watchdog = Watchdog(threshold: 0.4, strictMode: false)
-    #endif
 
     private var entryPoint: EntryPoint?
     private var windowManager: AnyObject?

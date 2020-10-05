@@ -51,7 +51,6 @@
 		41ABC80624F9710D001715D1 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80524F9710D001715D1 /* Images.swift */; };
 		41ABC80A24FA5CF2001715D1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80924FA5CF2001715D1 /* Colors.swift */; };
 		41ABC80C24FAB572001715D1 /* Date+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80B24FAB572001715D1 /* Date+Int.swift */; };
-		41ADF0F22513A65000D2AF1F /* Watchdog in Frameworks */ = {isa = PBXBuildFile; productRef = 41ADF0F12513A65000D2AF1F /* Watchdog */; };
 		41BD50E524FBA7AA00703A8D /* XCTAssertEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50E424FBA7AA00703A8D /* XCTAssertEqual.swift */; };
 		41BD50E624FBB53E00703A8D /* PeriodParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116992E24F244E1004293DC /* PeriodParser.swift */; };
 		41BD50E924FBB56600703A8D /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50E824FBB56600703A8D /* Period.swift */; };
@@ -174,7 +173,6 @@
 				414F53F02523886D00DB600E /* KeychainAccess in Frameworks */,
 				418916AC24A51E8C0084F7AE /* Gzip in Frameworks */,
 				41FB1A1624A527B600F4678C /* CryptoSwift in Frameworks */,
-				41ADF0F22513A65000D2AF1F /* Watchdog in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +463,6 @@
 			packageProductDependencies = (
 				418916AB24A51E8C0084F7AE /* Gzip */,
 				41FB1A1524A527B600F4678C /* CryptoSwift */,
-				41ADF0F12513A65000D2AF1F /* Watchdog */,
 				414F53EF2523886D00DB600E /* KeychainAccess */,
 			);
 			productName = Buildyosh;
@@ -502,7 +499,6 @@
 			packageReferences = (
 				418916AA24A51E8C0084F7AE /* XCRemoteSwiftPackageReference "GzipSwift" */,
 				41FB1A1424A527B600F4678C /* XCRemoteSwiftPackageReference "CryptoSwift" */,
-				41ADF0F02513A65000D2AF1F /* XCRemoteSwiftPackageReference "Watchdog" */,
 				414F53EE2523886D00DB600E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 4189169524A518370084F7AE /* Products */;
@@ -804,7 +800,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.8.3b;
+				MARKETING_VERSION = 0.8.4b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftyfinch.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -831,7 +827,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.8.3b;
+				MARKETING_VERSION = 0.8.4b;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftyfinch.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -889,14 +885,6 @@
 				minimumVersion = 5.1.1;
 			};
 		};
-		41ADF0F02513A65000D2AF1F /* XCRemoteSwiftPackageReference "Watchdog" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/wojteklu/Watchdog";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		41FB1A1424A527B600F4678C /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
@@ -917,11 +905,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 418916AA24A51E8C0084F7AE /* XCRemoteSwiftPackageReference "GzipSwift" */;
 			productName = Gzip;
-		};
-		41ADF0F12513A65000D2AF1F /* Watchdog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 41ADF0F02513A65000D2AF1F /* XCRemoteSwiftPackageReference "Watchdog" */;
-			productName = Watchdog;
 		};
 		41FB1A1524A527B600F4678C /* CryptoSwift */ = {
 			isa = XCSwiftPackageProductDependency;
