@@ -35,6 +35,7 @@ final class EntryPoint: ObservableObject {
         if derivedDataPaths == nil {
             derivedDataPaths = [derivedDataURL.path]
         }
+        log(.debug, "derivedDataPaths: \(derivedDataPaths?.debugDescription ?? "[]")")
 
         store.$state.sink { state in
             if case .onboarding(let onboardingState) = state.screen, onboardingState == .finish {
@@ -59,13 +60,8 @@ final class EntryPoint: ObservableObject {
                     guard let self = self else { return }
 
                     let today = Date()
-                    if !projectLogs.isEmpty {
-                        self.storage.saveProjects(projectLogs, relativeDate: today) { [weak self] in
-                            guard let self = self else { return }
-                            self.loadProjects(relativeDate: today)
-                            self.running = false
-                        }
-                    } else {
+                    self.storage.saveProjects(projectLogs, relativeDate: today) { [weak self] in
+                        guard let self = self else { return }
                         self.loadProjects(relativeDate: today)
                         self.running = false
                     }

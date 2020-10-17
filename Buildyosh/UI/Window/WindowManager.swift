@@ -19,6 +19,10 @@ final class WindowManager<Content: View>: NSObject, NSMenuDelegate {
     private var statusBarItem: NSStatusItem?
     private var cancellables: Set<AnyCancellable> = []
 
+    // TODO: Move to Store
+    @UserStorage("derivedDataPaths")
+    private var derivedDataPaths: [String]?
+
     init(store: Store<MainState, Action>, rootView: Content) {
         self.store = store
         self.rootView = rootView
@@ -54,11 +58,42 @@ final class WindowManager<Content: View>: NSObject, NSMenuDelegate {
 
     private func showQuit() {
         let menu = NSMenu()
-        let item = NSMenuItem(title: "Quit",
-                              action: #selector(quit),
-                              keyEquivalent: "")
-        item.target = self
-        menu.items = [item]
+
+        if let paths = derivedDataPaths, !paths.isEmpty {
+            let title = NSMenuItem(title: "Delete DerivedData path:", action: nil, keyEquivalent: "")
+            menu.items.append(title)
+
+            for path in paths {
+                let deleteItem = NSMenuItem(title: path,
+                                            action: #selector(removeUserDefaultsPath(_:)),
+                                            keyEquivalent: "")
+                deleteItem.target = self
+                menu.items.append(deleteItem)
+            }
+            menu.items.append(NSMenuItem.separator())
+        }
+
+        if let key = NSPasteboard.general.pasteboardItems?.first?.string(forType: .string) {
+            let title = NSMenuItem(title: "Add DerivedData path:", action: nil, keyEquivalent: "")
+            menu.items.append(title)
+
+            let addItem = NSMenuItem(title: key,
+                                     action: #selector(addUserDefaultsPath(_:)),
+                                     keyEquivalent: "")
+            addItem.target = self
+            menu.items.append(addItem)
+            menu.items.append(NSMenuItem.separator())
+        }
+
+        let quitItem = NSMenuItem(title: "Quit",
+                                  action: #selector(quit),
+                                  keyEquivalent: "")
+        quitItem.target = self
+        if let last = menu.items.last, !last.isSeparatorItem {
+            menu.items.append(NSMenuItem.separator())
+        }
+        menu.items.append(quitItem)
+
         statusBarItem?.showMenu(menu)
     }
 
@@ -80,6 +115,18 @@ final class WindowManager<Content: View>: NSObject, NSMenuDelegate {
 
     @objc private func quit() {
         NSApplication.shared.terminate(self)
+    }
+
+    @objc private func removeUserDefaultsPath(_ sender: NSMenuItem) {
+        let path = sender.title
+        if let index = derivedDataPaths?.firstIndex(where: { $0 == path }) {
+            derivedDataPaths?.remove(at: index)
+        }
+    }
+
+    @objc private func addUserDefaultsPath(_ sender: NSMenuItem) {
+        let path = sender.title
+        derivedDataPaths?.append(path)
     }
 
     func menuDidClose(_ menu: NSMenu) {
