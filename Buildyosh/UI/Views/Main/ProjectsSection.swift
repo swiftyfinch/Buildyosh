@@ -22,7 +22,8 @@ struct ProjectsSection: View {
 
     init(projects: [Project], duration: Duration) {
         self.projects = projects.map {
-            return ProjectSection.Model(name: $0.name,
+            return ProjectSection.Model(id: $0.id,
+                                        name: $0.name,
                                         totalDuration: $0.duration.outputDuration(),
                                         buildCount: $0.count.output(),
                                         successRate: $0.successRate.outputSucceedRate())

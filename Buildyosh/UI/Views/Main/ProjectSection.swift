@@ -12,8 +12,7 @@ struct ProjectSection: View {
     @EnvironmentObject private var store: Store<MainState, Action>
 
     struct Model: Identifiable {
-        var id: String { name }
-        
+        let id: String
         let name: String
         let totalDuration: String
         let buildCount: String
