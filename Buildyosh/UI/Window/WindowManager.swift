@@ -60,11 +60,11 @@ final class WindowManager<Content: View>: NSObject, NSMenuDelegate {
         let menu = NSMenu()
 
         if let paths = derivedDataPaths, !paths.isEmpty {
-            let title = NSMenuItem(title: "Delete DerivedData path:", action: nil, keyEquivalent: "")
+            let title = NSMenuItem(title: "Delete DerivedData Path:", action: nil, keyEquivalent: "")
             menu.items.append(title)
 
             for path in paths {
-                let deleteItem = NSMenuItem(title: path,
+                let deleteItem = NSMenuItem(title: URL(fileURLWithPath: path).pathAbbreviatingWithTilde,
                                             action: #selector(removeUserDefaultsPath(_:)),
                                             keyEquivalent: "")
                 deleteItem.target = self
@@ -73,17 +73,14 @@ final class WindowManager<Content: View>: NSObject, NSMenuDelegate {
             menu.items.append(NSMenuItem.separator())
         }
 
-        if let key = NSPasteboard.general.pasteboardItems?.first?.string(forType: .string) {
-            let title = NSMenuItem(title: "Add DerivedData path:", action: nil, keyEquivalent: "")
-            menu.items.append(title)
-
-            let addItem = NSMenuItem(title: key,
-                                     action: #selector(addUserDefaultsPath(_:)),
-                                     keyEquivalent: "")
-            addItem.target = self
-            menu.items.append(addItem)
-            menu.items.append(NSMenuItem.separator())
-        }
+        let title = NSMenuItem(title: "Add DerivedData Path:", action: nil, keyEquivalent: "")
+        menu.items.append(title)
+        let selectItem = NSMenuItem(title: "Select...",
+                                    action: #selector(selectDerivedData(_:)),
+                                    keyEquivalent: "")
+        selectItem.target = self
+        menu.items.append(selectItem)
+        menu.items.append(NSMenuItem.separator())
 
         let quitItem = NSMenuItem(title: "Quit",
                                   action: #selector(quit),
@@ -129,16 +126,39 @@ final class WindowManager<Content: View>: NSObject, NSMenuDelegate {
         derivedDataPaths?.append(path)
     }
 
+    @objc private func selectDerivedData(_ sender: NSMenuItem) {
+        let dialog = NSOpenPanel()
+        dialog.canChooseDirectories = true
+        dialog.canChooseFiles = false
+        dialog.allowsMultipleSelection = false
+        if dialog.runModal() == .OK, let newPath = dialog.url?.path {
+            derivedDataPaths?.append(newPath)
+        }
+    }
+
     func menuDidClose(_ menu: NSMenu) {
         cancellables.forEach { $0.cancel() }
     }
 }
 
 private extension NSStatusItem {
-
     func showMenu(_ menu: NSMenu) {
         self.menu = menu
         button?.performClick(self)
         self.menu = nil
+    }
+}
+
+private extension URL {
+    var pathAbbreviatingWithTilde: String {
+        // find home directory path (more difficulty because we're sandboxed, so it's somewhere deep in our actual home dir)
+        let sandboxedHomeDir = FileManager.default.homeDirectoryForCurrentUser
+        let components = sandboxedHomeDir.pathComponents
+        guard components.first == "/" else { return path }
+        let homeDir = "/" + components.dropFirst().prefix(2).joined(separator: "/")
+
+        // replace home dir in path with tilde for brevity and aesthetics
+        guard path.hasPrefix(homeDir) else { return path }
+        return "~" + path.dropFirst(homeDir.count)
     }
 }
