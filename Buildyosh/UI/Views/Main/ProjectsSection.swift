@@ -17,10 +17,9 @@ struct ProjectsSection: View {
     @EnvironmentObject private var store: Store<MainState, Action>
 
     private let projects: [ProjectSection.Model]
-    private let needShowDuration: Bool
-    private let duration: DurationSection.Model
+    private let duration: DurationSection.Model?
 
-    init(projects: [Project], duration: Duration) {
+    init(projects: [Project], duration: Duration?) {
         self.projects = projects.map {
             return ProjectSection.Model(id: $0.id,
                                         name: $0.name,
@@ -29,11 +28,12 @@ struct ProjectsSection: View {
                                         successRate: $0.successRate.outputSucceedRate())
         }
 
-        self.needShowDuration = duration.days > 1
-        self.duration = DurationSection.Model(totalDuration: duration.total.outputDuration(),
-                                              perDayDuration: duration.perDay.outputDuration(),
-                                              totalBuildCount: duration.buildCount.output(),
-                                              totalSuccessRate: duration.successRate.outputSucceedRate())
+        self.duration = duration.map {
+            DurationSection.Model(totalDuration: $0.total.outputDuration(),
+                                  perDayDuration: $0.perDay.outputDuration(),
+                                  totalBuildCount: $0.buildCount.output(),
+                                  totalSuccessRate: $0.successRate.outputSucceedRate())
+        }
     }
 
     var body: some View {
@@ -60,7 +60,7 @@ struct ProjectsSection: View {
                     }
                     .modifier(ButtonModifier())
 
-                    if needShowDuration {
+                    if let duration = duration {
                         DurationSection(duration: duration)
                             .modifier(ButtonModifier())
                     }
@@ -72,9 +72,10 @@ struct ProjectsSection: View {
         }
     }
 
-    static func height(projects: [Project], duration: Duration) -> CGFloat {
+    static func height(projects: [Project],
+                       needShowDuration: Bool) -> CGFloat {
         let count = CGFloat(max(1, projects.count))
-        let durationSection: CGFloat = duration.days > 1 ? 17 + 16 + 4 : 0
+        let durationSection: CGFloat = needShowDuration ? 17 + 16 + 4 : 0
         return count * 17 + 16 + durationSection + 40
     }
 }

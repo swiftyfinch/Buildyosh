@@ -24,7 +24,7 @@ struct MainState {
     )
     var periodType = 1
     var projects: [Project] = []
-    var duration: Duration = .zero
+    var duration: Duration?
 
     enum Screen: Equatable {
         enum Onboarding: Equatable {
