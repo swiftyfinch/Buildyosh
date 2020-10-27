@@ -22,7 +22,7 @@ struct MainState {
         week: Period(type: .week),
         all: Period(type: .all)
     )
-    var periodType = 0
+    var periodType = 1
     var projects: [Project] = []
     var duration: Duration = .zero
 
