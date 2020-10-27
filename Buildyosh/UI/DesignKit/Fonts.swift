@@ -19,9 +19,9 @@ extension Font {
     static let aboutButton: Font = .font(size: 16)
     static let aboutTitle: Font = .font(size: 17)
     static let aboutVersion: Font = .system(size: 13, weight: .bold, design: .rounded)
-    static let aboutBody: Font = .font(size: 14)
+    static let aboutBody: Font = .project
 
-    static let project: Font = .font(size: 15)
-    static let emptyProject: Font = .font(size: 15)
+    static let project: Font = .font(size: 14)
+    static let emptyProject: Font = .project
     static let time: Font = .font(size: 13)
 }
