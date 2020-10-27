@@ -66,32 +66,53 @@ struct OnboardingView: View {
                             .frame(width: 90, height: 16)
                             .modifier(RoundedEdge())
                     case .error:
-                        HStack(spacing: 3) {
-                            Button {
-                                guard let key = NSPasteboard.general.pasteboardItems?.first?.string(forType: .string) else {
-                                    // Show error
-                                    return
-                                }
-                                hideError = false
-                                store.send(.verifyKey(key))
-                            } label: {
-                                Text("Try again")
-                                    .foregroundColor(.aboutTitle)
-                                    .font(.project)
-                                    .frame(width: 90, height: 16)
-                                    .modifier(ButtonModifier())
-                            }
-                            .buttonStyle(PlainButtonStyle())
+                        VStack(spacing: 4) {
+                            HStack(spacing: 4) {
+                                Button {
+                                    hideError = false
+                                    if let key = KeychainService().getKey() {
+                                        return store.send(.verifyKey(key))
+                                    }
 
-                            Button(action: {
-                                let url = URL(string: "https://twitter.com/swiftyfinch")!
-                                NSWorkspace.shared.open(url)
-                            }) {
-                                Image.twitter
-                                    .frame(width: 16, height: 16)
+                                    if let key = NSPasteboard.general.pasteboardItems?.first?.string(forType: .string) {
+                                        return store.send(.verifyKey(key))
+                                    }
+
+                                    log(error: "Can't find any licence key or text from pasterboard.")
+                                } label: {
+                                    Text("Try again")
+                                        .foregroundColor(.aboutTitle)
+                                        .font(.project)
+                                        .frame(width: 70, height: 16)
+                                        .modifier(ButtonModifier())
+                                }
+                                .buttonStyle(PlainButtonStyle())
+
+                                Button(action: {
+                                    KeychainService().removeKey()
+                                    store.send(.beginOnboarding)
+                                }) {
+                                    HStack(spacing: 5) {
+                                        Text("Reset")
+                                            .frame(width: 50, height: 16)
+                                            .font(.aboutButton)
+                                            .foregroundColor(.aboutBody)
+                                    }
+                                    .frame(height: 16)
                                     .modifier(ButtonModifier())
+                                }
+                                .buttonStyle(PlainButtonStyle())
+
+                                Button(action: {
+                                    let url = URL(string: "https://twitter.com/swiftyfinch")!
+                                    NSWorkspace.shared.open(url)
+                                }) {
+                                    Image.twitter
+                                        .frame(width: 16, height: 16)
+                                        .modifier(ButtonModifier())
+                                }
+                                .buttonStyle(PlainButtonStyle())
                             }
-                            .buttonStyle(PlainButtonStyle())
                         }
                     case .finish:
                         Text("Success")
@@ -106,5 +127,7 @@ struct OnboardingView: View {
             }
         }
         .padding(.horizontal, 30)
+        .frame(width: store.state.size.width,
+               height: store.state.size.height)
     }
 }
