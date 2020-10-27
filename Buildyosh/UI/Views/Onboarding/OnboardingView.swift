@@ -14,21 +14,8 @@ struct OnboardingView: View {
     @State private var hideError = false
 
     var body: some View {
-        VStack(spacing: 3) {
-            HStack(spacing: 5) {
-                Image("gear")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 17, height: 17)
-                    .foregroundColor(.aboutAppIcon)
-                Text("Buildyosh")
-                    .font(.aboutTitle)
-                    .foregroundColor(.aboutTitle)
-                Text("v\(store.appVersion)")
-                    .font(.aboutVersion)
-                    .foregroundColor(.aboutVersion)
-            }
-            .modifier(RoundedEdge())
+        VStack(spacing: 4) {
+            ApplicationHeader(appVersion: store.appVersion)
 
             switch store.state.screen {
             case .onboarding(let state):
@@ -121,4 +108,3 @@ struct OnboardingView: View {
         .padding(.horizontal, 30)
     }
 }
-

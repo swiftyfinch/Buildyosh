@@ -14,30 +14,7 @@ struct AboutView: View {
 
     var body: some View {
         VStack(spacing: 4) {
-            Button(action: {
-                let utterance = AVSpeechUtterance(string: "Buildyosh")
-                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                utterance.rate = 0.4
-
-                let synthesizer = AVSpeechSynthesizer()
-                synthesizer.speak(utterance)
-            }) {
-                HStack(spacing: 5) {
-                    Image("gear")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 17, height: 17)
-                        .foregroundColor(.aboutAppIcon)
-                    Text("Buildyosh")
-                        .font(.aboutTitle)
-                        .foregroundColor(.aboutTitle)
-                    Text("v\(store.appVersion)")
-                        .font(.aboutVersion)
-                        .foregroundColor(.aboutVersion)
-                }
-                .modifier(RoundedEdge())
-            }
-            .buttonStyle(PlainButtonStyle())
+            ApplicationHeader(appVersion: store.appVersion)
 
             VStack(spacing: 0) {
                 HStack(spacing: 2) {
@@ -109,5 +86,29 @@ struct AboutView: View {
                 }
             }
         }
+    }
+}
+
+struct ApplicationHeader: View {
+    let appVersion: String
+
+    var body: some View {
+        HStack(spacing: 5) {
+            Text("🎃")
+                .font(.aboutTitle)
+                .padding(.trailing, -2)
+//                Image("gear")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 17, height: 17)
+//                    .foregroundColor(.aboutAppIcon)
+            Text("Buildyosh")
+                .font(.aboutTitle)
+                .foregroundColor(.aboutTitle)
+            Text("v\(appVersion)")
+                .font(.aboutVersion)
+                .foregroundColor(.aboutVersion)
+        }
+        .modifier(RoundedEdge())
     }
 }
