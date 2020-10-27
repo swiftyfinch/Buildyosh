@@ -24,8 +24,6 @@ struct ContentView: View {
                     ActivityIndicator(value: store.state.progress)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
-                        .padding(.bottom, -5)
-                    Text(store.state.progress.outputPercent())
                 case .main:
                     MainView()
                 case .about:
