@@ -34,12 +34,12 @@ final class Reducer {
         case .finishOnboarding:
             state.screen = .onboarding(.finish)
             state = updateSize(state: state)
-        case .beginLoading where !state.projects.isEmpty:
-            break // don't change screen
-        case .beginLoading:
+        case .beginLoading where state.screen == .onboarding(.finish):
             state.progress = 0
             state.screen = .loading
             state = updateSize(state: state)
+        case .beginLoading:
+            break // don't change screen
         case .changeProgress(let progress):
             state.progress = progress
         case .endLoading where state.screen == .loading:
