@@ -38,37 +38,38 @@ struct ProjectsSection: View {
 
     var body: some View {
         VStack(spacing: 1) {
-            Button {
-                store.send(.changeMode)
-            } label: {
-                VStack(spacing: 4) {
-                    VStack(spacing: 0) {
-                        if projects.isEmpty {
-                            HStack(spacing: 5) {
-                                Image.tray
-                                Text("Empty")
-                                    .font(.emptyProject)
-                            }
-                            .foregroundColor(.project)
-                            .frame(height: 17)
-                        } else {
+            if projects.isEmpty {
+                HStack(spacing: 5) {
+                    Image.tray
+                    Text("Empty")
+                        .font(.emptyProject)
+                }
+                .foregroundColor(.project)
+                .frame(height: 17)
+                .modifier(ButtonModifier())
+            } else {
+                Button {
+                    store.send(.changeMode)
+                } label: {
+                    VStack(spacing: 4) {
+                        VStack(spacing: 0) {
                             ForEach(projects) { project in
                                 ProjectSection(project: project)
                                     .frame(height: 17.0)
                             }
                         }
-                    }
-                    .modifier(ButtonModifier())
+                        .modifier(ButtonModifier())
 
-                    if let duration = duration {
-                        DurationSection(duration: duration)
-                            .modifier(ButtonModifier())
+                        if let duration = duration {
+                            DurationSection(duration: duration)
+                                .modifier(ButtonModifier())
+                        }
                     }
+                    .background(Color.black.opacity(0.01))
                 }
-                .background(Color.black.opacity(0.01))
+                .buttonStyle(PlainButtonStyle())
+                .frame(width: store.state.size.width - 60.0)
             }
-            .buttonStyle(PlainButtonStyle())
-            .frame(width: store.state.size.width - 60.0)
         }
     }
 
