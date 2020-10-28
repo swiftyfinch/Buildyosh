@@ -43,4 +43,8 @@ struct MainState {
     var progress = 0.0
 
     var size: CGSize = .zero
+
+    var needShowDuration: Bool {
+        (duration?.days ?? 0) > 1
+    }
 }

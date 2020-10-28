@@ -95,7 +95,7 @@ final class Reducer {
         case .main:
             let contentHeight = ProjectsSection.height(
                 projects: state.projects,
-                needShowDuration: state.duration != nil
+                needShowDuration: state.needShowDuration
             )
             newHeight = contentHeight
         }
