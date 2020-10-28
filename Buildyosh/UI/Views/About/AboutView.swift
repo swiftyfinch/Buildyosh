@@ -86,12 +86,19 @@ struct AboutView: View {
                 }
             }
 
-            LaunchAtLogin.Toggle {
-                Text(" Launch app at login ")
-                    .font(.project)
-                    .foregroundColor(.project)
+            Button(action: {
+                LaunchAtLogin.isEnabled.toggle()
+            }) {
+                Toggle(isOn: .constant(LaunchAtLogin.isEnabled), label: {
+                    Text("Launch app at login")
+                        .padding(.leading, 2)
+                        .font(.project)
+                        .foregroundColor(.project)
+                })
+                .allowsHitTesting(false)
+                .modifier(ButtonModifier(horizontalPadding: 7))
             }
-            .modifier(ButtonModifier())
+            .buttonStyle(PlainButtonStyle())
         }
     }
 }

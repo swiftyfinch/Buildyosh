@@ -9,16 +9,22 @@
 import SwiftUI
 
 struct ButtonModifier: ViewModifier {
+    let horizontalPadding: CGFloat
+    let verticalPadding: CGFloat
     let cornerRadius: CGFloat
 
-    init(cornerRadius: CGFloat = 8) {
+    init(horizontalPadding: CGFloat = 6.5,
+         verticalPadding: CGFloat = 6.5,
+         cornerRadius: CGFloat = 8) {
+        self.horizontalPadding = horizontalPadding
+        self.verticalPadding = verticalPadding
         self.cornerRadius = cornerRadius
     }
 
     func body(content: Content) -> some View {
         content
-            .padding(.horizontal, 6.5)
-            .padding(.vertical, 6.5)
+            .padding(.horizontal, horizontalPadding)
+            .padding(.vertical, verticalPadding)
             .background(Color.roundBackground)
             .cornerRadius(cornerRadius)
             .padding(.horizontal, 1.5)
