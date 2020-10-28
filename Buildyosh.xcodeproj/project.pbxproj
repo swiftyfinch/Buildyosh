@@ -70,6 +70,7 @@
 		41BEAA1224C2070A00FFC41C /* DBProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BEAA1124C2070A00FFC41C /* DBProject.swift */; };
 		41C0474B24B9E4A50031DD99 /* XcodeLogReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418916AE24A51F250084F7AE /* XcodeLogReader.swift */; };
 		41C0474D24B9E67B0031DD99 /* XcodeLogFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C0474C24B9E67B0031DD99 /* XcodeLogFinder.swift */; };
+		41CA3FE625497D4A0020EEB7 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 41CA3FE525497D4A0020EEB7 /* LaunchAtLogin */; };
 		41EC667D24C464F4005A0893 /* EntryPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC667C24C464F4005A0893 /* EntryPoint.swift */; };
 		41F02C8D24E30A4000C8D7AC /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F02C8C24E30A4000C8D7AC /* UserStorage.swift */; };
 		41F02C8F24E44DFD00C8D7AC /* ProjectLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F02C8E24E44DFD00C8D7AC /* ProjectLog.swift */; };
@@ -172,6 +173,7 @@
 			files = (
 				414F53F02523886D00DB600E /* KeychainAccess in Frameworks */,
 				418916AC24A51E8C0084F7AE /* Gzip in Frameworks */,
+				41CA3FE625497D4A0020EEB7 /* LaunchAtLogin in Frameworks */,
 				41FB1A1624A527B600F4678C /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +456,7 @@
 				4189169024A518370084F7AE /* Sources */,
 				4189169124A518370084F7AE /* Frameworks */,
 				4189169224A518370084F7AE /* Resources */,
+				41CA3FE725497D980020EEB7 /* LaunchAtLogin */,
 			);
 			buildRules = (
 			);
@@ -464,6 +467,7 @@
 				418916AB24A51E8C0084F7AE /* Gzip */,
 				41FB1A1524A527B600F4678C /* CryptoSwift */,
 				414F53EF2523886D00DB600E /* KeychainAccess */,
+				41CA3FE525497D4A0020EEB7 /* LaunchAtLogin */,
 			);
 			productName = Buildyosh;
 			productReference = 4189169424A518370084F7AE /* Buildyosh.app */;
@@ -500,6 +504,7 @@
 				418916AA24A51E8C0084F7AE /* XCRemoteSwiftPackageReference "GzipSwift" */,
 				41FB1A1424A527B600F4678C /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				414F53EE2523886D00DB600E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				41CA3FE425497D4A0020EEB7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = 4189169524A518370084F7AE /* Products */;
 			projectDirPath = "";
@@ -530,6 +535,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		41CA3FE725497D980020EEB7 /* LaunchAtLogin */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LaunchAtLogin;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		41527CDD24ACA7EE0057A35F /* Sources */ = {
@@ -885,6 +911,14 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		41CA3FE425497D4A0020EEB7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		41FB1A1424A527B600F4678C /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
@@ -905,6 +939,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 418916AA24A51E8C0084F7AE /* XCRemoteSwiftPackageReference "GzipSwift" */;
 			productName = Gzip;
+		};
+		41CA3FE525497D4A0020EEB7 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41CA3FE425497D4A0020EEB7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
 		};
 		41FB1A1524A527B600F4678C /* CryptoSwift */ = {
 			isa = XCSwiftPackageProductDependency;

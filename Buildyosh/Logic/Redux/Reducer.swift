@@ -12,7 +12,7 @@ import Combine
 private extension CGFloat {
     static let width: CGFloat = 280
     static let loaderHeight: CGFloat = 80
-    static let aboutHeight: CGFloat = 179
+    static let aboutHeight: CGFloat = 220
     static let onboardingHeight:CGFloat = 180
 }
 

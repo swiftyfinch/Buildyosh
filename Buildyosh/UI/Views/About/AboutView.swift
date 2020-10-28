@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import AVFoundation
+import LaunchAtLogin
 
 struct AboutView: View {
     @EnvironmentObject private var store: Store<MainState, Action>
@@ -85,6 +85,13 @@ struct AboutView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
             }
+
+            LaunchAtLogin.Toggle {
+                Text(" Launch app at login ")
+                    .font(.project)
+                    .foregroundColor(.project)
+            }
+            .modifier(ButtonModifier())
         }
     }
 }
