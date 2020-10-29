@@ -11,6 +11,7 @@ import LaunchAtLogin
 
 struct AboutView: View {
     @EnvironmentObject private var store: Store<MainState, Action>
+    @ObservedObject private var launchAtLogin = LaunchAtLogin.observable
 
     var body: some View {
         VStack(spacing: 4) {
@@ -89,12 +90,12 @@ struct AboutView: View {
             Button(action: {
                 LaunchAtLogin.isEnabled.toggle()
             }) {
-                Toggle(isOn: .constant(LaunchAtLogin.isEnabled), label: {
+                Toggle(isOn: $launchAtLogin.isEnabled) {
                     Text("Launch app at login")
                         .padding(.leading, 2)
                         .font(.project)
                         .foregroundColor(.project)
-                })
+                }
                 .allowsHitTesting(false)
                 .modifier(ButtonModifier(horizontalPadding: 7))
             }
