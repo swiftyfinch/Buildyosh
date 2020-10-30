@@ -87,10 +87,21 @@ struct AboutView: View {
                 }
             }
 
+            if !store.state.isAppInApplications {
+                HStack(spacing: 3) {
+                    Text("⚠️")
+                        .font(.font(size: 13))
+                    Text("Move app to /Applications")
+                        .font(.font(size: 12))
+                        .foregroundColor(Color.averageClockText)
+                }
+                .modifier(ButtonModifier())
+            }
+
             Button(action: {
                 LaunchAtLogin.isEnabled.toggle()
             }) {
-                Toggle(isOn: $launchAtLogin.isEnabled) {
+                Toggle(isOn: store.state.isAppInApplications ? $launchAtLogin.isEnabled : .constant(true)) {
                     Text("Launch app at login")
                         .padding(.leading, 2)
                         .font(.project)
@@ -98,8 +109,11 @@ struct AboutView: View {
                 }
                 .allowsHitTesting(false)
                 .modifier(ButtonModifier(horizontalPadding: 7))
+                .disabled(!store.state.isAppInApplications)
             }
             .buttonStyle(PlainButtonStyle())
+            .allowsHitTesting(store.state.isAppInApplications)
+            .opacity(store.state.isAppInApplications ? 1 : 0.7)
         }
     }
 }

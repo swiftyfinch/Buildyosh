@@ -90,6 +90,7 @@ final class Reducer {
             newHeight = .loaderHeight
         case .about:
             newHeight = .aboutHeight
+            newHeight += state.isAppInApplications ? 0 : 40
         case .onboarding:
             newHeight = .onboardingHeight
         case .main:

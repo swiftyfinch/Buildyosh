@@ -47,4 +47,6 @@ struct MainState {
     var needShowDuration: Bool {
         (duration?.days ?? 0) > 1
     }
+
+    let isAppInApplications = Bundle.main.executablePath?.contains("/Applications") ?? false
 }
