@@ -11,8 +11,8 @@ import Foundation
 struct Period: Equatable {
 
     enum PeriodType: Int {
-        case yday
         case today
+        case yday
         case week
         case all
     }

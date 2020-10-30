@@ -18,8 +18,8 @@ struct MainView: View {
             }, set: { periodType in
                 store.send(.changePeriodType(periodType))
             }), label: EmptyView()) {
-                Text("Yday").tag(0)
-                Text("Today").tag(1)
+                Text("Today").tag(0)
+                Text("Yday").tag(1)
                 Text("Week").tag(2)
                 Text("All").tag(3)
             }
