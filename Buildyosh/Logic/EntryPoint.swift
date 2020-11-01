@@ -180,7 +180,7 @@ private extension Dictionary where Value == [URL] {
 private func testProjectLogs() -> [ProjectLog] {
     return [
         ProjectLog(id: "-1",
-                   name: "SMEReputation",
+                   name: "Yandex Cup",
                    schemes: [
                     ProjectLog.Scheme(
                         id: "1",
@@ -221,7 +221,7 @@ private func testProjectLogs() -> [ProjectLog] {
         ),
 
         ProjectLog(id: "0",
-                   name: "Buildyosh",
+                   name: "Plane",
                    schemes: [
                     ProjectLog.Scheme(
                         id: "1",
@@ -297,7 +297,7 @@ private func testProjectLogs() -> [ProjectLog] {
             ]
         ),
         ProjectLog(id: "4",
-                   name: "ThisIsAVeryLongNameOfProject",
+                   name: "SwiftyFinch",
                    schemes: [
                     ProjectLog.Scheme(
                         id: "1",
