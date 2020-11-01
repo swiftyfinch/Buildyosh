@@ -826,7 +826,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.10.6b;
+				MARKETING_VERSION = 0.11.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftyfinch.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -853,7 +853,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.10.6b;
+				MARKETING_VERSION = 0.11.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftyfinch.Buildyosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
