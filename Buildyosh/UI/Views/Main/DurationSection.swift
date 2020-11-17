@@ -21,6 +21,16 @@ struct DurationSection: View {
     let duration: Model
 
     var body: some View {
+        HStack(spacing: 0) {
+            if store.state.isExpanded {
+                makeExpandedBody()
+            } else {
+                makeNotExpandedBody()
+            }
+        }
+    }
+
+    private func makeNotExpandedBody() -> some View {
         HStack(spacing: 2) {
             switch store.state.mode {
             case .time:
@@ -47,6 +57,38 @@ struct DurationSection: View {
                 Text(duration.totalSuccessRate)
                     .font(.time)
                     .foregroundColor(.successRate)
+            }
+        }
+    }
+
+    private func makeExpandedBody() -> some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 2) {
+                Image.buildCount
+                    .foregroundColor(.buildCount)
+                Text(duration.totalBuildCount)
+                    .font(.time)
+                    .foregroundColor(.buildCount)
+                Spacer().frame(width: 2)
+                Image.success
+                    .foregroundColor(.successRate)
+                Text(duration.totalSuccessRate)
+                    .font(.time)
+                    .foregroundColor(.successRate)
+            }
+
+            HStack(spacing: 2) {
+                Image.clock
+                    .foregroundColor(.averageClockIcon)
+                Text(duration.perDayDuration)
+                    .font(.time)
+                    .foregroundColor(.averageClockText)
+                Spacer().frame(width: 2)
+                Image.clock
+                    .foregroundColor(.clockIcon)
+                Text(duration.totalDuration)
+                    .font(.time)
+                    .foregroundColor(.clockText)
             }
         }
     }

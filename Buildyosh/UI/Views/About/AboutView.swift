@@ -123,14 +123,11 @@ struct ApplicationHeader: View {
 
     var body: some View {
         HStack(spacing: 5) {
-            Text("🎃")
-                .font(.aboutTitle)
-                .padding(.trailing, -2)
-//                Image("gear")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 17, height: 17)
-//                    .foregroundColor(.aboutAppIcon)
+            Image("gear")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 17, height: 17)
+                .foregroundColor(.aboutAppIcon)
             Text("Buildyosh")
                 .font(.aboutTitle)
                 .foregroundColor(.aboutTitle)

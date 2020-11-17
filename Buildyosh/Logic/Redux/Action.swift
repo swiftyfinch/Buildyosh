@@ -23,4 +23,5 @@ enum Action {
 
     case changeMode
     case toggleAbout
+    case toggleExpand
 }

@@ -51,6 +51,8 @@
 		41ABC80624F9710D001715D1 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80524F9710D001715D1 /* Images.swift */; };
 		41ABC80A24FA5CF2001715D1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80924FA5CF2001715D1 /* Colors.swift */; };
 		41ABC80C24FAB572001715D1 /* Date+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABC80B24FAB572001715D1 /* Date+Int.swift */; };
+		41B1272C254EC004003FB2A3 /* GBDeviceInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 41B1272B254EC004003FB2A3 /* GBDeviceInfo */; };
+		41B12730254EE6D5003FB2A3 /* HardwareCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B1272F254EE6D5003FB2A3 /* HardwareCollector.swift */; };
 		41BD50E524FBA7AA00703A8D /* XCTAssertEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50E424FBA7AA00703A8D /* XCTAssertEqual.swift */; };
 		41BD50E624FBB53E00703A8D /* PeriodParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116992E24F244E1004293DC /* PeriodParser.swift */; };
 		41BD50E924FBB56600703A8D /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD50E824FBB56600703A8D /* Period.swift */; };
@@ -141,6 +143,7 @@
 		41ABC80524F9710D001715D1 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		41ABC80924FA5CF2001715D1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		41ABC80B24FAB572001715D1 /* Date+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Int.swift"; sourceTree = "<group>"; };
+		41B1272F254EE6D5003FB2A3 /* HardwareCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareCollector.swift; sourceTree = "<group>"; };
 		41BD50E424FBA7AA00703A8D /* XCTAssertEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertEqual.swift; sourceTree = "<group>"; };
 		41BD50E824FBB56600703A8D /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		41BD50EC24FBB59000703A8D /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
@@ -171,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B1272C254EC004003FB2A3 /* GBDeviceInfo in Frameworks */,
 				414F53F02523886D00DB600E /* KeychainAccess in Frameworks */,
 				418916AC24A51E8C0084F7AE /* Gzip in Frameworks */,
 				41CA3FE625497D4A0020EEB7 /* LaunchAtLogin in Frameworks */,
@@ -200,6 +204,7 @@
 				416B2A3D24B9C53F00043110 /* EasyScanner.swift */,
 				418916AE24A51F250084F7AE /* XcodeLogReader.swift */,
 				41C0474C24B9E67B0031DD99 /* XcodeLogFinder.swift */,
+				41B1272F254EE6D5003FB2A3 /* HardwareCollector.swift */,
 			);
 			path = Parsing;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				41FB1A1524A527B600F4678C /* CryptoSwift */,
 				414F53EF2523886D00DB600E /* KeychainAccess */,
 				41CA3FE525497D4A0020EEB7 /* LaunchAtLogin */,
+				41B1272B254EC004003FB2A3 /* GBDeviceInfo */,
 			);
 			productName = Buildyosh;
 			productReference = 4189169424A518370084F7AE /* Buildyosh.app */;
@@ -505,6 +511,7 @@
 				41FB1A1424A527B600F4678C /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				414F53EE2523886D00DB600E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				41CA3FE425497D4A0020EEB7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				41B1272A254EC004003FB2A3 /* XCRemoteSwiftPackageReference "GBDeviceInfo" */,
 			);
 			productRefGroup = 4189169524A518370084F7AE /* Products */;
 			projectDirPath = "";
@@ -612,6 +619,7 @@
 				41ABC80C24FAB572001715D1 /* Date+Int.swift in Sources */,
 				412FC80924EAFCB8006B6FCD /* Date+Periods.swift in Sources */,
 				410B4A1324DF172300922F8D /* Fonts.swift in Sources */,
+				41B12730254EE6D5003FB2A3 /* HardwareCollector.swift in Sources */,
 				410B4A0F24DF137300922F8D /* View+Hidden.swift in Sources */,
 				4116B95C24C42BA6001629C6 /* URL+Utils.swift in Sources */,
 				414F53F225238E9600DB600E /* KeychainService.swift in Sources */,
@@ -911,6 +919,14 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		41B1272A254EC004003FB2A3 /* XCRemoteSwiftPackageReference "GBDeviceInfo" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lmirosevic/GBDeviceInfo/";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		41CA3FE425497D4A0020EEB7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
@@ -939,6 +955,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 418916AA24A51E8C0084F7AE /* XCRemoteSwiftPackageReference "GzipSwift" */;
 			productName = Gzip;
+		};
+		41B1272B254EC004003FB2A3 /* GBDeviceInfo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41B1272A254EC004003FB2A3 /* XCRemoteSwiftPackageReference "GBDeviceInfo" */;
+			productName = GBDeviceInfo;
 		};
 		41CA3FE525497D4A0020EEB7 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;

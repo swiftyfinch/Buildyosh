@@ -36,6 +36,21 @@ struct ContentView: View {
 
             if store.state.screen == .main || store.state.screen == .about {
                 GeometryReader { proxy in
+                    if store.state.screen == .main {
+                        Button(action: {
+                            store.send(.toggleExpand)
+                        }) {
+                            if store.state.isExpanded {
+                                Image.expandFill//.rotationEffect(.init(degrees: 180))
+                            } else {
+                                Image.expand
+                            }
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .position(x: 12,
+                                  y: proxy.size.height - 8)
+                    }
+
                     Button(action: {
                         store.send(.toggleAbout)
                     }) {

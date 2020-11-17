@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "GBDeviceInfo",
+        "repositoryURL": "https://github.com/lmirosevic/GBDeviceInfo/",
+        "state": {
+          "branch": "master",
+          "revision": "3146a7a2708fd40075c28863e853831806cb065f",
+          "version": null
+        }
+      },
+      {
         "package": "Gzip",
         "repositoryURL": "https://github.com/1024jp/GzipSwift",
         "state": {

@@ -41,8 +41,9 @@ struct MainState {
     }
     var screen: Screen = .main
     var progress = 0.0
-
     var size: CGSize = .zero
+    var isExpanded = false
+    var hardware: Hardware
 
     var needShowDuration: Bool {
         (duration?.days ?? 0) > 1

@@ -176,7 +176,6 @@ private extension Dictionary where Value == [URL] {
     }
 }
 
-/*
 private func testProjectLogs() -> [ProjectLog] {
     return [
         ProjectLog(id: "-1",
@@ -310,4 +309,3 @@ private func testProjectLogs() -> [ProjectLog] {
         )
     ]
 }
-*/

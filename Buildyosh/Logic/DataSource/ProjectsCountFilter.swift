@@ -10,7 +10,8 @@ import Foundation
 
 struct ProjectsCountFilter {
 
-    func filter(_ projects: [Project]) -> [Project] {
+    func filter(_ projects: [Project], isExpanded: Bool) -> [Project] {
+        let maxCount = isExpanded ? 3 : 5
         let notEmptyDuraton = projects.filter { $0.duration > 0 }
         var sorted = notEmptyDuraton.sorted { $0.duration > $1.duration }
 
@@ -19,7 +20,7 @@ struct ProjectsCountFilter {
         var daysCount = 0
         var successCount = 0
         var failCount = 0
-        while sorted.count > 5 {
+        while sorted.count + 1 > maxCount {
             let last = sorted.removeLast()
             duration += last.duration
             count += last.count

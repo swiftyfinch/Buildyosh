@@ -73,4 +73,34 @@ extension Image {
             .aspectRatio(contentMode: .fit)
             .frame(width: 18, height: 18)
     }
+
+    static var share: some View {
+        Image("share")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 16, height: 16)
+    }
+
+    static var expand: some View {
+        Image("line.horizontal.3.decrease.circle")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 19, height: 19)
+            .foregroundColor(.aboutOpenButton)
+    }
+
+    static var expandFill: some View {
+        Image("line.horizontal.3.decrease.circle.fill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 19, height: 19)
+            .foregroundColor(.aboutOpenButton)
+    }
+
+    static var computer: some View {
+        Image("laptopcomputer")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 19, height: 19)
+    }
 }

@@ -68,6 +68,10 @@ final class Reducer {
                 state.screen = .main
             }
             state = updateSize(state: state)
+        case .toggleExpand:
+            state.isExpanded.toggle()
+            state = updateContent(state: state)
+            state = updateSize(state: state)
         }
         return nil
     }
@@ -76,7 +80,8 @@ final class Reducer {
         var state = state
         let builder = ProjectsBuilder()
         let info = builder.build(fromPeriods: state.periods,
-                                 withPeriodType: state.periodType)
+                                 withPeriodType: state.periodType,
+                                 isExpanded: state.isExpanded)
         state.projects = info.projects
         state.duration = info.duration
         return state
@@ -96,9 +101,11 @@ final class Reducer {
         case .main:
             let contentHeight = ProjectsSection.height(
                 projects: state.projects,
-                needShowDuration: state.needShowDuration
+                needShowDuration: state.needShowDuration,
+                expanded: state.isExpanded
             )
             newHeight = contentHeight
+            newHeight += state.isExpanded ? 65 : 0
         }
         state.size = CGSize(width: .width, height: newHeight)
         return state

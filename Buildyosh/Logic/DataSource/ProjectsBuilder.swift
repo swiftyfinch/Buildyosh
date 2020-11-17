@@ -11,11 +11,12 @@ import SwiftUI
 struct ProjectsBuilder {
     func build(
         fromPeriods periods: Periods,
-        withPeriodType periodType: Int
+        withPeriodType periodType: Int,
+        isExpanded: Bool
     ) -> (projects: [Project], duration: Duration?) {
         let type = Period.PeriodType(rawValue: periodType)!
         let period = periods.period(withType: type)
-        let projects = ProjectsCountFilter().filter(period.projects)
+        let projects = ProjectsCountFilter().filter(period.projects, isExpanded: isExpanded)
         let duration = periodType > 1 ? TotalModifier().duration(projects) : nil
         return (projects, duration)
     }
