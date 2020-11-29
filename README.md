@@ -7,8 +7,7 @@ Find out the average time you spend on building per day.
 You can change the mode by tapping on the main screen.\
 Check out the count or success rate of your builds.
 
-⚠️ I have not `Apple Developer Certificate` yet, so you will see a warning about that.\
-Additional pay will go to `Apple Developer Certificate`.
+⚠️ I have not `Apple Developer Certificate` yet, so you will see a warning about that.
 
 ## Posts
 
@@ -17,6 +16,17 @@ Additional pay will go to `Apple Developer Certificate`.
 ## Releases
 
 <a href="https://gum.co/HYzCu"><img src="https://github.com/swiftyfinch/Buildyosh/blob/main/Gumroad.png" width="160"/></a>
+
+## Maybe Roadmap
+
+`-` Big Sur\
+`-` In-app Update Notification\
+`-` Remove Gumroad Auth\
+`-` Extended mode with system info\
+`-` Build folder monitor\
+`-` Can we analyze projects indexing?\
+`-` Remove/hide some projects\
+`-` Schemes mode
 
 ## Author
 
