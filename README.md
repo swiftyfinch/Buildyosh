@@ -33,4 +33,4 @@ Check out the count or success rate of your builds.
 Vyacheslav Khorkov\
 Twitter: [@SwiftyFinch](https://twitter.com/swiftyfinch)\
 Blog: [swiftyfinch.github.io](https://swiftyfinch.github.io/en)\
-Feel free to contact me for any questions.
+Feel free to contact me 📮
